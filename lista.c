@@ -1,11 +1,6 @@
 #include "lista.h"
 #include <stdlib.h>
 
-struct Lista{
-    int n;
-    struct Lista * prox;
-};
-
 item * aloca_no(int n){
     item * no = malloc(sizeof(item));
     no->prox = NULL;
