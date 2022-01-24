@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 
-#define MAXT 1000000000 //tamanho máximo do vetor
+#define MAXT 10001//1000000000 //tamanho máximo do vetor
 #define MAXN 4294967295 //maior número possível(unsigned int 32bit)
 
 int conta_aleatoria = 0;
@@ -45,7 +45,7 @@ void gravar_entrada_aleatoria(unsigned int t,unsigned int n){
         for(j = 0; j < t; j++)
             entrada[j] = rand() % n;
         conta_aleatoria++;
-        gravar_entrada("entrada_aleatoria.txt", conta_aleatoria, 16*t, entrada);
+        gravar_entrada("entrada_aleatoria.txt", conta_aleatoria, t, entrada);
     }
 }
 
@@ -56,13 +56,13 @@ void gravar_entrada_ordenada(unsigned int t){
     for(i = 0; i < t; i++)
         entrada[i] = i;
     ordenada_crescente++;
-    gravar_entrada("ordenada_crescente.txt", ordenada_crescente, 16*t, entrada);
+    gravar_entrada("ordenada_crescente.txt", ordenada_crescente, t, entrada);
 
     entrada = malloc(t*sizeof(unsigned int));
     for(i = t-1; i > 0; i--)
         entrada[i] = i;
     ordenada_decrescente++;
-    gravar_entrada("ordenada_decrescente.txt", ordenada_decrescente, 16*t, entrada);
+    gravar_entrada("ordenada_decrescente.txt", ordenada_decrescente, t, entrada);
 }
 
 void gravar_entrada_igual(unsigned int t,unsigned int n){
@@ -71,7 +71,7 @@ void gravar_entrada_igual(unsigned int t,unsigned int n){
     for(i = 0; i < t; i++)
         entrada[i] = n;
     conta_igual++;
-    gravar_entrada("entrada_igual.txt", conta_igual, 16*t, entrada);
+    gravar_entrada("entrada_igual.txt", conta_igual, t, entrada);
 }
 
 void gravar_entrada_pior_caso(unsigned int t){
@@ -84,11 +84,21 @@ void gravar_entrada_pior_caso(unsigned int t){
         for(j = 0; j < t; j++)
             entrada[j] = 1000000000 + rand() % n;
         conta_pior_caso++;
-        gravar_entrada("pior_caso.txt", conta_pior_caso, 16*t, entrada);
+        gravar_entrada("pior_caso.txt", conta_pior_caso, t, entrada);
     }
 }
 
 void gravar_entrada(char * arq, int numero, unsigned int tamanho, unsigned int * v){
-    printf("Salvando em %s, entrada numero %d, tamanho = %u mb\n", arq, numero, tamanho/1000000);
+    FILE * p;
+    unsigned int i;
+    unsigned int tamanhoKB = 16 * tamanho;
+    char * output = malloc(16 * sizeof(char));
+    p =  fopen(arq,"a");
+    fprintf(p, "%d;%u;%u;\n", numero, tamanho, tamanhoKB);
+    for(i = 0; i < tamanho; i++){
+        fprintf(p, "%u;", v[i]);
+    }
+    fputs("\n", p);
+    fclose(p);
     free(v);
 }
