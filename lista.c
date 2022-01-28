@@ -1,24 +1,25 @@
 #include "lista.h"
+#include <stdio.h>
 #include <stdlib.h>
 
-item * aloca_no(unsigned long long n){
-    item * no = malloc(sizeof(item));
+no * aloca_no(unsigned long long n){
+    no * no = malloc(sizeof(no));
     no->prox = NULL;
     no->n = n;
     return no;
 }
 
-void adiciona_no(item * raiz, unsigned long long n){
-    item * prox = raiz->prox;
+void adiciona_no(no * raiz, unsigned long long n){
+    no * prox = raiz->prox;
     while(prox->prox!=NULL){
         prox = prox->prox;
     }
     prox->prox = aloca_no(n);
 }
 
-item * desaloca_lista(item * raiz){
-    item * atual = raiz;
-    item * prox = raiz->prox;
+no * desaloca_lista(no * raiz){
+    no * atual = raiz;
+    no * prox = raiz->prox;
     while(prox!=NULL){
         free(atual);
         atual = prox;
@@ -26,3 +27,15 @@ item * desaloca_lista(item * raiz){
     }
     return NULL;
 }
+
+void imprime(no * raiz){
+	if(raiz == NULL)
+		return;
+	printf("%llu", raiz->n);
+	no * prox = raiz -> prox;
+	while(prox!=NULL){
+		printf(" -> %llu", raiz->n);
+		prox = prox->prox;
+	}	
+}
+

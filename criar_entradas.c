@@ -3,7 +3,7 @@
 #include <time.h>
 #include "lista.h"
 
-#define TEST 1
+#define TEST 0
 #if !TEST
 	#if _WIN64
 		#define MAXT 500000000llu //tamanho máximo do vetor escolhido para 64bits
@@ -53,17 +53,19 @@ int main(){
 }
 
 void gravar_entrada_aleatoria(unsigned long long t,unsigned long long n){
+	printf("%llu\n", MAXT);
+	exit(0);
     int i;//contador para criar 5 entradas
     unsigned long long j;//contador para gerar n numeros
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     srand(time(NULL));
-    for(i = 0; i < 5; i++){
+    for(i = 0; i < 3; i++){
         conta_aleatoria++;
 		sprintf(arq, ".\\entradas_aleatorias\\conta_aleatoria_%d.txt", conta_aleatoria);//caminho da entrada
     	FILE * p = criar_arquivo(arq);
-        fprintf(p, "%llu;%llu\n", t, n);//cabecalho salvando o tamanho da entrada e o maior numero
+        fprintf(p, "%llu\n%llu\n", t, n);//cabecalho salvando o tamanho da entrada e o maior numero possivel
         for(j = 0; j < t; j++)
-            fprintf(p, "%llu;", rand() * rand() * rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
+            fprintf(p, "%llu\n", rand() * rand() * rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
     	fclose(p);
     	printf("Aleatoria %d salva\n", conta_aleatoria);//feedback visual
     }
@@ -76,9 +78,9 @@ void gravar_entrada_crescente(unsigned long long t){
     ordenada_crescente++;
     sprintf(arq, ".\\entradas_crescentes\\entrada_crescente_%d.txt", ordenada_crescente);
     FILE * p = criar_arquivo(arq);
-    fprintf(p, "%llu\n", t);//cabecalho salvando o tamanho da entrada
+        fprintf(p, "%llu\n%llu\n", t, t-1);//cabecalho salvando o tamanho da entrada e o maior numero possivel
     for(i = 0; i < t; i++)
-        fprintf(p, "%llu;", i);//salva cada elemento seguido de ;
+        fprintf(p, "%llu\n", i);//salva cada elemento seguido de ;
     fclose(p);
     printf("Crescente %d salva\n", ordenada_crescente);//feedback visual
     free(arq);
@@ -91,9 +93,9 @@ void gravar_entrada_decrescente(unsigned long long t){
     ordenada_decrescente++;
     sprintf(arq, ".\\entradas_decrescentes\\entrada_decrescente_%d.txt", ordenada_decrescente);
     FILE * p = criar_arquivo(arq);
-    fprintf(p, "%llu\n", t);//cabecalho salvando o tamanho da entrada
+        fprintf(p, "%llu\n%llu\n", t, t-1);//cabecalho salvando o tamanho da entrada e o maior numero possivel
     for(i = 0; i < t; i++){
-        fprintf(p, "%llu;", k);//salva cada elemento seguido de ;
+        fprintf(p, "%llu\n", k);//salva cada elemento seguido de ;
         k--;
     }
     fclose(p);
@@ -108,9 +110,9 @@ void gravar_entrada_igual(unsigned long long t,unsigned long long n){
     conta_igual++;
     sprintf(arq, ".\\entradas_iguais\\entrada_igual_%llu.txt", conta_igual);
     FILE * p = criar_arquivo(arq);
-    fprintf(p, "%llu;%llu\n", t, n);//cabecalho salvando o tamanho da entrada e o maior número
+        fprintf(p, "%llu\n%llu\n", t, n);//cabecalho salvando o tamanho da entrada e o maior numero possivel
     for(i = 0; i < t; i++)
-        fprintf(p, "%llu;", n);//salva cada elemento seguido de ;
+        fprintf(p, "%llu\n", n);//salva cada elemento seguido de ;
     fclose(p);
     printf("Igual %d salva\n", conta_igual);//feedback visual
     free(arq);
@@ -126,9 +128,9 @@ void gravar_entrada_pior_caso(unsigned long long t){
         conta_pior_caso++;
 		sprintf(arq, ".\\entradas_pior_caso\\pior_caso_%d.txt", conta_pior_caso);
 	    FILE * p = criar_arquivo(arq);
-	    fprintf(p, "%llu\n", t);//cabecalho salvando o tamanho da entrada
+        fprintf(p, "%llu\n%llu\n", t, 18446744073709551615llu);//cabecalho salvando o tamanho da entrada e o maior numero possivel
         for(j = 0; j < t; j++)
-             fprintf(p, "%llu;" , 10000000000000000000llu + rand() *  rand() *  rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
+             fprintf(p, "%llu\n" , 10000000000000000000llu + rand() *  rand() *  rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
         fclose(p);
 		printf("Pior caso %d salva\n", conta_pior_caso);//feedback visual
     }
