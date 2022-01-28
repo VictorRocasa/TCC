@@ -1,14 +1,14 @@
 #include "lista.h"
 #include <stdlib.h>
 
-item * aloca_no(int n){
+item * aloca_no(unsigned long long n){
     item * no = malloc(sizeof(item));
     no->prox = NULL;
     no->n = n;
     return no;
 }
 
-void adiciona_no(item * raiz, int n){
+void adiciona_no(item * raiz, unsigned long long n){
     item * prox = raiz->prox;
     while(prox->prox!=NULL){
         prox = prox->prox;
