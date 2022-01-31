@@ -3,23 +3,22 @@
 #include <stdio.h>
 #include <time.h>
 
-no * ler_entrada(char * arq);//fun��o para ler uma entrada de um arquivo passado por par�metro
-
-int contaDigitos(unsigned long long n);
-void mergesort(no * entrada);//função para realizar o merge sorte na entrada e salvar seus dados
-void quicksort(no * entrada);//função para realizar o quick sort na entrada e salvar seus dados
-void timsort(no * entrada);//função para realizar o tim sort na entrada e salvar seus dados
-void radixsort1d(no * entrada);//função para realizar o radix(1d) sort na entrada e salvar seus dados
-void radixsortNd(no * entrada);//função para realizar o radix(Nd) sort na entrada e salvar seus dados
+no * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por par�metro
+void mergesort(no * entrada);//funcao para realizar o merge sorte na entrada e salvar seus dados
+void quicksort(no * entrada);//funcao para realizar o quick sort na entrada e salvar seus dados
+void timsort(no * entrada);//funcao para realizar o tim sort na entrada e salvar seus dados
+int conta_digitos(unsigned long long n);//funcao para contar o numero de digitos de um numero
+void radixsort_vetor(no * entrada);//funcao para realizar o radix vetor sort na entrada e salvar seus dados
+void radixsort_lista(no * entrada);//funcao para realizar o radix lista sort na entrada e salvar seus dados
 
 
 int main(){
-    ler_entrada(".\\entradas_decrescentes\\entrada_decrescente_3.txt");
-	
+	no  * t = ler_entrada("teste.txt");
+	imprimir_lista(t);
     return 0;
 }
 
-int contaDigitos(unsigned long long n){
+int conta_digitos(unsigned long long n){
 	int d;
 	for(d = 0; n > 0; n /= 10)
 		d++;
@@ -29,39 +28,20 @@ int contaDigitos(unsigned long long n){
 no * ler_entrada(char * arq){
 	FILE * p;
 	p = fopen(arq, "r");
-	unsigned long long tam;
-	unsigned long long maior;
-	char * buf = malloc(256*sizeof(char));
-	fgets(buf,256,p);
-	printf("%s", buf);
-	fgets(buf,256,p);
-	printf("%s", buf);
-	//printf("%d", contaDigitos(maior));
+	if(p == NULL){
+		printf("ERRO DE LEITURA DE ARQUIVO NA FUNCAO DE ENTRADA!");
+		exit(1);
+	}
+	char * n = malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
+	no * raiz;
+	fgets(n,22,p);
+	raiz = (no*)aloca_no(strtoull(n,NULL,10));
+	while(fgets(n,22,p)!=NULL){
+		if(n[0]=='\n')//caso a linha esteja vazia sai do loop
+			break;
+		if(!adiciona_no(raiz, strtoull(n,NULL,10)))
+			return NULL;//caso a memoria acabe retorna NULL
+	}
 	fclose(p);
-}
-
-void ler_entradas_aleatorias(){
-    FILE * p;
-    p =  fopen("entrada_aleatoria.txt","a");
-    fclose(p);
-}
-
-void ler_entradas_ordenadas(){
-    FILE * p;
-    p =  fopen("ordenada_crescente.txt.txt","a");
-    
-    p =  fopen("ordenada_decrescente.txt.txt","a");
-    fclose(p);
-}
-
-void ler_entradas_iguais(){
-    FILE * p;
-    p =  fopen("entrada_igual.txt","a");
-    fclose(p);
-}
-
-void ler_entradas_pior_caso(){
-    FILE * p;
-    p =  fopen("pior_caso.txt","a");
-    fclose(p);
+	return raiz;
 }

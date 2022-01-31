@@ -7,8 +7,9 @@ typedef struct Lista{
 }no;
 
 no * aloca_no(unsigned long long n);
-void adiciona_no(no * raiz, unsigned long long n);
+int adiciona_no(no * raiz, unsigned long long n);
 no * desaloca_lista(no * raiz);
-void imprime(no * raiz);
+void imprimir_lista(no * raiz);
 
 #endif /*LISTA_H*/
+
