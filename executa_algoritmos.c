@@ -3,6 +3,7 @@
 #include <time.h>
 #include "lista.h" 
 #include "merge_sort.h"
+#include "insertion_sort.h"
 
 no * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void mergesort(no * entrada);//funcao para realizar o merge sorte na entrada e salvar seus dados
@@ -14,17 +15,24 @@ void radixsort_vetor(no * entrada);//funcao para realizar o radix vetor sort na 
 void radixsort_lista(no * entrada);//funcao para realizar o radix lista sort na entrada e salvar seus dados
 
 
-int main(){
+int main(){//teste.txt
 	printf("Desordenado: \n");
-	no  * t = ler_entrada("teste.txt");
+	no  * t = ler_entrada(".\\entradas_pior_caso\\pior_caso_1.txt");
 	imprimir_lista(t);
 	printf("Merge: \n");
 	MergeSort(&t);
 	imprimir_lista(t);
-	t = ler_entrada("teste.txt");
+	getchar();
+	ler_entrada(".\\entradas_pior_caso\\pior_caso_1.txt");
 	printf("Quick: \n");
 	quickSort(&t);
 	imprimir_lista(t);
+	getchar();
+	ler_entrada(".\\entradas_pior_caso\\pior_caso_1.txt");
+	printf("Insertion: \n");
+	insertion(&t);
+	imprimir_lista(t);
+	getchar();
 	
     return 0;
 }
