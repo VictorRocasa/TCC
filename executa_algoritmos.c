@@ -1,11 +1,13 @@
-#include "lista.h" 
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include "lista.h" 
+#include "merge_sort.h"
 
 no * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void mergesort(no * entrada);//funcao para realizar o merge sorte na entrada e salvar seus dados
 void quicksort(no * entrada);//funcao para realizar o quick sort na entrada e salvar seus dados
+void insertionsort(no * entrada);//funcao para realizar o tim sort na entrada e salvar seus dados
 void timsort(no * entrada);//funcao para realizar o tim sort na entrada e salvar seus dados
 int conta_digitos(unsigned long long n);//funcao para contar o numero de digitos de um numero
 void radixsort_vetor(no * entrada);//funcao para realizar o radix vetor sort na entrada e salvar seus dados
@@ -13,8 +15,17 @@ void radixsort_lista(no * entrada);//funcao para realizar o radix lista sort na 
 
 
 int main(){
+	printf("Desordenado: \n");
 	no  * t = ler_entrada("teste.txt");
 	imprimir_lista(t);
+	printf("Merge: \n");
+	MergeSort(&t);
+	imprimir_lista(t);
+	t = ler_entrada("teste.txt");
+	printf("Quick: \n");
+	quickSort(&t);
+	imprimir_lista(t);
+	
     return 0;
 }
 
