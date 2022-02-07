@@ -10,9 +10,12 @@ void MergeSort(struct Lista** headRef)
     struct Lista* b;
 
     /* Base case -- length 0 or 1 */
-    if ((head == NULL) || (head->prox == NULL)) {
+    if (head == NULL) {
         return;
     }
+    if((head->prox == NULL)){
+        return;
+	}
 
     /* Split head into 'a' and 'b' sublists */
     FrontBackSplit(head, &a, &b);
