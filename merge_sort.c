@@ -1,13 +1,15 @@
 #include <stdlib.h>
 #include "merge_sort.h"
 #include "lista.h"
+#include <stdio.h>
   
 /* sorts the linked list by changing next pointers (not data) */
-void MergeSort(struct Lista** headRef)
+void MergeSort(struct No** headRef)
 {
-    struct Lista* head = *headRef;
-    struct Lista* a;
-    struct Lista* b;
+	printf("Erro no MergeSort\n");
+    struct No* head = (*headRef);
+    struct No* a;
+    struct No* b;
 
     /* Base case -- length 0 or 1 */
     if (head == NULL) {
@@ -30,15 +32,17 @@ void MergeSort(struct Lista** headRef)
 
 /* See https:// www.geeksforgeeks.org/?p=3622 for details of this
 function */
-struct Lista* SortedMerge(struct Lista* a, struct Lista* b)
+struct No* SortedMerge(struct No* a, struct No* b)
 {
-    struct Lista* result = NULL;
+	printf("Erro no SortedMerge1\n");
+    struct No* result = NULL;
 
     /* Base cases */
     if (a == NULL)
         return (b);
     else if (b == NULL)
         return (a);
+	printf("Erro no SortedMerge2\n");
 
     /* Pick either a or b, and recur */
     if (a->n <= b->n) {
@@ -49,6 +53,7 @@ struct Lista* SortedMerge(struct Lista* a, struct Lista* b)
         result = b;
         result->prox = SortedMerge(a, b->prox);
     }
+	printf("Erro no SortedMerge3\n");
     return (result);
 }
 
@@ -57,10 +62,11 @@ struct Lista* SortedMerge(struct Lista* a, struct Lista* b)
     and return the two lists using the reference parameters.
     If the length is odd, the extra node should go in the front list.
     Uses the fast/slow pointer strategy. */
-void FrontBackSplit(struct Lista* source, struct Lista** frontRef, struct Lista** backRef)
+void FrontBackSplit(struct No* source, struct No** frontRef, struct No** backRef)
 {
-    struct Lista* fast;
-    struct Lista* slow;
+	printf("Erro no FrontBackSplit\n");
+    struct No* fast;
+    struct No* slow;
     slow = source;
     fast = source->prox;
 

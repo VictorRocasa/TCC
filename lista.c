@@ -2,6 +2,13 @@
 #include <stdlib.h>
 #include "lista.h"
 
+
+lista * cria_lista(){
+	lista * nova =  (lista *)malloc(sizeof(lista));
+	nova->raiz = NULL;
+	return nova;
+}
+
 no * aloca_no(unsigned long long n){//retorna um novo no
     no * novo = (no*) malloc(sizeof(no));
     novo->prox = NULL;
@@ -9,33 +16,36 @@ no * aloca_no(unsigned long long n){//retorna um novo no
     return novo;
 }
 
-int adiciona_no(no * raiz, unsigned long long n){//adiciona um novo no ao fim da lista passada por parametro em raiz
-    no * prox = raiz;
-    while(prox->prox!=NULL){
-        prox = prox->prox;
-    }
-    prox->prox = aloca_no(n);
-    if(prox->prox == NULL){//caso o novo no nao seja alocado, desaloca lista e retorna 0
-    	desaloca_lista(raiz);
-    	return 0;
+no * adiciona_no(lista * l, no * anterior, unsigned long long n){//adiciona um novo no ao fim da lista passada por parametro
+    if(l->raiz == NULL){
+    	l->raiz = aloca_no(n);
+    	return l->raiz;
 	}
-	return 1;//retorna 1 ao adicionar novo no com sucesso
+    anterior->prox = aloca_no(n);
+    if(anterior->prox == NULL){//caso o novo no nao seja alocado, desaloca lista e retorna NULL
+    	desaloca_lista(l);
+    	return NULL;
+	}
+	return anterior->prox;//retorna o novo no caso seja adicionado com sucesso
 }
 
-no * desaloca_lista(no * raiz){//desaloca todos os nos da lista
-    no * atual = raiz;
-    no * prox = raiz->prox;
+lista * desaloca_lista(lista * l){//desaloca todos os nos da lista
+	no * atual = l->raiz;
+    no * prox = atual->prox;
     do{
         free(atual);
         atual = prox;
         prox = prox->prox;
     }while(prox!=NULL);
+    free(atual);  
+    free(l);
     return NULL;
 }
 
-void imprimir_lista(no * raiz){//imprime todos os nos da lista
+void imprimir_lista(lista * l){//imprime todos os nos da lista
+    no * raiz = l->raiz;
 	if(raiz == NULL){
-		printf("Lista vazia!\n");
+		printf("No vazia!\n");
 		return;
 	}
 	printf("%llu\n", raiz->n);

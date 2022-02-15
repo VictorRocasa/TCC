@@ -3,6 +3,6 @@
 #include <stdlib.h>
 #include "lista.h"
 
-void insertion(struct Lista **raiz);
+no * insertion(struct No **raiz);
 
 #endif /* INSERT_H*/

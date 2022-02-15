@@ -2,8 +2,8 @@
 #define MERGE_H
 #include "lista.h"
 
-void MergeSort(struct Lista** headRef);
-void FrontBackSplit(struct Lista* source, struct Lista** frontRef, struct Lista** backRef);
-struct Lista* SortedMerge(struct Lista* a, struct Lista* b);
+void MergeSort(struct No** headRef);
+void FrontBackSplit(struct No* source, struct No** frontRef, struct No** backRef);
+struct No* SortedMerge(struct No* a, struct No* b);
 
 #endif /* MERGE_H*/

@@ -2,9 +2,9 @@
 #define QUICK_H
 #include "lista.h"
 
-struct Lista* getTail(struct Lista* cur);
-struct Lista* partition(struct Lista* head, struct Lista* end, struct Lista** newHead, struct Lista** newEnd);
-struct Lista* quickSortRecur(struct Lista* head, struct Lista* end);
-void quickSort(struct Lista** headRef);
+struct No* getTail(struct No* cur);
+struct No* partition(struct No* head, struct No* end, struct No** newHead, struct No** newEnd);
+struct No* quickSortRecur(struct No* head, struct No* end);
+no * quickSort(struct No** headRef);
 
 #endif /* QUICK_H*/
