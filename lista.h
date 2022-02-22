@@ -10,6 +10,7 @@ typedef struct Lista{//estrutura auxiliar para coletar dados de dentro dos algor
     struct No * raiz;
     unsigned long long tamanho;
     int digitos_maior_numero;
+    double picoMemoria;
     
 }lista;
 

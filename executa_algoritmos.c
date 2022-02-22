@@ -6,8 +6,9 @@
 #include "insertion_sort.h"
 #include "maximos.h"
 #include "radixsort_lista.h"
+#include <windows.h>
+#include "flag_sort.h"
 
-int conta_digitos(unsigned long long n);//funcao para contar o numero de digitos de um numero
 lista * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 unsigned long long * ler_entrada_vetor(char * arq);//funcao para ler uma entrada a partir de um arquivo e criar um vetor para ela
 void entradas_aleatorias();//executa os algoritmos usando entradas aleatorias
@@ -32,7 +33,7 @@ lista * ler_entrada(char * arq){
 	fgets(n,22,p);
 	l->tamanho = strtoull(n,NULL,10);
 	fgets(n,22,p);
-	l->digitos_maior_numero = conta_digitos(strtoull(n,NULL,10)) -1;
+	l->digitos_maior_numero = conta_digitos(strtoull(n,NULL,10)-1);//-1 pois o maior numero e o limite superior da rand()
 	no * anterior = NULL;//no auxiliar que aponta para o último adicionado, para salvar tempo na hora de ler a entrada(adiciona novos nós direto no fim da lista)
 	while(fgets(n,22,p)!=NULL){
 		if(n[0]=='\n')//caso a linha esteja vazia sai do loop
@@ -84,16 +85,17 @@ void entradas_aleatorias(){
 		exit(1);
 	}
 	lista * entrada;
-	int i = 1;//numero da entrada
-	clock_t inicioI; 
-	clock_t fimI; 
-	clock_t inicioQ; 
-	clock_t fimQ; 
-	clock_t inicioRV; 
-	clock_t fimRV; 
-	clock_t inicioRL; 
-	clock_t fimRL; 
+	int i;//contador para zerar o vetor intervalo
+    LARGE_INTEGER frequency;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+    double dados[2][6];//0 = tempo, 1 = memoria; 0 = radixsort vetor, 1 = radixsort lista, 2 = quicksort, 3 = insertionsort, 4 = mergesort, 5 = timsort;
+    for(i = 0; i < 6; i++){//inicia o vetor
+    	dados[0][i] = 0;
+    	dados[1][i] = 0;
+    }
 	unsigned long long * ev;
+	i = 1;//numero da entrada
 	while(1){
 		printf("Lendo entrada aleatoria %d...\n", i);
     	sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", i);//le todas as entradas de um dado tipo
@@ -125,13 +127,18 @@ void entradas_aleatorias(){
 		entrada = ler_entrada(arq);
 		if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
 			break;
-    	inicioRL = clock();
-    	radix_lista(entrada,5);//executa o radix de lista para a entrada
-		fimRL = clock();
+	    QueryPerformanceFrequency(&frequency);
+	    QueryPerformanceCounter(&start);
+    	radix_lista(entrada,i);//executa o radix de lista para a entrada
+	    QueryPerformanceCounter(&end);
+	    dados[0][0] = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
+	    dados[1][0] = entrada->picoMemoria;
 		fprintf(p, "Entrada aleatoria %d; Tamanho: %llu; Digitos do maior numero: %d;\n", i, entrada->tamanho, entrada->digitos_maior_numero);
-		fprintf(p, /*"Tempo Insertion: %lf; Tempo quick: %lf; "Tempo radix vetor: %lf; */"Tempo radix lista: %lf;\n\n", /*(double)((fimI - inicioI) / CLOCKS_PER_SEC), (double)((fimQ - inicioQ) / CLOCKS_PER_SEC)), (double)((fimRV - inicioRV) / CLOCKS_PER_SEC), */(double)((fimRL - inicioRL) / CLOCKS_PER_SEC));     
-		i++;
+		fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", dados[0][0], dados[1][0]);     
 		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
+		i++;
+		if(i == 6)//loop de teste, apagar depois
+			exit(0);
 	}
 	fclose(p);	
 }

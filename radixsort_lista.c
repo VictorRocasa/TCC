@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <windows.h>
+#include <psapi.h>
 
 int conta_digitos(unsigned long long n){
 	int d;
@@ -114,9 +116,14 @@ void radix_lista(lista * l, int d)//d = numero de digitos por iteracao
         divisor *= qtd_baldes;
         modulador *= qtd_baldes;
     }
+    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
+    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
+    l->picoMemoria = (double) pmc.WorkingSetSize/1000000;//Salva a memória alocada por essa entrada antes de ser liberada
     for(i = 0; i < qtd_baldes; i++){//desaloca a memoria alocada
 	    free(baldes_raiz[i]);
 	    free(baldes_final[i]);
     }
+    free(baldes_raiz);
+    free(baldes_final);
 }
 

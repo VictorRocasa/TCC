@@ -6,6 +6,7 @@
 lista * cria_lista(){//inicia uma nova estrutura auxiliar
 	lista * nova =  (lista *)malloc(sizeof(lista));
 	nova->raiz = NULL;
+	nova->picoMemoria = 0;
 	return nova;
 }
 
@@ -48,7 +49,7 @@ void imprimir_lista(lista * l){//imprime a lista na tela(para debug)
 		printf("Lista vazia!\n");
 		return;
 	}
-	printf("%llu\n", raiz->n);
+	printf("%llu", raiz->n);
 	no * prox = raiz -> prox;
 	int br = 0;
 	while(prox!=NULL){
