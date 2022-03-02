@@ -24,12 +24,12 @@ int main(){
 	    unsigned long long n;
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
             gravar_entrada_aleatoria(t,n);
-			gravar_entrada_igual(t,n-1);
+			//gravar_entrada_igual(t,n-1);
         }
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
-		gravar_entrada_crescente(t);
-		gravar_entrada_decrescente(t);
-		gravar_entrada_pior_caso(t);
+		//gravar_entrada_crescente(t);
+		//gravar_entrada_decrescente(t);
+		//gravar_entrada_pior_caso(t);
 	}
 
 

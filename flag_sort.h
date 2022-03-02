@@ -32,8 +32,7 @@ static void flag_sort__distribute_u32(uint8_t *byte_array, size_t count, size_t 
     size_t counts[256] = {0};
 
     // Compute counts for each byte's bin
-    size_t i;
-    for (i = 0; i < count; i++)
+    for (size_t i = 0; i < count; i++)
     {
         uint32_t val = *((uint32_t *)&byte_array[stride * i + offset]);
         uint8_t byte = (val >> ((3 - depth) * 8)) & 0xff;
@@ -42,7 +41,7 @@ static void flag_sort__distribute_u32(uint8_t *byte_array, size_t count, size_t 
 
     // Use counts to compute bin start offsets
     size_t sum = 0;
-    for (i = 0; i < 256; i++)
+    for (size_t i = 0; i < 256; i++)
     {
         offsets[i] = sum;
         sum += counts[i];
@@ -68,7 +67,7 @@ static void flag_sort__distribute_u32(uint8_t *byte_array, size_t count, size_t 
 
         // Otherwise swap this idx to its correct bucket
         size_t swap_idx = bucket_hi - counts[byte];
-        for (i = 0; i < stride; i++)
+        for (size_t i = 0; i < stride; i++)
         {
             uint8_t temp = byte_array[stride * idx + i];
             byte_array[stride * idx + i] = byte_array[stride * swap_idx + i];
@@ -88,8 +87,7 @@ void flag_sort_u32(void *array, size_t count, size_t stride, size_t offset)
 
     // Compute the max value in the array
     uint32_t max_val = 0;
-    size_t i;
-    for (i = 0; i < count; i++)
+    for (size_t i = 0; i < count; i++)
     {
         uint32_t val = byte_array[stride * i + offset];
         max_val = (max_val > val) ? max_val : val;
@@ -98,7 +96,7 @@ void flag_sort_u32(void *array, size_t count, size_t stride, size_t offset)
     // Perform a distribute step on the top level array to get our first layer
     flag_sort__distribute_u32(byte_array, count, stride, offset, 0, offsets[0]);
 
-    for (i = 0; i < 256; i++)
+    for (size_t i = 0; i < 256; i++)
     {
         size_t lo_i = offsets[0][i];
         size_t hi_i = offsets[0][i + 1];
@@ -110,8 +108,8 @@ void flag_sort_u32(void *array, size_t count, size_t stride, size_t offset)
         }
 
         flag_sort__distribute_u32(bytes_i, count_i, stride, offset, 1, offsets[1]);
-		size_t j;
-        for (j = 0; j < 256; j++)
+
+        for (size_t j = 0; j < 256; j++)
         {
             size_t lo_j = offsets[1][j];
             size_t hi_j = offsets[1][j + 1];
@@ -123,8 +121,8 @@ void flag_sort_u32(void *array, size_t count, size_t stride, size_t offset)
             }
 
             flag_sort__distribute_u32(bytes_j, count_j, stride, offset, 2, offsets[2]);
-			size_t k;
-            for (k = 0; k < 256; k++)
+
+            for (size_t k = 0; k < 256; k++)
             {
                 size_t lo_k = offsets[2][k];
                 size_t hi_k = offsets[2][k + 1];

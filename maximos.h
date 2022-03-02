@@ -1,7 +1,7 @@
 #ifndef MAXIMOS_H
 #define MAXIMOS_H
 
-#define TEST 1
+#define TEST 0
 #if !TEST
 	#if _WIN64
 		#define MAXT 100000000llu //tamanho máximo do vetor escolhido para 64bits
@@ -13,9 +13,11 @@
 	#define MAXT 100000llu //teste: três iterações apenas
 	#define MAXN 1000001llu //numero "pequeno" para poucas iterações
 #endif
-#define MINT 10000llu //menor tamanho possivel
-#define MINN 10llu //menor numero possivel
+//#define MINT 10000llu //menor tamanho possivel
+//#define MINN 10llu //menor numero possivel
 #define REP  1 //entradas diferentes geradas para aleatorias e pior caso
+#define MINT 100000000llu //menor tamanho possivel
+#define MINN 18446744073709551615llu //menor numero possivel
 
 #endif /*MAXIMOS_H*/
 

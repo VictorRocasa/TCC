@@ -7,7 +7,7 @@
 #include "maximos.h"
 #include "radixsort_lista.h"
 #include <windows.h>
-//#include "flag_sort.h"
+#include "flag_sort.h"
 
 lista * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 unsigned long long * ler_entrada_vetor(char * arq);//funcao para ler uma entrada a partir de um arquivo e criar um vetor para ela
@@ -81,7 +81,7 @@ void entradas_aleatorias(){
     p =  fopen(".\\dados\\relatorio_aleatorias.txt","a");
     char * arq = (char*)malloc(256*sizeof(char));
 	if(p == NULL){
-		printf("ERRO DE LEITURA DE ARQUIVO NA FUNCAO DE ENTRADAS ALEATORIAS!");
+		printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE ENTRADAS ALEATORIAS!");
 		exit(1);
 	}
 	lista * entrada;
@@ -95,10 +95,11 @@ void entradas_aleatorias(){
     	dados[1][i] = 0;
     }
 	unsigned long long * ev;
-	i = 3;//numero da entrada
+	i = 6;//numero da entrada
 	while(1){
 		printf("Lendo entrada aleatoria %d...\n", i);
-    	sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", i);//le todas as entradas de um dado tipo
+    	//sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", i);//le todas as entradas de um dado tipo
+    	sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", 1);//le todas as entradas de um dado tipo
 		//printf("Executando Insertionsort..\n");
 		//entrada = ler_entrada(arq);
 		//if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
@@ -126,28 +127,18 @@ void entradas_aleatorias(){
 		entrada = ler_entrada(arq);
 		if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
 			break;
+		printf("Executando Radixsort para lista...\n");
 	    QueryPerformanceFrequency(&frequency);
 	    QueryPerformanceCounter(&start);
     	radix_lista(entrada,i);//executa o radix de lista para a entrada
 	    QueryPerformanceCounter(&end);
 	    dados[0][0] = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
 	    dados[1][0] = entrada->picoMemoria;
-	    /*
-	    ev = ler_entrada_vetor(arq);
-		if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
-			break;
-	    QueryPerformanceCounter(&start);
-		flag_sort_u32(ev,entrada->tamanho,256,256);
-	    QueryPerformanceCounter(&end);
-	    dados[0][1] = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-	    */
-		printf("Executando Radixsort para lista...entrada %d\n", i);
-	    fprintf(p, "Entrada aleatoria %d; Tamanho: %llu; Digitos do maior numero: %d;\n", i, entrada->tamanho, entrada->digitos_maior_numero);
+		fprintf(p, "Entrada aleatoria %d; Tamanho: %llu; Digitos do maior numero: %d;\n", i, entrada->tamanho, entrada->digitos_maior_numero);
 		fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", dados[0][0], dados[1][0]);     
-		//fprintf(p, "Tempo American: %lf;\n", dados[0][1]);     
 		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
 		i++;
-		if(i == 6)//loop de teste, apagar depois
+		if(i == 7)//loop de teste, apagar depois
 			exit(0);
 	}
 	fclose(p);	
