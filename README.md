@@ -1,5 +1,2 @@
 # TCC
-Repositório para controle de versão dos códigos do meu TCC
-lista.h corresponde ao template da lista. 
-lista.c implementa suas funções.
-cria_entradas.c cria entradas para teste e as salva em disco. São 5 tipos de entrada: entradas aleatórias, entradas crescentes, entradas decrescentes, entradas com o mesmo valor e entradas aleatórias no pior caso. O tamanho das entradas varia de 10000 a MAXT e os valores de 0 a MAXN.
+Repositório para controle de versão dos códigos do meu TCC, includindo a estrutura da lista, o código para gerar as entradas, com números do tipo de unsigned long long, aleatórias, ordenadas, com todos os números iguais e aleatórias no pior caso(máximo de dígitos possível); variando de 10^6 a 10^8 de tamanho. Também inclui os algoritmos de ordenação usados para a comparação, o próprio radix para listas e o código para ler e ordenar cada entrada em cada algoritmo, salvando os dados depois.
