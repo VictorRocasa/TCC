@@ -14,7 +14,6 @@ void gravar_entrada_crescente(unsigned long long t);//gera uma entrada com t ele
 void gravar_entrada_decrescente(unsigned long long t);//gera uma entrada com t elementos ordenados(decrescente)
 void gravar_entrada_igual(unsigned long long t, unsigned long long n);//Função para gerar uma entrada com t elementos equivalentes a n
 void gravar_entrada_pior_caso(unsigned long long t);//gera 3 entrada com t elementos variando de 10000000000000000000 a MAXT
-//void gravar_entrada_parcialmente_ordenada(unsigned long long t, unsigned long long n);//gera 3 entradas ordenadas variando de 0 a t, com alguns números aleatorios no meio
 FILE * criar_arquivo(char * arq);
 
 int main(){
@@ -24,12 +23,12 @@ int main(){
 	    unsigned long long n;
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
             gravar_entrada_aleatoria(t,n);
-			//gravar_entrada_igual(t,n-1);
+			gravar_entrada_igual(t,n-1);
         }
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
-		//gravar_entrada_crescente(t);
-		//gravar_entrada_decrescente(t);
-		//gravar_entrada_pior_caso(t);
+		gravar_entrada_crescente(t);
+		gravar_entrada_decrescente(t);
+		gravar_entrada_pior_caso(t);
 	}
 
 

@@ -8,17 +8,14 @@
 #include "radixsort_lista.h"
 #include <windows.h>
 #include "flag_sort.h"
+#include <psapi.h>
 
 lista * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 unsigned long long * ler_entrada_vetor(char * arq);//funcao para ler uma entrada a partir de um arquivo e criar um vetor para ela
-void entradas_aleatorias();//executa os algoritmos usando entradas aleatorias
-void entradas_crescentes();//executa os algoritmos usando entradas crescentes
-void entradas_decrescentes();//executa os algoritmos usando entradas decrescentes
-void entradas_iguais();//executa os algoritmos usando entradas iguais
-void entradas_pior_caso();//executa os algoritmos usando entradas pior caso
+void gera_relatorio(char * diretorio, char * tipo);//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 
 int main(){//teste.txt
-	entradas_aleatorias();
+	gera_relatorio("entradas_aleatorias", "entrada_aleatoria");
 	
     return 0;
 }
@@ -72,16 +69,15 @@ unsigned long long * ler_entrada_vetor(char * arq){
 	return entrada;
 }
 
-void entradas_aleatorias(){
+void gera_relatorio(char * diretorio, char * tipo){
 	double tempo_execucao;
-	// = clock(); //pegar o tempo de clock
-	// = (double)(fim - inicio) / CLOCKS_PER_SEC; - tempo para double
     FILE * p;
-    p =  fopen(".\\dados\\relatorio_aleatorias.txt","w");
-    p =  fopen(".\\dados\\relatorio_aleatorias.txt","a");
     char * arq = (char*)malloc(256*sizeof(char));
-	if(p == NULL){
-		printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE ENTRADAS ALEATORIAS!");
+    sprintf(arq, ".\\dados\\%s.txt", diretorio);//le todas as entradas de um dado tipo
+    p =  fopen(arq,"w");//recria o arquivo
+    p =  fopen(arq,"a");
+	if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
+		printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE RELATORIO DE ENTRADAS ALEATORIAS!");
 		exit(1);
 	}
 	lista * entrada;
@@ -97,9 +93,8 @@ void entradas_aleatorias(){
 	unsigned long long * ev;
 	i = 6;//numero da entrada
 	while(1){
-		printf("Lendo entrada aleatoria %d...\n", i);
-    	//sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", i);//le todas as entradas de um dado tipo
-    	sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", 1);//le todas as entradas de um dado tipo
+		printf("Lendo %s %d...\n", tipo, i);
+    	sprintf(arq, ".\\%s\\%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
 		//printf("Executando Insertionsort..\n");
 		//entrada = ler_entrada(arq);
 		//if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
@@ -134,29 +129,10 @@ void entradas_aleatorias(){
 	    QueryPerformanceCounter(&end);
 	    dados[0][0] = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
 	    dados[1][0] = entrada->picoMemoria;
-		fprintf(p, "Entrada aleatoria %d; Tamanho: %llu; Digitos do maior numero: %d;\n", i, entrada->tamanho, entrada->digitos_maior_numero);
+		fprintf(p, "%s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);
 		fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", dados[0][0], dados[1][0]);     
 		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
 		i++;
-		if(i == 7)//loop de teste, apagar depois
-			exit(0);
 	}
 	fclose(p);	
 }
-
-void entradas_crescentes(){
-	
-}
-
-void entradas_decrescentes(){
-	
-}
-
-void entradas_iguais(){
-	
-}
-
-void entradas_pior_caso(){
-	
-}
-
