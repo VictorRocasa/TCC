@@ -1,7 +1,7 @@
 #ifndef MAXIMOS_H
 #define MAXIMOS_H
 
-#define TEST 1
+#define TEST 0
 #if !TEST
 	#if _WIN64
 		#define MAXT 100000000llu //tamanho máximo do vetor escolhido para 64bits
