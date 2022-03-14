@@ -15,9 +15,11 @@ unsigned long long * ler_entrada_vetor(char * arq);//funcao para ler uma entrada
 void gera_relatorio(char * diretorio, char * tipo);//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 
 int main(){//teste.txt
-	gera_relatorio("aleatorias", "aleatoria");
-	gera_relatorio("crescentes", "crescente");
-	gera_relatorio("decrescentes", "decrescente");
+	gera_relatorio((char*) "aleatorias", (char*) "aleatoria");
+	gera_relatorio((char*) "crescentes", (char*) "crescente");
+	gera_relatorio((char*) "decrescentes", (char*) "decrescente");
+	gera_relatorio((char*) "iguais", (char*) "igual");
+	gera_relatorio((char*) "complexas", (char*) "complexa");
 	
     return 0;
 }
@@ -27,7 +29,7 @@ lista * ler_entrada(char * arq){
 	p = fopen(arq, "r");
 	if(p == NULL)
 		return NULL;//Caso o arquivo não exista retorna NULL
-	char * n = malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
+	char * n = (char*) malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
 	lista * l = cria_lista();
 	fgets(n,22,p);
 	l->tamanho = strtoull(n,NULL,10);
@@ -52,7 +54,7 @@ unsigned long long * ler_entrada_vetor(char * arq){
 	p = fopen(arq, "r");
 	if(p == NULL)
 		return NULL;//Caso o arquivo não exista retorna NULL
-	char * n = malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
+	char * n = (char*) malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
 	fgets(n,22,p);
 	unsigned long long * entrada = (unsigned long long*)malloc(strtoull(n,NULL,10)*sizeof(unsigned long long));
 	if(entrada == NULL){
@@ -75,7 +77,7 @@ void gera_relatorio(char * diretorio, char * tipo){
 	double tempo_execucao;
     FILE * p;
     char * arq = (char*)malloc(256*sizeof(char));
-    sprintf(arq, ".\\dados\\entradas_%s.txt", diretorio);//le todas as entradas de um dado tipo
+    sprintf(arq, ".\\dados\\relatorio_%s.txt", diretorio);//le todas as entradas de um dado tipo
     p =  fopen(arq,"w");//recria o arquivo
     p =  fopen(arq,"a");
 	if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
@@ -114,6 +116,8 @@ void gera_relatorio(char * diretorio, char * tipo){
 		fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", dados[0][0], dados[1][0]);     
 		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
 		i++;
+		free(diretorio);
+		free(tipo);
 	}
 	fclose(p);	
 }

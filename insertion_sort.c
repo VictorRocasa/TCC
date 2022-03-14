@@ -5,9 +5,9 @@
 //https://stackoverflow.com/questions/13443795/using-insertion-sort-on-a-singly-linked-list
 no * insertion(struct No **raiz) {
     if((*raiz)== NULL) 
-       return;
+       return NULL;
     if((*raiz)->prox == NULL)
-    	return;
+    	return NULL;
     struct No *t1 = (*raiz)->prox;
     while(t1 != NULL) {
         unsigned long long sec_data = t1->n;

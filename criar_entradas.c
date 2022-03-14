@@ -89,7 +89,7 @@ void gravar_entrada_decrescente(unsigned long long t){
 
 void gravar_entrada_igual(unsigned long long t,unsigned long long n){
     unsigned long long i;
-    unsigned long long * entrada = malloc(t*sizeof(unsigned long long));
+    unsigned long long * entrada = (unsigned long long*) malloc(t*sizeof(unsigned long long));
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     conta_igual++;
     sprintf(arq, ".\\entradas_iguais\\entrada_igual_%d.txt", conta_igual);
@@ -110,7 +110,7 @@ void gravar_entrada_pior_caso(unsigned long long t){
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     for(i = 0; i < REP; i++){
         conta_pior_caso++;
-		sprintf(arq, ".\\entradas_complexas\\complexa_%d.txt", conta_pior_caso);
+		sprintf(arq, ".\\entradas_complexas\\entrada_complexa_%d.txt", conta_pior_caso);
 	    FILE * p = criar_arquivo(arq);
     	fprintf(p, "%llu\n%llu\n", t, MAXN);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
         for(j = 0; j < t; j++)
