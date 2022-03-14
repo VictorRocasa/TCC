@@ -20,8 +20,10 @@ int main(){
     unsigned long long t;
 	unsigned long long maxn = MAXN/10;//criterio de parada
 	for(t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
+        printf("Entradas de tamanho %llu:\n", t);
 	    unsigned long long n;
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
+        	printf("Maior numero %llu\n", n);
             gravar_entrada_aleatoria(t,n);
 			gravar_entrada_igual(t,n-1);
         }
@@ -29,6 +31,7 @@ int main(){
 		gravar_entrada_crescente(t);
 		gravar_entrada_decrescente(t);
 		gravar_entrada_pior_caso(t);
+		printf("\n");
 	}
 
 
@@ -107,9 +110,9 @@ void gravar_entrada_pior_caso(unsigned long long t){
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     for(i = 0; i < REP; i++){
         conta_pior_caso++;
-		sprintf(arq, ".\\entradas_pior_caso\\pior_caso_%d.txt", conta_pior_caso);
+		sprintf(arq, ".\\entradas_complexas\\complexa_%d.txt", conta_pior_caso);
 	    FILE * p = criar_arquivo(arq);
-    	fprintf(p, "%llu\n%llu\n", t, n);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
+    	fprintf(p, "%llu\n%llu\n", t, MAXN);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
         for(j = 0; j < t; j++)
              fprintf(p, "%llu\n" , 10000000000000000000llu + rand() *  rand() *  rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
         fclose(p);
