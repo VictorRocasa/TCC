@@ -13,21 +13,21 @@ int conta_digitos(unsigned long long n){
 	return d;
 }
 
-void radix_lista(lista * l, int d)//d = numero de digitos por iteracao
+int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
 {
 	if(d < 1)//menor digito possivel e 1
 		exit(1);
     if(l->raiz == NULL)//Lista vazia
-        return;
+        return 1;
     if(l->raiz->prox == NULL)//1 elemento
-    	return;
+    	return 1;
     unsigned long long qtd_baldes = pow(10,d);//numero exato de hashes por iteracao
     unsigned long long divisor = qtd_baldes;//divisor para extrair os digitos
     unsigned long long modulador = 1;//modulador para extrair os digitos
     no ** baldes_raiz = (no **)malloc(qtd_baldes*sizeof(no*));//vetor de baldes apontando para o inicio da sublista
     no ** baldes_final = (no **)malloc(qtd_baldes*sizeof(no*));//vetor de baldes apontando para o final da sublista
     if(baldes_raiz == NULL || baldes_final == NULL)//sem memoria
-    	return;
+    	return 0;//falha ao ordenar
     unsigned long long i = 0;
     for(i = 0; i < qtd_baldes; i++)//inicia todos os baldes com NULL
     {
@@ -120,6 +120,7 @@ void radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     }
     free(baldes_raiz);//desaloca raizes
     free(baldes_final);//desaloca finais
+    return 1;//sucesso ao ordenar
 }
 
 

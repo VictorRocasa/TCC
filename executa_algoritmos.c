@@ -12,14 +12,14 @@
 
 lista * ler_entrada(char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 unsigned long long * ler_entrada_vetor(char * arq);//funcao para ler uma entrada a partir de um arquivo e criar um vetor para ela
-void gera_relatorio(char * diretorio, char * tipo);//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
+void gera_relatorio_radix(char * diretorio, char * tipo);//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 
 int main(){//teste.txt
-	gera_relatorio((char*) "aleatorias", (char*) "aleatoria");
-	gera_relatorio((char*) "crescentes", (char*) "crescente");
-	gera_relatorio((char*) "decrescentes", (char*) "decrescente");
-	gera_relatorio((char*) "iguais", (char*) "igual");
-	gera_relatorio((char*) "complexas", (char*) "complexa");
+	gera_relatorio_radix((char*) "aleatorias", (char*) "aleatoria");
+	gera_relatorio_radix((char*) "crescentes", (char*) "crescente");
+	gera_relatorio_radix((char*) "decrescentes", (char*) "decrescente");
+	gera_relatorio_radix((char*) "iguais", (char*) "igual");
+	gera_relatorio_radix((char*) "complexas", (char*) "complexa");
 	
     return 0;
 }
@@ -73,51 +73,57 @@ unsigned long long * ler_entrada_vetor(char * arq){
 	return entrada;
 }
 
-void gera_relatorio(char * diretorio, char * tipo){
+void gera_relatorio_radix(char * diretorio, char * tipo){
 	double tempo_execucao;
     FILE * p;
     char * arq = (char*)malloc(256*sizeof(char));
-    sprintf(arq, ".\\dados\\relatorio_%s.txt", diretorio);//le todas as entradas de um dado tipo
-    p =  fopen(arq,"w");//recria o arquivo
-    p =  fopen(arq,"a");
-	if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
-		printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE RELATORIO DE ENTRADAS ALEATORIAS!");
-		exit(1);
-	}
 	lista * entrada;
 	int i;//contador para zerar o vetor intervalo
     LARGE_INTEGER frequency;
     LARGE_INTEGER start;
     LARGE_INTEGER end;
-    double dados[2][6];//0 = tempo, 1 = memoria; 0 = radixsort vetor, 1 = radixsort lista, 2 = quicksort, 3 = insertionsort, 4 = mergesort, 5 = timsort;
-    for(i = 0; i < 6; i++){//inicia o vetor
-    	dados[0][i] = 0;
-    	dados[1][i] = 0;
-    }
+    double tempo;
+    double memoria;
 	unsigned long long * ev;
-	i = 1;//numero da entrada
+	int d = 1;//numero de digitos do Radixsort
+	int sucesso;
 	while(1){
-		printf("Lendo entrada %s %d...\n", tipo, i);
-    	sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
-		entrada = ler_entrada(arq);
-		if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
-		{
-			printf("Entrada inexistente ou memoria esgotada!\n");
-			break;
+	    sprintf(arq, ".\\dados\\relatorio_%s_radix%ddigitos.txt", diretorio, d);//le todas as entradas de um dado tipo
+	    p =  fopen(arq,"w");//recria o arquivo
+	    p =  fopen(arq,"a");
+		if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
+			printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE RELATORIO DE ENTRADAS ALEATORIAS!");
+			exit(1);
 		}
-		printf("Executando Radixsort para lista...\n");
-	    QueryPerformanceFrequency(&frequency);
-	    QueryPerformanceCounter(&start);
-    	radix_lista(entrada,7);//executa o radix de lista para a entrada
-	    QueryPerformanceCounter(&end);
-	    dados[0][0] = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
-	    dados[1][0] = entrada->picoMemoria;
-		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);
-		fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", dados[0][0], dados[1][0]);     
-		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
-		i++;
-		free(diretorio);
-		free(tipo);
+		i = 1;//numero da entrada
+		while(1){
+			printf("Lendo entrada %s %d...\n", tipo, i);
+	    	sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
+			entrada = ler_entrada(arq);
+			if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
+			{  
+				printf("Entrada inexistente ou memoria esgotada!\n");
+				break;
+			}
+			printf("Executando Radixsort para lista com d = %d...\n", d);
+		    QueryPerformanceFrequency(&frequency);
+		    QueryPerformanceCounter(&start);
+	    	sucesso = radix_lista(entrada,7);//executa o radix de lista para a entrada
+		    QueryPerformanceCounter(&end);
+		    if(!sucesso)
+		    	break;
+		    tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
+		    memoria = entrada->picoMemoria;
+			fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);
+			fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", tempo, memoria);     
+			entrada = desaloca_lista(entrada);//desaloca para dar sequencia
+			i++;
+		}
+		if(!sucesso)//sai do loop quando o radix falhar por falta de memoria
+			break;
+		d++;
 	}
+	free(diretorio);
+	free(tipo);
 	fclose(p);	
 }

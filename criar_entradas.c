@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "maximos.h"
+#include <windows.h>
 
 int conta_aleatoria = 0;
 int ordenada_crescente = 0;
@@ -43,6 +44,7 @@ void gravar_entrada_aleatoria(unsigned long long t,unsigned long long n){
     unsigned long long j;//contador para gerar n numeros
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     srand(time(NULL));
+	CreateDirectory("entradas_aleatorias", NULL);//cria o diretorio se nao existir
     for(i = 0; i < REP; i++){
         conta_aleatoria++;
 		sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", conta_aleatoria);//caminho da entrada
@@ -60,6 +62,7 @@ void gravar_entrada_crescente(unsigned long long t){
     unsigned long long i;
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     ordenada_crescente++;
+	CreateDirectory("entradas_crescentes", NULL);//cria o diretorio se nao existir
     sprintf(arq, ".\\entradas_crescentes\\entrada_crescente_%d.txt", ordenada_crescente);
     FILE * p = criar_arquivo(arq);
     fprintf(p, "%llu\n%llu\n", t, t);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
@@ -75,6 +78,7 @@ void gravar_entrada_decrescente(unsigned long long t){
     unsigned long long k = t-1;
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     ordenada_decrescente++;
+	CreateDirectory("entradas_decrescentes", NULL);//cria o diretorio se nao existir
     sprintf(arq, ".\\entradas_decrescentes\\entrada_decrescente_%d.txt", ordenada_decrescente);
     FILE * p = criar_arquivo(arq);
     fprintf(p, "%llu\n%llu\n", t, t);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
@@ -92,6 +96,7 @@ void gravar_entrada_igual(unsigned long long t,unsigned long long n){
     unsigned long long * entrada = (unsigned long long*) malloc(t*sizeof(unsigned long long));
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
     conta_igual++;
+	CreateDirectory("entradas_iguais", NULL);//cria o diretorio se nao existir
     sprintf(arq, ".\\entradas_iguais\\entrada_igual_%d.txt", conta_igual);
     FILE * p = criar_arquivo(arq);
     fprintf(p, "%llu\n%llu\n", n, n);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
@@ -108,6 +113,7 @@ void gravar_entrada_pior_caso(unsigned long long t){
     srand(time(NULL));
     unsigned long long n = 8446744073709551615;//maior numero possivel que ao somado a 10000000000000000000 não vai dar overflow
     char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
+	CreateDirectory("entradas_complexas", NULL);//cria o diretorio se nao existir
     for(i = 0; i < REP; i++){
         conta_pior_caso++;
 		sprintf(arq, ".\\entradas_complexas\\entrada_complexa_%d.txt", conta_pior_caso);
