@@ -28,7 +28,7 @@ lista * ler_entrada(char * arq){
 	FILE * p;
 	p = fopen(arq, "r");
 	if(p == NULL)
-		return NULL;//Caso o arquivo não exista retorna NULL
+		return (lista *)-1;//Caso o arquivo não exista retorna NULL
 	char * n = (char*) malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
 	lista * l = cria_lista();
 	fgets(n,22,p);
@@ -75,55 +75,73 @@ unsigned long long * ler_entrada_vetor(char * arq){
 
 void gera_relatorio_radix(char * diretorio, char * tipo){
 	double tempo_execucao;
-    FILE * p;
     char * arq = (char*)malloc(256*sizeof(char));
 	lista * entrada;
-	int i;//contador para zerar o vetor intervalo
     LARGE_INTEGER frequency;
     LARGE_INTEGER start;
     LARGE_INTEGER end;
     double tempo;
     double memoria;
 	unsigned long long * ev;
-	int d = 1;//numero de digitos do Radixsort
 	int sucesso;
+	CreateDirectory("dados", NULL);//cria o diretorio de relatorios se nao existir
+	int i = 30;//numero da entrada
+    FILE * p;//arquivo do relatorio
 	while(1){
-	    sprintf(arq, ".\\dados\\relatorio_%s_radix%ddigitos.txt", diretorio, d);//le todas as entradas de um dado tipo
+	    sprintf(arq, ".\\dados\\relatorio_%s_%d.txt", diretorio, i);//cria um relatorio para cada entrada(armazenara os dados por algoritmo)
 	    p =  fopen(arq,"w");//recria o arquivo
-	    p =  fopen(arq,"a");
+		p =  fopen(arq,"a");
 		if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
 			printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE RELATORIO DE ENTRADAS ALEATORIAS!");
 			exit(1);
 		}
-		i = 1;//numero da entrada
+		printf("Entrada %s %d\n", tipo, i);
+		sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
+		entrada = ler_entrada(arq);
+		if(entrada == (lista *)-1)//acabaram as entradas existentes ou a memória do computador
+		{  
+			printf("Entrada inexistente!\n");
+			break;
+		}
+		else if(entrada == NULL){
+			printf("Memoria esgotada!\n");
+			break;
+		}
+		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);//cabecalho relatorio
+		/**OUTROS ALGORITMOS**/ 
+		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
+		int d = 1;//numero de digitos do Radixsort
 		while(1){
-			printf("Lendo entrada %s %d...\n", tipo, i);
-	    	sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
+			printf("Lendo entrada...");
 			entrada = ler_entrada(arq);
-			if(entrada == NULL)//acabaram as entradas existentes ou a memória do computador
+			if(entrada == (lista *)-1)//acabaram as entradas existentes ou a memória do computador
 			{  
-				printf("Entrada inexistente ou memoria esgotada!\n");
+				printf("Entrada inexistente!\n");
+				delete(p);//apaga o ultimo relatorio por que sua entrada nao existe 
+				break;
+			}
+			else if(entrada == NULL){
+				printf("Memoria esgotada!\n");
+				delete(p);//apaga o ultimo relatorio por que sua entrada nao pode ser ordenada
 				break;
 			}
 			printf("Executando Radixsort para lista com d = %d...\n", d);
 		    QueryPerformanceFrequency(&frequency);
 		    QueryPerformanceCounter(&start);
-	    	sucesso = radix_lista(entrada,7);//executa o radix de lista para a entrada
+	    	sucesso = radix_lista(entrada,d);//executa o radix de lista para a entrada
 		    QueryPerformanceCounter(&end);
-		    if(!sucesso)
-		    	break;
+			if(!sucesso)//sai do loop quando o radix falhar por falta de memoria
+				break;
 		    tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
 		    memoria = entrada->picoMemoria;
-			fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);
-			fprintf(p, "Tempo radix lista: %lf; Memoria usada(MB): %lfMB;\n", tempo, memoria);     
+			fprintf(p, "Tempo radix lista com d = %d: %lf; Memoria usada(MB): %lfMB;\n", d, tempo, memoria);  
 			entrada = desaloca_lista(entrada);//desaloca para dar sequencia
-			i++;
+			d++;
 		}
-		if(!sucesso)//sai do loop quando o radix falhar por falta de memoria
-			break;
-		d++;
+		i++;
+		fclose(p);
 	}
+	free(arq);
 	free(diretorio);
-	free(tipo);
-	fclose(p);	
+	free(tipo);	
 }
