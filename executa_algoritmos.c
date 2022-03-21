@@ -85,7 +85,7 @@ void gera_relatorio_radix(char * diretorio, char * tipo){
 	unsigned long long * ev;
 	int sucesso;
 	CreateDirectory("dados", NULL);//cria o diretorio de relatorios se nao existir
-	int i = 30;//numero da entrada
+	int i = 1;//numero da entrada
     FILE * p;//arquivo do relatorio
 	while(1){
 	    sprintf(arq, ".\\dados\\relatorio_%s_%d.txt", diretorio, i);//cria um relatorio para cada entrada(armazenara os dados por algoritmo)

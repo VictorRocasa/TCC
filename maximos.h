@@ -1,7 +1,6 @@
 #ifndef MAXIMOS_H
 #define MAXIMOS_H
 
-#define WIN64 0 //define se vai gerar entradas para windows 32bits ou windows 64bits, não decide automático por questões de conbatibilidade 
 #define MINN 10llu //menor numero possivel
 #if WIN64//gera entradas para windows 64, onde serao realizados os testes
 	#define REP  3 //entradas diferentes geradas para aleatorias e pior caso
