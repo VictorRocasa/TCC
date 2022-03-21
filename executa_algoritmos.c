@@ -111,6 +111,7 @@ void gera_relatorio_radix(char * diretorio, char * tipo){
 		/**OUTROS ALGORITMOS**/ 
 		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
 		int d = 1;//numero de digitos do Radixsort
+	    double primeiro = -1;
 		while(1){
 			printf("Lendo entrada...");
 			entrada = ler_entrada(arq);
@@ -136,6 +137,10 @@ void gera_relatorio_radix(char * diretorio, char * tipo){
 		    memoria = entrada->picoMemoria;
 			fprintf(p, "Tempo radix lista com d = %d: %lf; Memoria usada(MB): %lfMB;\n", d, tempo, memoria);  
 			entrada = desaloca_lista(entrada);//desaloca para dar sequencia
+			if(primeiro == -1)//salva o tempo da execucao com um digito
+				primeiro = tempo;
+			else if(primeiro < tempo)//se ouver perda de desempenho em relacao a execucao com um digito, sai do loop
+				break;
 			d++;
 		}
 		i++;
