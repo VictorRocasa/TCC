@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "lista.h" 
+#include "lista.h"
 #include "merge_sort.h"
 #include "insertion_sort.h"
 #include "maximos.h"
@@ -20,11 +20,12 @@ int main(){//teste.txt
 	gera_relatorio_radix((char*) "decrescentes", (char*) "decrescente");
 	gera_relatorio_radix((char*) "iguais", (char*) "igual");
 	gera_relatorio_radix((char*) "complexas", (char*) "complexa");
-	
+
     return 0;
 }
 
 lista * ler_entrada(char * arq){
+    printf("Lendo entrada...");
 	FILE * p;
 	p = fopen(arq, "r");
 	if(p == NULL)
@@ -41,7 +42,7 @@ lista * ler_entrada(char * arq){
 			break;
 		anterior = adiciona_no(l, anterior, strtoull(n,NULL,10));
 		if(anterior == NULL){
-			fclose(p);			
+			fclose(p);
 			return NULL;//caso a memoria acabe retorna NULL
 		}
 	}
@@ -58,7 +59,7 @@ unsigned long long * ler_entrada_vetor(char * arq){
 	fgets(n,22,p);
 	unsigned long long * entrada = (unsigned long long*)malloc(strtoull(n,NULL,10)*sizeof(unsigned long long));
 	if(entrada == NULL){
-		fclose(p);			
+		fclose(p);
 		return NULL;//caso a memoria acabe retorna NULL
 	}
 	fgets(n,22,p);
@@ -99,26 +100,32 @@ void gera_relatorio_radix(char * diretorio, char * tipo){
 		sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
 		entrada = ler_entrada(arq);
 		if(entrada == (lista *)-1)//acabaram as entradas existentes ou a memória do computador
-		{  
+		{
 			printf("Entrada inexistente!\n");
 			break;
 		}
 		else if(entrada == NULL){
 			printf("Memoria esgotada!\n");
+			entrada = desaloca_lista(entrada);
 			break;
 		}
 		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);//cabecalho relatorio
-		/**OUTROS ALGORITMOS**/ 
+		printf("Executando mergesort para lista...\n");
+	    QueryPerformanceFrequency(&frequency);
+	    QueryPerformanceCounter(&start);
+		MergeSort(&entrada->raiz);
+		QueryPerformanceCounter(&end);
+		fprintf(p, "Tempo mergesort lista: %lf;\n", tempo);
+		/**OUTROS ALGORITMOS**/
 		entrada = desaloca_lista(entrada);//desaloca para dar sequencia
 		int d = 1;//numero de digitos do Radixsort
 	    double primeiro = -1;
 		while(1){
-			printf("Lendo entrada...");
 			entrada = ler_entrada(arq);
 			if(entrada == (lista *)-1)//acabaram as entradas existentes ou a memória do computador
-			{  
+			{
 				printf("Entrada inexistente!\n");
-				delete(p);//apaga o ultimo relatorio por que sua entrada nao existe 
+				delete(p);//apaga o ultimo relatorio por que sua entrada nao existe
 				break;
 			}
 			else if(entrada == NULL){
@@ -135,7 +142,7 @@ void gera_relatorio_radix(char * diretorio, char * tipo){
 				break;
 		    tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;
 		    memoria = entrada->picoMemoria;
-			fprintf(p, "Tempo radix lista com d = %d: %lf; Memoria usada(MB): %lfMB;\n", d, tempo, memoria);  
+			fprintf(p, "Tempo radix lista com d = %d: %lf; Memoria usada(MB): %lfMB;\n", d, tempo, memoria);
 			entrada = desaloca_lista(entrada);//desaloca para dar sequencia
 			if(primeiro == -1)//salva o tempo da execucao com um digito
 				primeiro = tempo;
@@ -147,6 +154,4 @@ void gera_relatorio_radix(char * diretorio, char * tipo){
 		fclose(p);
 	}
 	free(arq);
-	free(diretorio);
-	free(tipo);	
 }

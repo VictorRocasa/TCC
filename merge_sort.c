@@ -6,7 +6,7 @@
 /* sorts the linked list by changing next pointers (not data) */
 void MergeSort(struct No** headRef)
 {
-	printf("Erro no MergeSort\n");
+	//printf("Erro no MergeSort\n");
     struct No* head = (*headRef);
     struct No* a;
     struct No* b;
@@ -15,7 +15,7 @@ void MergeSort(struct No** headRef)
     if (head == NULL) {
         return;
     }
-    if((head->prox == NULL)){
+    if(head->prox == NULL){
         return;
 	}
 
@@ -34,7 +34,7 @@ void MergeSort(struct No** headRef)
 function */
 struct No* SortedMerge(struct No* a, struct No* b)
 {
-	printf("Erro no SortedMerge1\n");
+	//printf("Erro no SortedMerge1\n");
     struct No* result = NULL;
 
     /* Base cases */
@@ -42,7 +42,7 @@ struct No* SortedMerge(struct No* a, struct No* b)
         return (b);
     else if (b == NULL)
         return (a);
-	printf("Erro no SortedMerge2\n");
+	//printf("Erro no SortedMerge2\n");
 
     /* Pick either a or b, and recur */
     if (a->n <= b->n) {
@@ -53,7 +53,7 @@ struct No* SortedMerge(struct No* a, struct No* b)
         result = b;
         result->prox = SortedMerge(a, b->prox);
     }
-	printf("Erro no SortedMerge3\n");
+	//printf("Erro no SortedMerge3\n");
     return (result);
 }
 
@@ -64,7 +64,7 @@ struct No* SortedMerge(struct No* a, struct No* b)
     Uses the fast/slow pointer strategy. */
 void FrontBackSplit(struct No* source, struct No** frontRef, struct No** backRef)
 {
-	printf("Erro no FrontBackSplit\n");
+	//printf("Erro no FrontBackSplit\n");
     struct No* fast;
     struct No* slow;
     slow = source;

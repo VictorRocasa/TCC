@@ -101,7 +101,7 @@ void gravar_entrada_igual(unsigned long long t,unsigned long long n){
     FILE * p = criar_arquivo(arq);
     fprintf(p, "%llu\n%llu\n", n, n);//salva nas duas primeiras linhas o tamanho e o maior numero, respectivamente
     for(i = 0; i < t; i++)
-        fprintf(p, "%llu\n", n);//salva cada elemento seguido de ;
+        fprintf(p, "%llu\n", n);//salva cada elemento seguido de \n
     fclose(p);
     printf("Igual %d salva\n", conta_igual);//feedback visual
     free(arq);
