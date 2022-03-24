@@ -61,7 +61,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit2]
-FileName=criar_entradas.c
+FileName=criar_entradas.cpp
 CompileCpp=1
 Folder=
 Compile=1

@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=16
+UnitCount=10
 
 [VersionInfo]
 Major=1
@@ -50,47 +50,7 @@ ProductVersion=1.0.0.0
 AutoIncBuildNr=0
 SyncProduct=1
 
-[Unit1]
-FileName=flag_sort.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit2]
-FileName=insertion_sort.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit3]
-FileName=lista.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit4]
-FileName=maximos.h
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit5]
 FileName=merge_sort.h
 CompileCpp=1
 Folder=
@@ -100,7 +60,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit6]
+[Unit4]
 FileName=quick_sort.h
 CompileCpp=1
 Folder=
@@ -110,7 +70,7 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit7]
+[Unit5]
 FileName=radixsort_lista.h
 CompileCpp=1
 Folder=
@@ -120,8 +80,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit8]
-FileName=radixsort_vetor.h
+[Unit6]
+FileName=executa_algoritmos.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -130,8 +90,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit9]
-FileName=executa_algoritmos.c
+[Unit7]
+FileName=lista.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -141,7 +101,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=flag_sort.c
+FileName=radixsort_lista.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -151,7 +111,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=insertion_sort.c
+FileName=lista.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -161,7 +121,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=lista.c
+FileName=merge_sort.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -171,7 +131,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=merge_sort.c
+FileName=quick_sort.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -181,7 +141,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit14]
-FileName=quick_sort.c
+FileName=radixsort_lista.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -191,7 +151,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=radixsort_lista.c
+FileName=radixsort_lista.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -200,8 +160,38 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit16]
-FileName=radixsort_vetor.c
+[Unit1]
+FileName=lista.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=maximos.h
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit8]
+FileName=merge_sort.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit9]
+FileName=quick_sort.cpp
 CompileCpp=1
 Folder=
 Compile=1
