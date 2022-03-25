@@ -33,9 +33,11 @@ int ler_entrada(lista * l, char * arq){
 		anterior = adiciona_no(l, anterior, strtoull(n,NULL,10));
 		if(anterior == NULL){
 			fclose(p);
+			free(n);
 			return 0;//caso a memoria acabe retorna 0
 		}
 	}
+	free(n);
 	fclose(p);
 	return 1;//retorna 1 para sucesso
 }
@@ -45,31 +47,38 @@ void gera_relatorios(){
     FILE * info = fopen("cabecalho.txt", "r");//abre os cabeçalhos
     if(info == NULL){//se não existe o arquivo sai do programa
     	printf("Entradas ainda não criadas, favor executar o gera entradas!\n");
+    	fclose(info);
     	exit(0);
 	}
 	CreateDirectory("dados", NULL);//cria o diretorio de relatorios se não existe
 	int sucesso;
     FILE * p;//arquivo do relatorio
-    lista * entrada;//lista que será usada para guardar as entradas e depois ser ordenada
     char * cab = (char*)malloc(256*sizeof(char));//string do cabecalho
     char * diretorio = (char*)malloc(128*sizeof(char));//nome do diretorio do tipo da entrada para gerar o endereco
     char * tipo = (char*)malloc(128*sizeof(char));//nome dodo tipo da entrada para gerar o endereco
     char * arq = (char*)malloc(256*sizeof(char));//string de arquivo
     unsigned long long tamanho;//tamanho da entrada
     unsigned long long maior_numero;//numero de digitos do maior numero da entrada
-	int i = 0;//numero da entrada
-	
+    int qtd_digitos;
+	int i;//numero da entrada
+    lista * entrada = inicia_lista();//cabeca da lista que será usada para guardar as entradas e depois ser ordenada. Serve para coletar informacoes das funcoes	
 	while(1){		
 		if(fgets(cab,256,info)==NULL)
 			return;
-			
 		sscanf(cab, "%s %s %d %llu %llu", diretorio, tipo, &i, &tamanho, &maior_numero);
-		lista * entrada = cria_lista(tamanho, conta_digitos(maior_numero-1));
+		qtd_digitos = conta_digitos(maior_numero-1);//maior numero é o limite superior da rand, logo -1 ex: 1000 = 3 e 1001 = 4
 	    sprintf(arq, ".\\dados\\relatorio_%s_%d.txt", diretorio, i);//cria um relatorio para cada entrada(armazenara os dados por algoritmo)
 	    p =  fopen(arq,"w");//recria o arquivo
 		p =  fopen(arq,"a");
 		if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
-			printf("ERRO DE LEITURA DE ARQUIVO RELATORIO NA FUNCAO DE RELATORIO DE ENTRADAS ALEATORIAS!");
+			printf("Erro ao gerar o arquivo de relatório, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+			free(cab);
+			free(arq);
+			free(diretorio);
+			free(tipo);
+			finalizaLista(entrada);
+	    	fclose(info);
+	    	fclose(p);
 			exit(1);
 		}
 		
@@ -77,44 +86,52 @@ void gera_relatorios(){
 		sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
 		if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
 		{
-			printf("O computador não possui memória para comportar a entrada lida, tente novamente mais tarde\n");
+			printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 			free(cab);
 			free(arq);
 			free(diretorio);
 			free(tipo);
 			finalizaLista(entrada);
-			fclose(info);
+	    	fclose(info);
+	    	fclose(p);
 			exit(1);
 		}
 		
-		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, entrada->tamanho, entrada->digitos_maior_numero);//cabecalho relatorio
+		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, tamanho, qtd_digitos);//cabecalho relatorio
 		
 		/**OUTROS ALGORITMOS**/
+		int d;//numero de digitos do Radixsort
+	    //double primeiro = -1;//variável para salvar o tempo da primeira iteração do Radixsort
+		for(d = 1; d <=7; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)
+			if(d > 1)//temporario para testar o radix sozinho, em breve nao precisara pois outros algoritmos rodarao do lado de fora
+				if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
+				{
+					printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+					free(cab);
+					free(arq);
+					free(diretorio);
+					free(tipo);
+					finalizaLista(entrada);
+					fclose(info);
+	    			fclose(p);
+					exit(1);
+				}
 		
-		int d = 1;//numero de digitos do Radixsort
-	    double primeiro = -1;//variável para salvar o tempo da primeira iteração do Radixsort
-		while(1){
-			/*
-				le entrada de novo
-			}*/
-			printf("Executando Radixsort para lista com d = %d...\n", d);
+			printf("Radixsort para lista com d = %d...", d);
 	    	sucesso = radix_lista(entrada,d);//executa o radix de lista para a entrada
-			if(!sucesso)//sai do loop quando o radix falhar por falta de memoria
+			if(!sucesso){//sai do loop quando o radix falhar por falta de memoria
+				printf("Falta de memoria\n");
 				break;
+			}
+			printf("Tempo total: %lf segundos\n", entrada->tempo);
 			fprintf(p, "Tempo radix lista com d = %d: %lf; Memoria usada(MB): %lfMB;\n", d, entrada->tempo, entrada->memoria);
-			if(primeiro == -1)//salva o tempo da execucao com um digito
-				primeiro = entrada->tempo;
-			else if(primeiro < entrada->tempo)//se ouver perda de desempenho em relacao a execucao com um digito, sai do loop
-				break;
-			d++;
 		}
-		i++;
 		fclose(p);
-		finalizaLista(entrada);
 	}
 	free(cab);
 	free(arq);
 	free(diretorio);
 	free(tipo);
 	fclose(info);
+	finalizaLista(entrada);
 }

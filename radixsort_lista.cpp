@@ -15,6 +15,7 @@ int conta_digitos(unsigned long long n){
 
 int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
 {
+	//Variaveis para contar o tempo
     LARGE_INTEGER frequency;
     LARGE_INTEGER start;
     LARGE_INTEGER end;
@@ -126,7 +127,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     free(baldes_raiz);//desaloca raizes
     free(baldes_final);//desaloca finais
 	QueryPerformanceCounter(&end);
-	l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;	
+	l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
     return 1;//sucesso ao ordenar
 }
 

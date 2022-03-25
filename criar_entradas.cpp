@@ -33,6 +33,7 @@ int main(){
 		gravar_entrada_crescente(t);
 		gravar_entrada_decrescente(t);
 		gravar_entrada_pior_caso(t);
+		gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}
 	fclose(info);

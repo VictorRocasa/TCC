@@ -3,13 +3,9 @@
 #include "lista.h"
 
 
-lista * cria_lista(unsigned long long tamanho,int digitos_maior_numero){//inicia uma nova estrutura auxiliar
+lista * inicia_lista(){//inicia uma nova estrutura auxiliar
 	lista * nova =  (lista *)malloc(sizeof(lista));
 	nova->raiz = NULL;
-	nova->memoria = 0;
-	nova->tempo = 0;
-	nova->tamanho = tamanho;
-	nova->digitos_maior_numero = digitos_maior_numero;
 	return nova;
 }
 
