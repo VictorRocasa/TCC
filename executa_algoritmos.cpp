@@ -2,7 +2,10 @@
 #include <stdio.h>
 #include <time.h>
 #include "lista.h"
-#include "merge_sort.h"
+#include "gfg_merge.h"
+#include "gfg_quick.h"
+//#include "merge_sort.h"
+//#include "quick_sort.h"
 #include "insertion_sort.h"
 #include "maximos.h"
 #include "radixsort_lista.h"
@@ -12,7 +15,7 @@ int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 
 int main(){//teste.txt
-	gera_relatorios();
+	//gera_relatorios();
 
     return 0;
 }

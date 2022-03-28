@@ -1,103 +1,81 @@
 #include <stdlib.h>
+#include "quick_sort.h"
 #include "lista.h"
+#include <stdio.h>
+#include <windows.h>
+#include <psapi.h>
 
-// Returns the last No of the list
-struct No* getTail(struct No* cur)
-{
-    while (cur != NULL && cur->prox != NULL)
-        cur = cur->prox;
-    return cur;
+pivor * novo(no * elemento, pivor * pai){
+	pivor * p = (pivor *) malloc(sizeof(pivor));
+	if(p == NULL)
+		return NULL;
+	p->elemento = elemento;//no da lista
+	p->esq = NULL;//inicia sublista para os elementos menores
+	p->dir = NULL;//inicia sublista para os elementos maiores
+	p->pai = pai;//aponta para o pivor pai
+	return p;
 }
- 
-// Partitions the list taking the last element as the pivot
-struct No* partition(struct No* head, struct No* end,struct No** newHead,struct No** newEnd)
-{
-    struct No* pivot = end;
-    struct No *prev = NULL, *cur = head, *tail = pivot;
- 
-    // During partition, both the head and end of the list
-    // might change which is updated in the newHead and
-    // newEnd variables
-    while (cur != pivot) {
-        if (cur->n < pivot->n) {
-            // First No that has a value less than the
-            // pivot - becomes the new head
-            if ((*newHead) == NULL)
-                (*newHead) = cur;
- 
-            prev = cur;
-            cur = cur->prox;
-        }
-        else // If cur No is greater than pivot
-        {
-            // Move cur No to prox of tail, and change
-            // tail
-            if (prev)
-                prev->prox = cur->prox;
-            struct No* tmp = cur->prox;
-            cur->prox = NULL;
-            tail->prox = cur;
-            tail = cur;
-            cur = tmp;
-        }
-    }
- 
-    // If the pivot n is the smallest element in the
-    // current list, pivot becomes the head
-    if ((*newHead) == NULL)
-        (*newHead) = pivot;
- 
-    // Update newEnd to the current last No
-    (*newEnd) = tail;
- 
-    // Return the pivot No
-    return pivot;
-}
- 
-// here the sorting happens exclusive of the end No
-struct No* quickSortRecur(struct No* head,
-                            struct No* end)
-{
-    // base condition
-    if (!head || head == end)
-        return head;
- 
-    struct No *newHead = NULL, *newEnd = NULL;
- 
-    // Partition the list, newHead and newEnd will be
-    // updated by the partition function
-    struct No* pivot
-        = partition(head, end, &newHead, &newEnd);
- 
-    // If pivot is the smallest element - no need to recur
-    // for the left part.
-    if (newHead != pivot) {
-        // Set the No before the pivot No as NULL
-        struct No* tmp = newHead;
-        while (tmp->prox != pivot)
-            tmp = tmp->prox;
-        tmp->prox = NULL;
- 
-        // Recur for the list before pivot
-        newHead = quickSortRecur(newHead, tmp);
- 
-        // Change prox of last No of the left half to
-        // pivot
-        tmp = getTail(newHead);
-        tmp->prox = pivot;
-    }
- 
-    // Recur for the list after the pivot element
-    pivot->prox = quickSortRecur(pivot->prox, newEnd);
- 
-    return newHead;
-}
- 
-// The main function for quick sort. This is a wrapper over
-// recursive function quickSortRecur()
-no * quickSort(struct No** headRef)
-{
-    (*headRef)
-        = quickSortRecur(*headRef, getTail(*headRef));
-    return (*headRef);
+
+int quickSort(lista * l){
+	if(l->raiz == NULL)//lista vazia
+		return 1;
+	pivor * p = novo(l->raiz,NULL);//primeiro pivor(primeiro elemento por questoes de otimizacao para a lista usada)
+	l->raiz = NULL;//;raiz para de apontar para a lista por enquanto
+	no * ultimoGeral;//variavel para reenserir elementos na lista no futuro
+	do{
+		if(p->elemento->prox != NULL){//caso base 2: 1 elemento
+			no * prox = p->elemento->prox;//prox comeca no elemento apos o pivor
+			no * ultimoEsq;//variavel para mover os elementos para o fim da sublista da esquerda
+			no * ultimoDir;//variavel para mover os elementos para o fim da sublista da direita	
+			while(prox!=NULL){//pecorre toda a sublista atual
+				if(prox->n < p->elemento->n){//elementos menores movidos para a esquerda
+					if(p->esq == NULL){
+						p->esq = prox;
+						ultimoEsq = prox; 
+					}
+					else{
+						ultimoEsq->prox = prox;
+						ultimoEsq = prox;
+					}
+					prox = prox->prox;
+					ultimoEsq->prox = NULL;
+				}
+				else{//elementos maiores ou iguais ao pivor movidos para a esquerda
+					if(p->dir == NULL){
+						p->dir = prox;
+						ultimoDir = prox;
+					}
+					else{
+						ultimoDir->prox = prox;
+						ultimoDir = prox;
+					}
+					prox = prox->prox;
+					ultimoDir->prox = NULL;
+				}			
+			}
+			if(p->esq!=NULL)
+				p = novo(p->esq,p);
+			else if(p->dir!=NULL)
+				p = novo(p->dir,p);
+		}
+		else{
+			if(l->raiz == NULL){
+				l->raiz = p->elemento;
+				ultimoGeral = p->elemento;
+			}
+			else{
+				ultimoGeral->prox = p->elemento;
+				ultimoGeral = p->elemento;				
+			} 
+			pivor * aux = p;
+			p = p->pai;
+			free(aux);
+			if(p == NULL)
+				return 1;
+			if(p->esq != NULL)
+				p->esq = NULL;
+			else
+				p->dir = NULL;
+		}
+	}while(1);
 }

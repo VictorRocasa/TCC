@@ -2,9 +2,16 @@
 #define QUICK_H
 #include "lista.h"
 
-struct No* getTail(struct No* cur);
-struct No* partition(struct No* head, struct No* end, struct No** newHead, struct No** newEnd);
-struct No* quickSortRecur(struct No* head, struct No* end);
-no * quickSort(struct No** headRef);
+typedef struct Pivor{//lista de pivores para simular a recursao
+	no * elemento;//no da lista que representa o pivor
+	no * esq;//sublista para os elementos menores
+	no * dir;//sublista para os elementos maiores
+	struct Pivor * pai;//aponta para o pivor pai
+}pivor;
+
+pivor * novo(no * elemento);
+int quickSort(lista * l);
+void iteraEsquerda(no * esq);
+void iteraDireita(no * dir);
 
 #endif /* QUICK_H*/
