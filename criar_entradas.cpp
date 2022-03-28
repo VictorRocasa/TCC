@@ -24,16 +24,17 @@ int main(){
 	for(t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
         printf("Entradas de tamanho %llu:\n", t);
 	    unsigned long long n;
-		gravar_entrada_crescente(t);
-		gravar_entrada_decrescente(t);
+		//gravar_entrada_crescente(t);
+		//gravar_entrada_decrescente(t);
 		gravar_entrada_pior_caso(t);
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
         	printf("Maior numero %llu\n", n);
-			gravar_entrada_igual(t,n-1);
+			//gravar_entrada_igual(t,n-1);
             gravar_entrada_aleatoria(t,n);
         }
+        printf("Maior numero %llu\n", MAXN);
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
-		gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
+		//gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}
 	fclose(info);

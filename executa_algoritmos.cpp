@@ -3,10 +3,8 @@
 #include <time.h>
 #include "lista.h"
 #include "gfg_merge.h"
-#include "gfg_quick.h"
 //#include "merge_sort.h"
-//#include "quick_sort.h"
-#include "insertion_sort.h"
+#include "quick_sort.h"
 #include "maximos.h"
 #include "radixsort_lista.h"
 #include <windows.h>
@@ -15,7 +13,7 @@ int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 
 int main(){//teste.txt
-	//gera_relatorios();
+	gera_relatorios();
 
     return 0;
 }
@@ -103,22 +101,25 @@ void gera_relatorios(){
 		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, tamanho, qtd_digitos);//cabecalho relatorio
 		
 		/**OUTROS ALGORITMOS**/
+		printf("Quicksort...");
+		quickSort(entrada);
+		printf("Tempo total: %lf segundos; Memoria: %lf\n", entrada->tempo, entrada->memoria);
+		
 		int d;//numero de digitos do Radixsort
 	    //double primeiro = -1;//variável para salvar o tempo da primeira iteração do Radixsort
 		for(d = 1; d <=7; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)
-			if(d > 1)//temporario para testar o radix sozinho, em breve nao precisara pois outros algoritmos rodarao do lado de fora
-				if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
-				{
-					printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
-					free(cab);
-					free(arq);
-					free(diretorio);
-					free(tipo);
-					finalizaLista(entrada);
-					fclose(info);
-	    			fclose(p);
-					exit(1);
-				}
+			if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
+			{
+				printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+				free(cab);
+				free(arq);
+				free(diretorio);
+				free(tipo);
+				finalizaLista(entrada);
+				fclose(info);
+    			fclose(p);
+				exit(1);
+			}
 		
 			printf("Radixsort para lista com d = %d...", d);
 	    	sucesso = radix_lista(entrada,d);//executa o radix de lista para a entrada

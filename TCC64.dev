@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=0
 CompilerSettings=0000000000000000000000000
-UnitCount=10
+UnitCount=14
 
 [VersionInfo]
 Major=1
@@ -111,7 +111,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit11]
-FileName=lista.cpp
+FileName=gfg_merge.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -121,27 +121,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit12]
-FileName=merge_sort.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit13]
-FileName=quick_sort.cpp
-CompileCpp=1
-Folder=
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit14]
-FileName=radixsort_lista.cpp
+FileName=gfg_quick.h
 CompileCpp=1
 Folder=
 Compile=1
@@ -151,7 +131,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit15]
-FileName=radixsort_lista.cpp
+FileName=gfg_merge.cpp
 CompileCpp=1
 Folder=
 Compile=1
@@ -192,6 +172,36 @@ BuildCmd=
 
 [Unit9]
 FileName=quick_sort.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit16]
+FileName=gfg_quick.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit13]
+FileName=gfg_merge.cpp
+CompileCpp=1
+Folder=
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit14]
+FileName=gfg_quick.cpp
 CompileCpp=1
 Folder=
 Compile=1

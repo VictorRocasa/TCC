@@ -6,6 +6,7 @@
 lista * inicia_lista(){//inicia uma nova estrutura auxiliar
 	lista * nova =  (lista *)malloc(sizeof(lista));
 	nova->raiz = NULL;
+	nova->memoria = 0;
 	return nova;
 }
 
