@@ -21,20 +21,38 @@ FILE * info = criar_arquivo((char *)"cabecalho.txt");
 int main(){
     unsigned long long t;
 	unsigned long long maxn = MAXN/10;//criterio de parada
+	printf("Gravando entradas aleatorias...\n");
 	for(t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
         printf("Entradas de tamanho %llu:\n", t);
 	    unsigned long long n;
-		//gravar_entrada_crescente(t);
-		//gravar_entrada_decrescente(t);
-		gravar_entrada_pior_caso(t);
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
-        	printf("Maior numero %llu\n", n);
-			//gravar_entrada_igual(t,n-1);
-            gravar_entrada_aleatoria(t,n);
+        	printf("Maior numero %llu...", n-1);
+            gravar_entrada_aleatoria(t,n-1);
         }
-        printf("Maior numero %llu\n", MAXN);
+        printf("Maior numero %llu...", MAXN);
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
-		//gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
+		printf("\n");
+	}
+	printf("Entradas pior caso do Radix...\n");
+	for(t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
+        printf("Maior numero %llu...", MAXN-1);
+		gravar_entrada_pior_caso(t);
+	}
+	printf("\n");
+	printf("Gravando casos ordenados...\n");
+	for(t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
+        printf("Entradas de tamanho %llu:\n", t);
+        printf("Maior numero %llu...", t-1);
+		gravar_entrada_crescente(t-1);
+        printf("Maior numero %llu...", t-1);
+		gravar_entrada_decrescente(t-1);
+	    unsigned long long n;
+        for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
+        	printf("Maior numero %llu...", n-1);
+			gravar_entrada_igual(t,n-1);
+        }        
+        printf("Maior numero %llu...", MAXN-1);
+		gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}
 	fclose(info);

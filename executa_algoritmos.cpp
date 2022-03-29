@@ -11,9 +11,10 @@
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
+int comparaString(char * str1, char * str2);
 
 int main(){//teste.txt
-	gera_relatorios();
+	//gera_relatorios();
 
     return 0;
 }
@@ -41,6 +42,16 @@ int ler_entrada(lista * l, char * arq){
 	free(n);
 	fclose(p);
 	return 1;//retorna 1 para sucesso
+}
+
+int comparaString(char * str1, char * str2){
+	int i = 0;
+    while(str1[i] != '\0' && str2[i] != '\0'){
+    	if(str1[i] != str2[i])
+    		return 0;
+    	i++;
+	}
+	return 1;
 }
 
 void gera_relatorios(){
@@ -99,12 +110,17 @@ void gera_relatorios(){
 		}
 		
 		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, tamanho, qtd_digitos);//cabecalho relatorio
-		
-		/**OUTROS ALGORITMOS**/
-		printf("Quicksort...");
-		quickSort(entrada);
-		printf("Tempo total: %lf segundos; Memoria: %lf\n", entrada->tempo, entrada->memoria);
-		
+		/**QUICKSORT: nao executa para entradas iguais, crescentes e decrescentes**/
+		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente") || comparaString(tipo, (char *)"igual"))){
+			printf("Quicksort...");
+			quickSort(entrada);
+			printf("Tempo total: %lf segundos\n", entrada->tempo);
+			fprintf(p, "Tempo quicksort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
+		}
+		else{
+			printf("Pior caso do quicksort, pulando algoritmo!\n");
+			fprintf(p, "Pior caso do quicksort, nao executado;\n");
+		}
 		int d;//numero de digitos do Radixsort
 	    //double primeiro = -1;//variável para salvar o tempo da primeira iteração do Radixsort
 		for(d = 1; d <=7; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)

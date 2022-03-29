@@ -46,6 +46,7 @@ void imprimir_lista(lista * l){//imprime a lista na tela(para debug)
     no * raiz = l->raiz;
 	if(raiz == NULL){
 		printf("Lista vazia!\n");
+		getchar();
 		return;
 	}
 	printf("%llu", raiz->n);

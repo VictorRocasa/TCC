@@ -10,6 +10,7 @@ pivor * novo(no * elemento, pivor * pai){
 	if(p == NULL)
 		return NULL;
 	p->elemento = elemento;//no da lista
+	p->ultimoPivor = elemento;
 	p->esq = NULL;//inicia sublista para os elementos menores
 	p->dir = NULL;//inicia sublista para os elementos maiores
 	p->pai = pai;//aponta para o pivor pai
@@ -38,12 +39,10 @@ int quickSort(lista * l){
 	no * ultimoGeral;//variavel para reinserir elementos na lista no futuro
 	do{	
 		//apos olhar pecorrer a direita retorna ao pai
-		//int fe;//flag para recuperar listas ordenadas a esquerda(evitar pior caso)
-		//int fd;//flag para recuperar listas ordenadas a direita(evitar pior caso)
 		if(p->elemento == NULL){//se o elemento estiver como nulo, ele foi movido para raiz
 		
     		double memoria = (double) pmc.WorkingSetSize/1000000;//Calcula a memoria antes de desalocar esse pivor 
-		 	if(memoria > l->memoria)//caso ela seja maior que a salva atualmente, se torna a nova salava
+		 	if(memoria > l->memoria)//caso ela seja maior que a salva atualmente, se torna a nova salva
 		 		l->memoria = memoria;
 		 		
 			pivor * aux = p;//aux para salvar a referencia atual
@@ -73,6 +72,12 @@ int quickSort(lista * l){
 					prox = prox->prox;
 					ultimoEsq->prox = NULL;
 				}
+				else if(prox->n == p->elemento->n){//caso seja igual continua colado no elemento por questoes de otimizacao
+					p->ultimoPivor->prox = prox;
+					p->ultimoPivor = prox;
+					prox = prox->prox;
+					p->ultimoPivor->prox = NULL;
+				}
 				else{//elementos maiores ou iguais ao pivor movidos para a direita
 					if(p->dir == NULL){//logica para alocar ao fim da sublista
 						p->dir = prox;
@@ -98,11 +103,11 @@ int quickSort(lista * l){
 			if(p->elemento != NULL){
 				if(l->raiz == NULL){//logica para alocar ao fim da lista
 					l->raiz = p->elemento;
-					ultimoGeral = p->elemento;
+					ultimoGeral = p->ultimoPivor;
 				}
 				else{
 					ultimoGeral->prox = p->elemento;
-					ultimoGeral = p->elemento;				
+					ultimoGeral = p->ultimoPivor;				
 				} 
 				p->elemento = NULL;
 			}
