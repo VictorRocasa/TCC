@@ -2,24 +2,24 @@
 #include <stdio.h>
 #include <time.h>
 #include "lista.h"
-#include "gfg_merge.h"
 #include "merge_sort.h"
 #include "quick_sort.h"
 #include "maximos.h"
 #include "radixsort_lista.h"
 #include <windows.h>
+#include <psapi.h>
+#include <list>
+#include <iterator>
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
+int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);
+void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);
 int comparaString(char * str1, char * str2);
+void showlist(std::list<unsigned long long>& g);
 
 int main(){//teste.txt
-	//gera_relatorios();
-	lista * l = inicia_lista();
-	ler_entrada(l, (char*)"teste.txt");
-	imprimir_lista(l);
-	mergeSort(l);
-	imprimir_lista(l);	
+	gera_relatorios();
 
     return 0;
 }
@@ -101,7 +101,7 @@ void gera_relatorios(){
 		
 		printf("Entrada %s %d\n", tipo, i);
 		sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
-		if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
+		if(ler_entrada(entrada,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 		{
 			printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 			free(cab);
@@ -112,22 +112,61 @@ void gera_relatorios(){
 	    	fclose(info);
 	    	fclose(p);
 			exit(1);
-		}
-		
+		}		
 		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, tamanho, qtd_digitos);//cabecalho relatorio
+				
+		/**MERGESORT**/
+		printf("Mergesort...");
+		mergeSort(entrada);
+		printf("Tempo total: %lf segundos\n", entrada->tempo);
+		fprintf(p, "Tempo mergesort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
+		
+		
 		/**QUICKSORT: nao executa para entradas iguais, crescentes e decrescentes**/
 		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente") || comparaString(tipo, (char *)"igual"))){
+			if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
+				if(ler_entrada(entrada,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
+				{
+					printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+					free(cab);
+					free(arq);
+					free(diretorio);
+					free(tipo);
+					finalizaLista(entrada);
+			    	fclose(info);
+			    	fclose(p);
+					exit(1);
+				}			
 			printf("Quicksort...");
 			quickSort(entrada);
 			printf("Tempo total: %lf segundos\n", entrada->tempo);
 			fprintf(p, "Tempo quicksort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
 		}
-		else{
-			printf("Pior caso do quicksort, pulando algoritmo!\n");
-			fprintf(p, "Pior caso do quicksort, nao executado;\n");
+		
+		/**std::sort - utiliza estruturas do C++**/
+		desaloca_lista(entrada);//limpa a entrada atual
+		printf("Introsort(std::sort)...");
+		std::list<unsigned long long> entradaCPP;
+		if(lerEntradaCPP(entradaCPP, arq) != 1)//acabaram as entradas existentes ou a memória do computador
+		{
+			printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+			free(cab);
+			free(arq);
+			free(diretorio);
+			free(tipo);
+			finalizaLista(entrada);
+			fclose(info);
+			fclose(p);
+			exit(1);
 		}
+		cppSortAux(entradaCPP, entrada);
+		printf("Tempo total: %lf segundos\n", entrada->tempo);
+		fprintf(p, "Tempo Introsort(std::sort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
+		entradaCPP.clear();
+		
+		
+		/**RADIXSORT: executa com quantidades de digito variando de 1 a 7.**/
 		int d;//numero de digitos do Radixsort
-	    //double primeiro = -1;//variável para salvar o tempo da primeira iteração do Radixsort
 		for(d = 1; d <=7; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)
 			if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
 			{
@@ -159,4 +198,45 @@ void gera_relatorios(){
 	free(tipo);
 	fclose(info);
 	finalizaLista(entrada);
+}
+
+int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq){
+    printf("Lendo entrada...");
+	FILE * p;
+	p = fopen(arq, "r");
+	if(p == NULL)//retorna -1 se o arquivo não existir
+		return -1;
+	char * n = (char*) malloc(22*sizeof(char));//22 tamanho maximo da entrada 20 do llu + \n + \0
+	while(fgets(n,22,p)!=NULL){
+		if(n[0]=='\n')//caso a linha esteja vazia sai do loop
+			break;
+		entradaCPP.push_back(strtoull(n,NULL,10));
+	}
+	free(n);
+	fclose(p);
+	return 1;//retorna 1 para sucesso
+}
+
+void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l){
+	//Variaveis para contar o tempo
+    LARGE_INTEGER frequency;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+    QueryPerformanceFrequency(&frequency);
+    QueryPerformanceCounter(&start);
+    
+	entradaCPP.sort();
+	
+    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
+    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
+	l->memoria = (double) pmc.WorkingSetSize/1000000;//Calcula a memoria antes de desalocar esse pivor 
+				
+	QueryPerformanceCounter(&end);
+	l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
+}	
+
+void showlist(std::list<unsigned long long>& g){
+    std::list<unsigned long long>::iterator it;
+    for (it = g.begin(); it != g.end(); ++it)
+        printf("%llu ", *it);
 }

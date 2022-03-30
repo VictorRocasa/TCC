@@ -27,9 +27,9 @@ int main(){
 	    unsigned long long n;
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
         	printf("Maior numero %llu...", n-1);
-            gravar_entrada_aleatoria(t,n-1);
+            gravar_entrada_aleatoria(t,n);
         }
-        printf("Maior numero %llu...", MAXN);
+        printf("Maior numero %llu...", MAXN-1);
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}
@@ -43,15 +43,15 @@ int main(){
 	for(t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
         printf("Entradas de tamanho %llu:\n", t);
         printf("Maior numero %llu...", t-1);
-		gravar_entrada_crescente(t-1);
+		gravar_entrada_crescente(t);
         printf("Maior numero %llu...", t-1);
-		gravar_entrada_decrescente(t-1);
+		gravar_entrada_decrescente(t);
 	    unsigned long long n;
         for(n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
         	printf("Maior numero %llu...", n-1);
 			gravar_entrada_igual(t,n-1);
         }        
-        printf("Maior numero %llu...", MAXN-1);
+        printf("Maior numero %llu...", MAXN);
 		gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}

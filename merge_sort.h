@@ -10,6 +10,6 @@ typedef struct Janela{//estrutura auxiliar para o merge
 }janela;
 
 janela * novaJanela(no * elemento, janela * pai);
-int mergeSort(lista * l);
+void mergeSort(lista * l);
 
 #endif /* MERGE_H*/

@@ -15,11 +15,18 @@ janela * novaJanela(no * elemento, janela * pai){
 	return j;
 }
 
-int mergeSort(lista * l){
+void mergeSort(lista * l){
+	//Variaveis para contar o tempo
+    LARGE_INTEGER frequency;
+    LARGE_INTEGER start;
+    LARGE_INTEGER end;
+    QueryPerformanceFrequency(&frequency);
+    QueryPerformanceCounter(&start);
+    
 	if(l->raiz == NULL)//lista vazia
-		return 1;
+		return;
 	if(l->raiz->prox == NULL)//1 elemento
-		return 1;
+		return;
 	no * prox = l->raiz->prox;//prox comeca no primeiro elemento depois da raiz
 	janela * esquerda = novaJanela(l->raiz, NULL);//primeira janela comeca na raiz
 	l->raiz = NULL;//raiz recebe NULL para parar de apontar para a lista
@@ -30,9 +37,13 @@ int mergeSort(lista * l){
 		if(direita == NULL){//quando a janela esquerda for a primeira janela
 			atual = prox;//salva a referencia ao elemento atual
 			if(atual == NULL){//se o atual for NULL, lista ordenada
-				l->raiz = esquerda->elemento;
-				free(esquerda);
-				return 1;
+				l->raiz = esquerda->elemento;//move de volta para a raiz os elementos
+				free(esquerda);//libera a ultima janela
+				
+				QueryPerformanceCounter(&end);
+				l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
+				
+				return;
 			}
 			prox = prox->prox;//anda um elemento na frente para nao perder a referencia ao resto da lista
 			direita = novaJanela(atual, esquerda);//cria uma nova janela na direita
@@ -73,14 +84,6 @@ int mergeSort(lista * l){
 					ultimoMerge->prox = NULL;
 				}
 			}
-			printf("\nMerge: ");
-			no * pm = merge;
-			while(pm!=NULL){
-				printf("%llu->", pm->n);
-				pm = pm->prox;
-			}
-			printf("|\n\n");
-			getchar();
 			esquerda->elemento = merge;
 			esquerda->tamanho *= 2;
 			janela * aux = direita;
@@ -90,6 +93,11 @@ int mergeSort(lista * l){
 			}
 			else
 				direita = NULL;
+			if(prox == NULL){//Salva a memória alocada por essa entrada antes de ser liberada
+			    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
+			    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
+	    		l->memoria = (double) pmc.WorkingSetSize/1000000;//Calcula a memoria antes de desalocar esse pivor 
+			}
 			free(aux);
 		}
 		else{			

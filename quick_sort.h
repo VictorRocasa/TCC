@@ -11,6 +11,6 @@ typedef struct Pivor{//lista de pivores para simular a recursao
 }pivor;
 
 pivor * novo(no * elemento, pivor * pai);
-int quickSort(lista * l);
+void quickSort(lista * l);
 
 #endif /* QUICK_H*/

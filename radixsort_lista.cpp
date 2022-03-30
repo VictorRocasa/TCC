@@ -34,8 +34,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     no ** baldes_final = (no **)malloc(qtd_baldes*sizeof(no*));//vetor de baldes apontando para o final da sublista
     if(baldes_raiz == NULL || baldes_final == NULL)//sem memoria
     	return 0;//falha ao ordenar
-    unsigned long long i = 0;
-    for(i = 0; i < qtd_baldes; i++)//inicia todos os baldes com NULL
+    for(unsigned long long i = 0; i < qtd_baldes; i++)//inicia todos os baldes com NULL
     {
         baldes_raiz[i]=NULL;
         baldes_final[i]=NULL;
@@ -62,7 +61,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
         prox = prox->prox;
         baldes_final[n]->prox=NULL;//ultimo balde recebe NULL para que ele pare de apontar para a proxima posicao(fatia a lista original)
     }
-    for(i = 0; i < qtd_baldes; i++)
+    for(unsigned long long i = 0; i < qtd_baldes; i++)
         if(baldes_raiz[i]!=NULL)//se o balde estiver preenchido
         {
             if(l->raiz==NULL)//caso a lista ainda esteja vazia
@@ -101,7 +100,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
             prox = prox->prox;
             baldes_final[n]->prox=NULL;
         }
-        for(i = 0; i < qtd_baldes; i++)
+        for(unsigned long long i = 0; i < qtd_baldes; i++)
             if(baldes_raiz[i]!=NULL)
             {
                 if(l->raiz==NULL)
@@ -121,7 +120,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
     GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
     l->memoria = (double) pmc.WorkingSetSize/1000000;//Salva a memória alocada por essa entrada antes de ser liberada
-	for(i = 0; i < qtd_baldes; i++){//aponta os baldes final para NULL
+	for(unsigned long long i = 0; i < qtd_baldes; i++){//aponta os baldes final para NULL
 		baldes_final[i] = NULL;
     }
     free(baldes_raiz);//desaloca raizes

@@ -17,12 +17,10 @@ pivor * novo(no * elemento, pivor * pai){
 	return p;
 }
 
-int quickSort(lista * l){
+void quickSort(lista * l){
 	if(l->raiz == NULL)//lista vazia
-		return 1;
+		return;
 	pivor * p = novo(l->raiz,NULL);//primeiro pivor(primeiro elemento por questoes de otimizacao para a lista usada)
-	if(p == NULL)
-		return 0;
 	l->raiz = NULL;//;raiz para de apontar para a lista por enquanto
 		
 	//Variaveis para contar o tempo
@@ -51,7 +49,7 @@ int quickSort(lista * l){
 			if(p == NULL){//se pai for NULL, a lista esta ordenada
 				QueryPerformanceCounter(&end);
 				l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
-				return 1;
+				return;
 			}
 		}
 		else if(p->elemento->prox != NULL){//se o pivor aponta para outros elementos, os move para a esquerda ou direita
@@ -72,7 +70,7 @@ int quickSort(lista * l){
 					prox = prox->prox;
 					ultimoEsq->prox = NULL;
 				}
-				else if(prox->n == p->elemento->n){//caso seja igual continua colado no elemento por questoes de otimizacao
+				else if(prox->n == p->elemento->n){//elementos iguais sao colados no pivor por questoes de otimizacao(comentar para desenpenho tradicional)
 					p->ultimoPivor->prox = prox;
 					p->ultimoPivor = prox;
 					prox = prox->prox;
@@ -95,8 +93,6 @@ int quickSort(lista * l){
 		if(p->esq!=NULL){//se tiverem elementos menores que o pivor
 			pivor * aux = p;//aux para salvar a referencia atual
 			p = novo(p->esq,p);//aloca novo pivor passando a sublista esquerda e o pivor atual como pai
-			if(p == NULL)
-				return 0;
 			aux->esq = NULL;//apaga a referemcia para a esquerda
 		}
 		else{//se nao houverem elementos na esquerda, mover pivor para a lista e depois olhar na direita
@@ -114,8 +110,6 @@ int quickSort(lista * l){
 			if(p->dir!=NULL){//se tiverem elementos menores que o pivor
 				pivor * aux = p;//aux para salvar a referencia atual
 				p = novo(p->dir,p);//aloca novo pivor passando a sublista direita e o pivor atual como pai
-				if(p == NULL)
-					return 0;
 				aux->dir = NULL;//apaga a referemcoa para a direita
 			}
 		}
