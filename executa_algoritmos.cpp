@@ -3,7 +3,7 @@
 #include <time.h>
 #include "lista.h"
 #include "gfg_merge.h"
-//#include "merge_sort.h"
+#include "merge_sort.h"
 #include "quick_sort.h"
 #include "maximos.h"
 #include "radixsort_lista.h"
@@ -15,6 +15,11 @@ int comparaString(char * str1, char * str2);
 
 int main(){//teste.txt
 	//gera_relatorios();
+	lista * l = inicia_lista();
+	ler_entrada(l, (char*)"teste.txt");
+	imprimir_lista(l);
+	mergeSort(l);
+	imprimir_lista(l);	
 
     return 0;
 }
