@@ -38,10 +38,6 @@ void quickSort(lista * l){
 	do{	
 		//apos olhar pecorrer a direita retorna ao pai
 		if(p->elemento == NULL){//se o elemento estiver como nulo, ele foi movido para raiz
-		
-    		double memoria = (double) pmc.WorkingSetSize/1000000;//Calcula a memoria antes de desalocar esse pivor 
-		 	if(memoria > l->memoria)//caso ela seja maior que a salva atualmente, se torna a nova salva
-		 		l->memoria = memoria;
 		 		
 			pivor * aux = p;//aux para salvar a referencia atual
 			p = p->pai;//pivor retorna para o pai

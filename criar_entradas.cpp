@@ -17,13 +17,14 @@ void gravar_entrada_igual(unsigned long long t, unsigned long long n);//Função p
 void gravar_entrada_pior_caso(unsigned long long t);//gera 3 entrada com t elementos variando de 10000000000000000000 a MAXT
 FILE * criar_arquivo(char * arq);
 FILE * info;
+int sob = 1;
 
 int main(){
 	unsigned long long maxn = MAXN/10;//criterio de parada
     info =  fopen((char *)"cabecalho.txt","r");
     if(info!=NULL)
     	do{
-	    	printf("Ja existem entradas, deseja sobrescreve-las? S/N\n");
+	    	printf("Ja existem entradas, deseja recriar o cabecalho? S/N\n");
 	    	char escolha;
 			scanf("%c", &escolha);
 			if(escolha == 'S' || escolha == 's'){
@@ -31,8 +32,8 @@ int main(){
 				break;
 			}
 			else if(escolha == 'N' || escolha == 'n'){
-				printf("Escolha = nao, programa terminado");
-				exit(0);
+				sob = 0;
+				break;
 			}
 			else{
 				printf("Opcao invalida!\n");
@@ -57,8 +58,8 @@ int main(){
         	printf("Maior numero %llu...", n-1);
 			gravar_entrada_igual(t,n-1);
         }        
-        printf("Maior numero %llu...", MAXN);
-		gravar_entrada_igual(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
+        printf("Maior numero %llu...", MAXN-1);
+		gravar_entrada_igual(t,MAXN-1);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}
 	fclose(info);
@@ -79,7 +80,8 @@ void gravar_entrada_aleatoria(unsigned long long t,unsigned long long n){
         for(j = 0; j < t; j++)
             fprintf(p, "%llu\n", rand() * rand() * rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
     	fclose(p);
-        fprintf(info, "aleatorias aleatoria %d %llu %llu\n", conta_aleatoria, t, n);//salva entrada no arquivo que armazena as entradas criadas
+    	if(sob)
+        	fprintf(info, "aleatorias aleatoria %d %llu %llu\n", conta_aleatoria, t, n);//salva entrada no arquivo que armazena as entradas criadas
     	printf("Aleatoria %d salva\n", conta_aleatoria);//feedback visual
     }
     free(arq);
@@ -95,7 +97,8 @@ void gravar_entrada_crescente(unsigned long long t){
     for(i = 0; i < t; i++)
         fprintf(p, "%llu\n", i);//salva cada elemento seguido de ;
     fclose(p);
-    fprintf(info, "crescentes crescente %d %llu %llu\n", ordenada_crescente, t, t);//salva entrada no arquivo que armazena as entradas criadas
+    if(sob)
+        fprintf(info, "crescentes crescente %d %llu %llu\n", ordenada_crescente, t, t);//salva entrada no arquivo que armazena as entradas criadas
     printf("Crescente %d salva\n", ordenada_crescente);//feedback visual
     free(arq);
 }
@@ -113,7 +116,8 @@ void gravar_entrada_decrescente(unsigned long long t){
         k--;
     }
     fclose(p);
-    fprintf(info, "decrescentes decrescente %d %llu %llu\n", ordenada_decrescente, t, t);//salva entrada no arquivo que armazena as entradas criadas
+    if(sob)
+        fprintf(info, "decrescentes decrescente %d %llu %llu\n", ordenada_decrescente, t, t);//salva entrada no arquivo que armazena as entradas criadas
     printf("Decrescente %d salva\n", ordenada_decrescente);//feedback visual
     free(arq);
 }
@@ -129,7 +133,8 @@ void gravar_entrada_igual(unsigned long long t,unsigned long long n){
     for(i = 0; i < t; i++)
         fprintf(p, "%llu\n", n);//salva cada elemento seguido de \n
     fclose(p);
-    fprintf(info, "iguais igual %d %llu %llu\n", conta_igual, t, n+1);//salva entrada no arquivo que armazena as entradas criadas
+    if(sob)
+        fprintf(info, "iguais igual %d %llu %llu\n", conta_igual, t, n);//salva entrada no arquivo que armazena as entradas criadas
     printf("Igual %d salva\n", conta_igual);//feedback visual
     free(arq);
 }
@@ -148,7 +153,8 @@ void gravar_entrada_pior_caso(unsigned long long t){
         for(j = 0; j < t; j++)
              fprintf(p, "%llu\n" , 10000000000000000000llu + rand() *  rand() *  rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
         fclose(p);
-    	fprintf(info, "complexas complexa %d %llu %llu\n", conta_pior_caso, t, MAXN);//salva entrada no arquivo que armazena as entradas criadas
+    	if(sob)
+        	fprintf(info, "complexas complexa %d %llu %llu\n", conta_pior_caso, t, MAXN);//salva entrada no arquivo que armazena as entradas criadas
 		printf("Pior caso %d salva\n", conta_pior_caso);//feedback visual
     }
     free(arq);

@@ -14,10 +14,9 @@
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
-int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);
-void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);
-int comparaString(char * str1, char * str2);
-void showlist(std::list<unsigned long long>& g);
+int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);//le entrada para a lista nativa do C++
+void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);//auxiliar para marcar o tempo do std::sort
+int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
 	gera_relatorios();
@@ -120,11 +119,11 @@ void gera_relatorios(){
 		printf("Mergesort...");
 		mergeSort(entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
-		fprintf(p, "Tempo mergesort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
+		fprintf(p, "Tempo mergesort: %lf\n", entrada->tempo);
 		
 		
-		/**QUICKSORT: nao executa para entradas iguais, crescentes e decrescentes**/
-		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente") || comparaString(tipo, (char *)"igual"))){
+		/**QUICKSORT: nao executa para entradas crescentes e decrescentes**/
+		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente"))){
 			if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
 				if(ler_entrada(entrada,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 				{
@@ -141,10 +140,10 @@ void gera_relatorios(){
 			printf("Quicksort...");
 			quickSort(entrada);
 			printf("Tempo total: %lf segundos\n", entrada->tempo);
-			fprintf(p, "Tempo quicksort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
+			fprintf(p, "Tempo quicksort: %lf\n", entrada->tempo);
 		}
 		
-		/**std::sort - utiliza estruturas do C++**/
+		/**INTROSORT(std::sort) - utiliza estruturas do C++**/
 		desaloca_lista(entrada);//limpa a entrada atual
 		std::list<unsigned long long> entradaCPP;
 		if(lerEntradaCPP(entradaCPP, arq) != 1)//acabaram as entradas existentes ou a memória do computador
@@ -162,7 +161,7 @@ void gera_relatorios(){
 		printf("Introsort(std::sort)...");
 		cppSortAux(entradaCPP, entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
-		fprintf(p, "Tempo Introsort(std::sort: %lf; Memoria usada(MB): %lfMB;\n", entrada->tempo, entrada->memoria);
+		fprintf(p, "Tempo Introsort(std::sort): %lf\n", entrada->tempo);
 		entradaCPP.clear();
 		
 		
@@ -202,8 +201,6 @@ void gera_relatorios(){
 }
 
 int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq){
-	unsigned long long * teste = (unsigned long long *)malloc(100000000*sizeof(unsigned long long));
-	unsigned long long i = 0;
     printf("Lendo entrada...");
 	FILE * p;
 	p = fopen(arq, "r");
@@ -214,30 +211,9 @@ int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq){
 		if(n[0]=='\n')//caso a linha esteja vazia sai do loop
 			break;
 		entradaCPP.push_back(strtoull(n,NULL,10));
-		teste[i] = strtoull(n,NULL,10);
-		i++;
 	}
 	free(n);
-	fclose(p);
-	
-	//Variaveis para contar o tempo
-    LARGE_INTEGER frequency;
-    LARGE_INTEGER start;
-    LARGE_INTEGER end;
-    QueryPerformanceFrequency(&frequency);
-    QueryPerformanceCounter(&start);
-	
-	printf("Introsort vetor(teste)...");
-	
-	std::sort(teste, teste+entradaCPP.size());
-	QueryPerformanceCounter(&end);
-	double tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
-	free(teste);
-	printf("Tempo total: %lf segundos\n", tempo);
-	fprintf(p, "Tempo teste(INTROSORT VETOR): %lf; Memoria usada(MB): -1TB;\n",tempo);
-				
-	
-	
+	fclose(p);		
 	
 	return 1;//retorna 1 para sucesso
 }
@@ -254,14 +230,4 @@ void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l){
 				
 	QueryPerformanceCounter(&end);
 	l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
-	
-    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
-    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
-	l->memoria = (double) pmc.WorkingSetSize/1000000;//Calcula a memoria antes de desalocar esse pivor 
 }	
-
-void showlist(std::list<unsigned long long>& g){
-    std::list<unsigned long long>::iterator it;
-    for (it = g.begin(); it != g.end(); ++it)
-        printf("%llu ", *it);
-}

@@ -93,11 +93,6 @@ void mergeSort(lista * l){
 			}
 			else
 				direita = NULL;
-			if(prox == NULL){//Salva a memória alocada por essa entrada antes de ser liberada
-			    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
-			    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
-	    		l->memoria = (double) pmc.WorkingSetSize/1000000;//Calcula a memoria antes de desalocar esse pivor 
-			}
 			free(aux);
 		}
 		else{			
