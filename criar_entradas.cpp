@@ -16,10 +16,28 @@ void gravar_entrada_decrescente(unsigned long long t);//gera uma entrada com t e
 void gravar_entrada_igual(unsigned long long t, unsigned long long n);//Função para gerar uma entrada com t elementos equivalentes a n
 void gravar_entrada_pior_caso(unsigned long long t);//gera 3 entrada com t elementos variando de 10000000000000000000 a MAXT
 FILE * criar_arquivo(char * arq);
-FILE * info = criar_arquivo((char *)"cabecalho.txt");
+FILE * info;
 
 int main(){
 	unsigned long long maxn = MAXN/10;//criterio de parada
+    info =  fopen((char *)"cabecalho.txt","r");
+    if(info!=NULL)
+    	do{
+	    	printf("Ja existem entradas, deseja sobrescreve-las? S/N\n");
+	    	char escolha;
+			scanf("%c", &escolha);
+			if(escolha == 'S' || escolha == 's'){
+				info = criar_arquivo((char *)"cabecalho.txt");
+				break;
+			}
+			else if(escolha == 'N' || escolha == 'n'){
+				printf("Escolha = nao, programa terminado");
+				exit(0);
+			}
+			else{
+				printf("Opcao invalida!\n");
+			}    	
+		}while(1);
 	printf("Gravando entradas...\n");
 	for(unsigned long long t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
         printf("Entradas de tamanho %llu:\n", t);
