@@ -15,7 +15,7 @@
 		#define MAXT 1000000llu //tamanho máximo do vetor escolhido para 32bits
 		#define MAXN 18446744073709551615llu //maior número possível(unsigned long long 32bit) - grande o bastante
 	#endif
-#else
+#else//gera entradas especificas para testes
 	#define REP  1 //entradas diferentes geradas para aleatorias e pior caso
 	#define MINT 1000000llu //menor tamanho possivel do vetor escolhido para 32bits
 	#define MAXT 1000000llu //tamanho máximo do vetor escolhido para 32bits
