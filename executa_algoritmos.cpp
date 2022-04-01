@@ -80,8 +80,16 @@ void gera_relatorios(){
 	int i;//numero da entrada
     lista * entrada = inicia_lista();//cabeca da lista que será usada para guardar as entradas e depois ser ordenada. Serve para coletar informacoes das funcoes	
 	while(1){		
-		if(fgets(cab,256,info)==NULL)
+		if(fgets(cab,256,info)==NULL || cab[0] == '\n'){
+			free(cab);
+			free(arq);
+			free(diretorio);
+			free(tipo);
+			finalizaLista(entrada);
+	    	fclose(info);
 			return;
+		}
+		
 		sscanf(cab, "%s %s %d %llu %llu", diretorio, tipo, &i, &tamanho, &maior_numero);
 		qtd_digitos = conta_digitos(maior_numero-1);//maior numero é o limite superior da rand, logo -1 ex: 1000 = 3 e 1001 = 4
 	    sprintf(arq, ".\\dados\\relatorio_%s_%d.txt", diretorio, i);//cria um relatorio para cada entrada(armazenara os dados por algoritmo)

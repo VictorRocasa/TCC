@@ -17,12 +17,7 @@ pivor * novo(no * elemento, pivor * pai){
 	return p;
 }
 
-void quickSort(lista * l){
-	if(l->raiz == NULL)//lista vazia
-		return;
-	pivor * p = novo(l->raiz,NULL);//primeiro pivor(primeiro elemento por questoes de otimizacao para a lista usada)
-	l->raiz = NULL;//;raiz para de apontar para a lista por enquanto
-		
+void quickSort(lista * l){		
 	//Variaveis para contar o tempo
     LARGE_INTEGER frequency;
     LARGE_INTEGER start;
@@ -30,9 +25,10 @@ void quickSort(lista * l){
     QueryPerformanceFrequency(&frequency);
     QueryPerformanceCounter(&start);
     
-    //variaveis para contar o uso memoria
-    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
-    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
+	if(l->raiz == NULL)//lista vazia
+		return;
+	pivor * p = novo(l->raiz,NULL);//primeiro pivor(primeiro elemento por questoes de otimizacao para a lista usada)
+	l->raiz = NULL;//;raiz para de apontar para a lista por enquanto
 	    
 	no * ultimoGeral;//variavel para reinserir elementos na lista no futuro
 	do{	
@@ -48,39 +44,33 @@ void quickSort(lista * l){
 				return;
 			}
 		}
-		else if(p->elemento->prox != NULL){//se o pivor aponta para outros elementos, os move para a esquerda ou direita
+		else if(p->elemento == p->ultimoPivor && p->elemento->prox != NULL){//se o pivor aponta para outros elementos diferentes, os move para a esquerda ou direita
 			no * prox = p->elemento->prox;//prox comeca no elemento apos o pivor
 			p->elemento->prox = NULL;//isola pivor
 			no * ultimoEsq;//variavel para mover os elementos para o fim da sublista da esquerda
 			no * ultimoDir;//variavel para mover os elementos para o fim da sublista da direita	
 			while(prox!=NULL){//pecorre toda a sublista atual
 				if(prox->n < p->elemento->n){//elementos menores movidos para a esquerda
-					if(p->esq == NULL){//logica para alocar ao fim da sublista
+					if(p->esq == NULL)//logica para alocar ao fim da sublista
 						p->esq = prox;
-						ultimoEsq = prox; 
-					}
-					else{
+					else
 						ultimoEsq->prox = prox;
-						ultimoEsq = prox;
-					}
+					ultimoEsq = prox;
 					prox = prox->prox;
 					ultimoEsq->prox = NULL;
 				}
-				else if(prox->n == p->elemento->n){//elementos iguais sao colados no pivor por questoes de otimizacao(comentar para desenpenho tradicional)
+				else if(prox->n == p->elemento->n){//elementos iguais sao colados no pivor
 					p->ultimoPivor->prox = prox;
 					p->ultimoPivor = prox;
 					prox = prox->prox;
 					p->ultimoPivor->prox = NULL;
 				}
 				else{//elementos maiores ou iguais ao pivor movidos para a direita
-					if(p->dir == NULL){//logica para alocar ao fim da sublista
+					if(p->dir == NULL)//logica para alocar ao fim da sublista
 						p->dir = prox;
-						ultimoDir = prox;
-					}
-					else{
+					else
 						ultimoDir->prox = prox;
-						ultimoDir = prox;
-					}
+					ultimoDir = prox;
 					prox = prox->prox;
 					ultimoDir->prox = NULL;
 				}			
@@ -92,17 +82,15 @@ void quickSort(lista * l){
 			aux->esq = NULL;//apaga a referemcia para a esquerda
 		}
 		else{//se nao houverem elementos na esquerda, mover pivor para a lista e depois olhar na direita
-			if(p->elemento != NULL){
-				if(l->raiz == NULL){//logica para alocar ao fim da lista
-					l->raiz = p->elemento;
-					ultimoGeral = p->ultimoPivor;
-				}
-				else{
-					ultimoGeral->prox = p->elemento;
-					ultimoGeral = p->ultimoPivor;				
-				} 
-				p->elemento = NULL;
+			if(l->raiz == NULL){//logica para alocar ao fim da lista
+				l->raiz = p->elemento;
+				ultimoGeral = p->ultimoPivor;
 			}
+			else{
+				ultimoGeral->prox = p->elemento;
+				ultimoGeral = p->ultimoPivor;				
+			} 
+			p->elemento = NULL;
 			if(p->dir!=NULL){//se tiverem elementos menores que o pivor
 				pivor * aux = p;//aux para salvar a referencia atual
 				p = novo(p->dir,p);//aloca novo pivor passando a sublista direita e o pivor atual como pai
