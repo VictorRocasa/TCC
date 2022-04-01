@@ -51,15 +51,9 @@ void imprimir_lista(lista * l){//imprime a lista na tela(para debug)
 	}
 	printf("%llu", raiz->n);
 	no * prox = raiz -> prox;
-	int br = 0;
 	while(prox!=NULL){
 		printf("->%llu", prox->n);
 		prox = prox->prox;
-		br++;
-		if(br>10){
-			printf("\n");
-			br = 0;
-		}
 	}	
 	getchar();
 	printf("\n");

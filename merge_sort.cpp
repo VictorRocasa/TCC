@@ -9,7 +9,6 @@ janela * novaJanela(no * elemento, janela * pai){
 	janela * j = (janela *)malloc(sizeof(janela));
 	elemento->prox = NULL;
 	j->elemento = elemento;
-	j->prox = NULL;
 	j->pai = pai;
 	j->tamanho = 1;
 	return j;

@@ -82,15 +82,17 @@ void quickSort(lista * l){
 			aux->esq = NULL;//apaga a referemcia para a esquerda
 		}
 		else{//se nao houverem elementos na esquerda, mover pivor para a lista e depois olhar na direita
-			if(l->raiz == NULL){//logica para alocar ao fim da lista
-				l->raiz = p->elemento;
-				ultimoGeral = p->ultimoPivor;
+			if(p->elemento!=NULL){
+				if(l->raiz == NULL){//logica para alocar ao fim da lista
+					l->raiz = p->elemento;
+					ultimoGeral = p->ultimoPivor;
+				}
+				else{
+					ultimoGeral->prox = p->elemento;
+					ultimoGeral = p->ultimoPivor;				
+				} 
+				p->elemento = NULL;
 			}
-			else{
-				ultimoGeral->prox = p->elemento;
-				ultimoGeral = p->ultimoPivor;				
-			} 
-			p->elemento = NULL;
 			if(p->dir!=NULL){//se tiverem elementos menores que o pivor
 				pivor * aux = p;//aux para salvar a referencia atual
 				p = novo(p->dir,p);//aloca novo pivor passando a sublista direita e o pivor atual como pai

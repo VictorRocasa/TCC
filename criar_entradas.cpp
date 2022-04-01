@@ -49,17 +49,13 @@ int main(){
         printf("Maior numero %llu...", MAXN-1);
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
         printf("Maior numero %llu...", MAXN-1);
+        printf("Maior numero %llu...", MAXN-1);
+		gravar_entrada_igual(t,MAXN-1);//entradas iguais com o maior numero possivel
 		gravar_entrada_pior_caso(t);
         printf("Maior numero %llu...", t-1);
 		gravar_entrada_crescente(t);
         printf("Maior numero %llu...", t-1);
 		gravar_entrada_decrescente(t);
-        for(unsigned long long n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
-        	printf("Maior numero %llu...", n-1);
-			gravar_entrada_igual(t,n-1);
-        }        
-        printf("Maior numero %llu...", MAXN-1);
-		gravar_entrada_igual(t,MAXN-1);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
 		printf("\n");
 	}
 	fclose(info);

@@ -4,7 +4,6 @@
 
 typedef struct Janela{//estrutura auxiliar para o merge
 	no * elemento;//primeiro elemento da janela
-	struct Janela * prox;//proxima janela
 	struct Janela * pai;//janela anterior
 	unsigned long long tamanho;//tamanho da janela de comparacao(quantos elementos vao sofrer o merge nessa iteracao)
 }janela;

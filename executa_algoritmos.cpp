@@ -13,12 +13,14 @@
 #include <bits/stdc++.h>
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
+void provaDeOrdenacao();//Mostra que a saída de todos os algoritmos são iguais e ordenadas
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);//le entrada para a lista nativa do C++
 void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);//auxiliar para marcar o tempo do std::sort
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
+	provaDeOrdenacao();
 	gera_relatorios();
 
     return 0;
@@ -47,6 +49,71 @@ int ler_entrada(lista * l, char * arq){
 	free(n);
 	fclose(p);
 	return 1;//retorna 1 para sucesso
+}
+
+void provaDeOrdenacao(){
+	lista * e1 = inicia_lista();
+	lista * e2 = inicia_lista();
+	lista * e3 = inicia_lista();
+	printf("Lendo entrada aleatoria para testes\n");
+	char * arq = (char *)".\\entradas_aleatorias\\entrada_aleatoria_1.txt";
+	if(ler_entrada(e1,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
+	{
+		printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+		free(arq);
+		finalizaLista(e1);
+		exit(1);
+	}
+	printf("Quicksort...\n");
+	quickSort(e1);
+	if(ler_entrada(e2,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
+	{
+		printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+		finalizaLista(e1);
+		finalizaLista(e2);
+		free(arq);
+		exit(1);
+	}
+	printf("Mergesort...\n");
+	mergeSort(e2);
+	if(ler_entrada(e3,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
+	{
+		printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+		finalizaLista(e1);
+		finalizaLista(e2);
+		free(arq);
+		exit(1);
+	}
+	printf("Radixsort...\n");
+	radix_lista(e3,1);
+	no * prox1 = e1->raiz;
+	no * prox2 = e2->raiz;
+	no * prox3 = e3->raiz;
+	while(prox1!=NULL){		
+		if(prox1->n != prox2->n && prox1->n != prox3->n && prox2->n != prox3->n){
+			printf("\n3 resultados diferentes\n");
+			exit(1);
+		}
+		else if(prox1->n == prox2->n && prox1->n != prox3->n && prox2->n != prox3->n){
+			printf("\nRadix incorreto\n");
+			exit(1);
+		}
+		else if(prox1->n != prox2->n && prox1->n == prox3->n && prox2->n != prox3->n){
+			printf("\nMerge incorreto\n");
+			exit(1);
+		}
+		else if(prox1->n != prox2->n && prox1->n != prox3->n && prox2->n == prox3->n){
+			printf("\nQuick incorreto\n");
+			exit(1);
+		}
+		prox1 = prox1->prox;
+		prox2 = prox2->prox;
+		prox3 = prox3->prox;
+	}
+	printf("Algoritmos apresentaram a mesma saida, prova de ordenacao concluida!\n");
+	finalizaLista(e1);
+	finalizaLista(e2);
+	finalizaLista(e3);
 }
 
 int comparaString(char * str1, char * str2){
@@ -128,7 +195,6 @@ void gera_relatorios(){
 		mergeSort(entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
 		fprintf(p, "Tempo mergesort: %lf\n", entrada->tempo);
-		
 		
 		/**QUICKSORT: nao executa para entradas crescentes e decrescentes**/
 		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente"))){
