@@ -55,7 +55,7 @@ void provaDeOrdenacao(){
 	lista * e1 = inicia_lista();
 	lista * e2 = inicia_lista();
 	lista * e3 = inicia_lista();
-	printf("Lendo entrada aleatoria para testes\n");
+	printf("Lendo entrada aleatoria 1 para testes\n");
 	char * arq = (char *)".\\entradas_aleatorias\\entrada_aleatoria_1.txt";
 	if(ler_entrada(e1,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 	{
@@ -110,7 +110,7 @@ void provaDeOrdenacao(){
 		prox2 = prox2->prox;
 		prox3 = prox3->prox;
 	}
-	printf("Algoritmos apresentaram a mesma saida, prova de ordenacao concluida!\n");
+	printf("Algoritmos apresentaram a mesma saida, prova de ordenacao concluida!\n\n");
 	finalizaLista(e1);
 	finalizaLista(e2);
 	finalizaLista(e3);
@@ -127,6 +127,7 @@ int comparaString(char * str1, char * str2){
 }
 
 void gera_relatorios(){
+	printf("Ordenando entradas:\n");
 	
     FILE * info = fopen("cabecalho.txt", "r");//abre os cabeçalhos
     if(info == NULL){//se não existe o arquivo sai do programa
