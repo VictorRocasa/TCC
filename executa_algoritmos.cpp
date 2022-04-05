@@ -1,29 +1,32 @@
+#include <windows.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include "lista.h"
-#include "merge_sort.h"
-#include "quick_sort.h"
-#include "maximos.h"
-#include "radixsort_lista.h"
-#include <windows.h>
 #include <psapi.h>
 #include <list>
+#include "lista.h"
+#include "maximos.h"
+#include "merge_sort.h"
+#include "quick_sort.h"
+#include "radixsort_lista.h"
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void provaDeOrdenacao();//Mostra que a saída de todos os algoritmos são iguais e ordenadas
 void gera_relatorios();//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);//le entrada para a lista nativa do C++
 void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);//auxiliar para marcar o tempo do std::sort
+void normalizarResultados();//funcao para que gera relatorios com as medias dos gerados pela funcao anterior de forma simples de ler
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
 	//provaDeOrdenacao();
-	for(int i = 0; i < 10; i++){
+	/*for(int i = 0; i < 10; i++){//loop para gerar 10 relatorios
 		printf("Iteracao %d\n", i+1);
 		gera_relatorios();
-		Sleep(5000);
-	}
+		printf("Iteracao %d concluida, a proxima iniciara em 10 segundos\n", i+1);
+		Sleep(10000);
+	}*/
+	normalizarResultados();
 
     return 0;
 }
@@ -118,16 +121,6 @@ void provaDeOrdenacao(){
 	finalizaLista(e3);
 }
 
-int comparaString(char * str1, char * str2){
-	int i = 0;
-    while(str1[i] != '\0' && str2[i] != '\0'){
-    	if(str1[i] != str2[i])
-    		return 0;
-    	i++;
-	}
-	return 1;
-}
-
 void gera_relatorios(){	
 	printf("Ordenando entradas:\n");
 	
@@ -200,7 +193,7 @@ void gera_relatorios(){
 		printf("Mergesort...");
 		mergeSort(entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
-		fprintf(p, "Mergesort;%d;%lf\n", qtd_digitos, entrada->tempo);
+		fprintf(p, "1;%d;%lf\n", qtd_digitos, entrada->tempo);
 		
 		/**QUICKSORT: nao executa para entradas crescentes e decrescentes**/
 		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente"))){
@@ -221,10 +214,10 @@ void gera_relatorios(){
 			printf("Quicksort...");
 			quickSort(entrada);
 			printf("Tempo total: %lf segundos\n", entrada->tempo);
-			fprintf(p, "Quicksort;%d;%lf\n",qtd_digitos, entrada->tempo);
+			fprintf(p, "2;%d;%lf\n",qtd_digitos, entrada->tempo);
 		}
 		else
-			fprintf(p, "%Quicksort;d;%lf\n", qtd_digitos, 0.0);
+			fprintf(p, "%2;d;%lf\n", qtd_digitos, 0.0);
 		
 		/**INTROSORT(std::sort) - utiliza estruturas do C++**/
 		desaloca_lista(entrada);//limpa a entrada atual
@@ -245,7 +238,7 @@ void gera_relatorios(){
 		printf("Introsort(std::sort)...");
 		cppSortAux(entradaCPP, entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
-		fprintf(p, "%Introsort(std::sort);%d;%lf\n", qtd_digitos, entrada->tempo);
+		fprintf(p, "3;%d;%lf\n", qtd_digitos, entrada->tempo);
 		entradaCPP.clear();
 		
 		
@@ -272,7 +265,7 @@ void gera_relatorios(){
 				break;
 			}
 			if(d==1)//salva o radix com 1 digito no relatorio de comparacao com os algoritmos
-				fprintf(p, "Radix;%d;%lf\n", qtd_digitos, entrada->tempo);
+				fprintf(p, "4;%d;%lf\n", qtd_digitos, entrada->tempo);
 			printf("Tempo total: %lf segundos; Memoria usada: %lfMB\n", entrada->tempo, entrada->memoria);
 			fprintf(pr, "%d;%d;%lf;%lf\n", d, qtd_digitos, entrada->tempo, entrada->memoria);
 		}
@@ -319,3 +312,69 @@ void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l){
 	QueryPerformanceCounter(&end);
 	l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
 }	
+
+void normalizarResultados(){
+	printf("Normalizando resultados...\n");
+	for(unsigned long long tamanho = MINT; tamanho <= MAXT; tamanho *=10){
+		char * arq = (char*)malloc(256*sizeof(char*));//variavel para ler arquivos
+		char * linha = (char*)malloc(256*sizeof(char*));//variavel para ler linhas de arquivos
+	    char * tipo = (char*)malloc(128*sizeof(char*));//nome dodo tipo da entrada para gerar o endereco
+		sprintf(tipo, "aleatoria");
+		printf("Lendo resultados da entrada %s de tamanho %llu.\n", tipo, tamanho);
+		sprintf(arq, ".\\dados\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);
+		FILE * p = fopen(arq, "r");
+		if(p == NULL){
+			printf("Nao existem dados para a entrada %s de tamanho %llu, favor executar o algoritmo de relatorio!\n", tipo, tamanho);
+			fclose(p);
+			free(linha);
+			free(arq);
+			free(tipo);
+			return;
+		}
+		else{
+			printf("Gerando relatorio normalizado...");
+			double dados[4][20];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
+			int media[4];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
+			for(int i = 0; i < 4; i++){//zera a matriz e o vetor
+				for(int j = 0; j < 20; j++)
+					dados[i][j] = 0.0;
+				media[i] = 0;
+			}
+			while(1){//pecorre o arquivo salvando os tempos registrados por combinacao e a quantidade de vezes que cada combinacao ocorre
+				if(fgets(linha,256,p)==NULL || linha[0] == '\n')
+					break;
+				double tempo;//tempo do algoritmo atual
+				int qtd_digitos;//quantidade de digitos do maior numero da entrada atual
+				int algoritmo;//algoritmo usado
+				sscanf(linha, "%d;%d;%lf", &algoritmo, &qtd_digitos, &tempo);
+				dados[algoritmo-1][qtd_digitos-1] += tempo;
+				media[algoritmo-1]++;
+			}
+			fclose(p);	
+			sprintf(arq, ".\\dados\\Relatorio_final_comparacao_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
+			FILE * p = fopen(arq, "w");	
+			fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
+			for(int i = 0; i < 20; i++){
+				fprintf(p, "Digitos do maior numero = %d\n", i+1);
+				fprintf(p, "Mergesort: %lf\n", dados[0][i]/media[0]);
+				fprintf(p, "Quicksort: %lf\n", dados[1][i]/media[1]);
+				fprintf(p, "Introsort(std::sort): %lf\n", dados[2][i]/media[2]);
+				fprintf(p, "Radixsort(d = 1): %lf\n\n", dados[3][i]/media[3]);
+			}
+				fclose(p);	
+			}
+		free(linha);
+		free(arq);
+		free(tipo);
+	}
+}
+
+int comparaString(char * str1, char * str2){
+	int i = 0;
+    while(str1[i] != '\0' && str2[i] != '\0'){
+    	if(str1[i] != str2[i])
+    		return 0;
+    	i++;
+	}
+	return 1;
+}
