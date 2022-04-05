@@ -20,11 +20,10 @@ FILE * info;
 int sob = 1;
 
 int main(){
-	unsigned long long maxn = MAXN/10;//criterio de parada
     info =  fopen((char *)"cabecalho.txt","r");
     if(info!=NULL)
     	do{
-	    	printf("Ja existem entradas, deseja recriar o cabecalho? S/N\n");
+	    	printf("Ja existem entradas, feche o programa para preserva-las. Caso contrario, deseja recriar o cabecalho? S/N\n");
 	    	char escolha;
 			scanf("%c", &escolha);
 			if(escolha == 'S' || escolha == 's'){
@@ -39,10 +38,13 @@ int main(){
 				printf("Opcao invalida!\n");
 			}    	
 		}while(1);
+	else
+		info = criar_arquivo((char *)"cabecalho.txt");
 	printf("Gravando entradas...\n");
 	for(unsigned long long t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
         printf("Entradas de tamanho %llu:\n", t);
-        for(unsigned long long n = MINN; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
+		unsigned long long maxn = MAXN/10;//criterio de parada
+        for(unsigned long long n = MINN; n <= maxn; n *= 10){//valor de n variando de <10 a <MAXN
         	printf("Maior numero %llu...", n-1);
             gravar_entrada_aleatoria(t,n);
         }

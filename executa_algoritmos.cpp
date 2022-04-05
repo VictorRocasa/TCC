@@ -9,8 +9,6 @@
 #include <windows.h>
 #include <psapi.h>
 #include <list>
-#include <iterator>
-#include <bits/stdc++.h>
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void provaDeOrdenacao();//Mostra que a saída de todos os algoritmos são iguais e ordenadas
@@ -20,8 +18,12 @@ void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);//auxiliar
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
-	provaDeOrdenacao();
-	gera_relatorios();
+	//provaDeOrdenacao();
+	for(int i = 0; i < 10; i++){
+		printf("Iteracao %d\n", i+1);
+		gera_relatorios();
+		Sleep(5000);
+	}
 
     return 0;
 }
@@ -126,7 +128,7 @@ int comparaString(char * str1, char * str2){
 	return 1;
 }
 
-void gera_relatorios(){
+void gera_relatorios(){	
 	printf("Ordenando entradas:\n");
 	
     FILE * info = fopen("cabecalho.txt", "r");//abre os cabeçalhos
@@ -137,7 +139,8 @@ void gera_relatorios(){
 	}
 	CreateDirectory("dados", NULL);//cria o diretorio de relatorios se não existe
 	int sucesso;
-    FILE * p;//arquivo do relatorio
+    FILE * p;//arquivo do relatorio dos algoritmos por comparação
+    FILE * pr;//arquivo do relatorio dos algoritmos por comparação
     char * cab = (char*)malloc(256*sizeof(char));//string do cabecalho
     char * diretorio = (char*)malloc(128*sizeof(char));//nome do diretorio do tipo da entrada para gerar o endereco
     char * tipo = (char*)malloc(128*sizeof(char));//nome dodo tipo da entrada para gerar o endereco
@@ -160,11 +163,12 @@ void gera_relatorios(){
 		
 		sscanf(cab, "%s %s %d %llu %llu", diretorio, tipo, &i, &tamanho, &maior_numero);
 		qtd_digitos = conta_digitos(maior_numero-1);//maior numero é o limite superior da rand, logo -1 ex: 1000 = 3 e 1001 = 4
-	    sprintf(arq, ".\\dados\\relatorio_%s_%d.txt", diretorio, i);//cria um relatorio para cada entrada(armazenara os dados por algoritmo)
-	    p =  fopen(arq,"w");//recria o arquivo
-		p =  fopen(arq,"a");
+	    sprintf(arq, ".\\dados\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
+		p =  fopen(arq,"a");//abre o arquivo para adicionar dados da execucao
+	    sprintf(arq, ".\\dados\\Relatorio_radix_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes do radix para cada entrada de um certo tipo e tamanho: DigitosRadix;DigitosMaiorNumero;Tempo;Memoria
+		pr =  fopen(arq,"a");//abre o arquivo para adicionar dados da execucao
 		if(p == NULL){//caso o arquivo não possa ser criado qualquer motivo
-			printf("Erro ao gerar o arquivo de relatório, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+			printf("1. Erro ao gerar o arquivo de relatório, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 			free(cab);
 			free(arq);
 			free(diretorio);
@@ -172,14 +176,14 @@ void gera_relatorios(){
 			finalizaLista(entrada);
 	    	fclose(info);
 	    	fclose(p);
+	    	fclose(pr);
 			exit(1);
 		}
 		
-		printf("Entrada %s %d\n", tipo, i);
 		sprintf(arq, ".\\entradas_%s\\entrada_%s_%d.txt", diretorio, tipo, i);//le todas as entradas de um dado tipo
 		if(ler_entrada(entrada,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 		{
-			printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+			printf("2. Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 			free(cab);
 			free(arq);
 			free(diretorio);
@@ -187,22 +191,23 @@ void gera_relatorios(){
 			finalizaLista(entrada);
 	    	fclose(info);
 	    	fclose(p);
+	    	fclose(pr);
 			exit(1);
 		}		
-		fprintf(p, "Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, tamanho, qtd_digitos);//cabecalho relatorio
+		printf("Entrada %s %d; Tamanho: %llu; Digitos do maior numero: %d;\n", tipo, i, tamanho, qtd_digitos);//cabecalho
 				
 		/**MERGESORT**/
 		printf("Mergesort...");
 		mergeSort(entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
-		fprintf(p, "Tempo mergesort: %lf\n", entrada->tempo);
+		fprintf(p, "Mergesort;%d;%lf\n", qtd_digitos, entrada->tempo);
 		
 		/**QUICKSORT: nao executa para entradas crescentes e decrescentes**/
 		if(!(comparaString(tipo, (char *)"crescente") || comparaString(tipo, (char *)"decrescente"))){
 			if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
 				if(ler_entrada(entrada,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 				{
-					printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+					printf("3. Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 					free(cab);
 					free(arq);
 					free(diretorio);
@@ -210,20 +215,23 @@ void gera_relatorios(){
 					finalizaLista(entrada);
 			    	fclose(info);
 			    	fclose(p);
+	    			fclose(pr);
 					exit(1);
 				}			
 			printf("Quicksort...");
 			quickSort(entrada);
 			printf("Tempo total: %lf segundos\n", entrada->tempo);
-			fprintf(p, "Tempo quicksort: %lf\n", entrada->tempo);
+			fprintf(p, "Quicksort;%d;%lf\n",qtd_digitos, entrada->tempo);
 		}
+		else
+			fprintf(p, "%Quicksort;d;%lf\n", qtd_digitos, 0.0);
 		
 		/**INTROSORT(std::sort) - utiliza estruturas do C++**/
 		desaloca_lista(entrada);//limpa a entrada atual
 		std::list<unsigned long long> entradaCPP;
 		if(lerEntradaCPP(entradaCPP, arq) != 1)//acabaram as entradas existentes ou a memória do computador
 		{
-			printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+			printf("4. Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 			free(cab);
 			free(arq);
 			free(diretorio);
@@ -231,12 +239,13 @@ void gera_relatorios(){
 			finalizaLista(entrada);
 			fclose(info);
 			fclose(p);
+	    	fclose(pr);
 			exit(1);
 		}
 		printf("Introsort(std::sort)...");
 		cppSortAux(entradaCPP, entrada);
 		printf("Tempo total: %lf segundos\n", entrada->tempo);
-		fprintf(p, "Tempo Introsort(std::sort): %lf\n", entrada->tempo);
+		fprintf(p, "%Introsort(std::sort);%d;%lf\n", qtd_digitos, entrada->tempo);
 		entradaCPP.clear();
 		
 		
@@ -245,7 +254,7 @@ void gera_relatorios(){
 		for(d = 1; d <=7; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)
 			if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
 			{
-				printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
+				printf("5. Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 				free(cab);
 				free(arq);
 				free(diretorio);
@@ -253,19 +262,23 @@ void gera_relatorios(){
 				finalizaLista(entrada);
 				fclose(info);
     			fclose(p);
+	    		fclose(pr);
 				exit(1);
 			}
-		
 			printf("Radixsort para lista com d = %d...", d);
 	    	sucesso = radix_lista(entrada,d);//executa o radix de lista para a entrada
 			if(!sucesso){//sai do loop quando o radix falhar por falta de memoria
 				printf("Falta de memoria\n");
 				break;
 			}
-			printf("Tempo total: %lf segundos\n", entrada->tempo);
-			fprintf(p, "Tempo radix lista com d = %d: %lf; Memoria usada(MB): %lfMB;\n", d, entrada->tempo, entrada->memoria);
+			if(d==1)//salva o radix com 1 digito no relatorio de comparacao com os algoritmos
+				fprintf(p, "Radix;%d;%lf\n", qtd_digitos, entrada->tempo);
+			printf("Tempo total: %lf segundos; Memoria usada: %lfMB\n", entrada->tempo, entrada->memoria);
+			fprintf(pr, "%d;%d;%lf;%lf\n", d, qtd_digitos, entrada->tempo, entrada->memoria);
 		}
-		fclose(p);
+	    fclose(p);
+	    fclose(pr);
+	    printf("\n");
 	}
 	free(cab);
 	free(arq);
