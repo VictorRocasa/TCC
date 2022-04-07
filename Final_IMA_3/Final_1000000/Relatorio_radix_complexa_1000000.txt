@@ -1,0 +1,11 @@
+Entrada complexa de tamanho 1000000
+
+Digitos do maior numero = 20, tamanho da amostra = 31
+Radixsort(d = 1): 1.702592, usando 83.656968MB	Coordenada Latex tempo: (1, 1.702592)	Coordenada Latex memoria: (1, 83.656968)
+Radixsort(d = 2): 0.930972, usando 83.697664MB	Coordenada Latex tempo: (2, 0.930972)	Coordenada Latex memoria: (2, 83.697664)
+Radixsort(d = 3): 0.671669, usando 83.646794MB	Coordenada Latex tempo: (3, 0.671669)	Coordenada Latex memoria: (3, 83.646794)
+Radixsort(d = 4): 0.501231, usando 83.761879MB	Coordenada Latex tempo: (4, 0.501231)	Coordenada Latex memoria: (4, 83.761879)
+Radixsort(d = 5): 0.422817, usando 84.752979MB	Coordenada Latex tempo: (5, 0.422817)	Coordenada Latex memoria: (5, 84.752979)
+Radixsort(d = 6): 0.479613, usando 99.744735MB	Coordenada Latex tempo: (6, 0.479613)	Coordenada Latex memoria: (6, 99.744735)
+Radixsort(d = 7): 0.514282, usando 243.710282MB	Coordenada Latex tempo: (7, 0.514282)	Coordenada Latex memoria: (7, 243.710282)
+

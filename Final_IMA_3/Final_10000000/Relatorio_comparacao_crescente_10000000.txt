@@ -1,0 +1,7 @@
+Entrada crescente de tamanho 10000000
+
+Digitos do maior numero = 7, tamanho da amostra = 6
+Mergesort: 1.410991	Coordenada Latex: (7, 1.410991)
+Introsort(std::sort): 2.126137	Coordenada Latex: (7, 2.126137)
+Radixsort(d = 1): 3.447187	Coordenada Latex: (7, 3.447187)
+

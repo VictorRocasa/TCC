@@ -1,0 +1,8 @@
+Entrada complexa de tamanho 10000000
+
+Digitos do maior numero = 20, tamanho da amostra = 7
+Mergesort: 6.114140	Coordenada Latex: (20, 6.114140)
+Quicksort: 10.154100	Coordenada Latex: (20, 10.154100)
+Introsort(std::sort): 8.438399	Coordenada Latex: (20, 8.438399)
+Radixsort(d = 1): 19.425046	Coordenada Latex: (20, 19.425046)
+

@@ -1,0 +1,11 @@
+Entrada crescente de tamanho 1000000
+
+Digitos do maior numero = 6, tamanho da amostra = 28
+Radixsort(d = 1): 0.238849, usando 35.642514MB	Coordenada Latex tempo: (1, 0.238849)	Coordenada Latex memoria: (1, 35.642514)
+Radixsort(d = 2): 0.150080, usando 35.655095MB	Coordenada Latex tempo: (2, 0.150080)	Coordenada Latex memoria: (2, 35.655095)
+Radixsort(d = 3): 0.077759, usando 35.662117MB	Coordenada Latex tempo: (3, 0.077759)	Coordenada Latex memoria: (3, 35.662117)
+Radixsort(d = 4): 0.066524, usando 35.829760MB	Coordenada Latex tempo: (4, 0.066524)	Coordenada Latex memoria: (4, 35.829760)
+Radixsort(d = 5): 0.043839, usando 37.273015MB	Coordenada Latex tempo: (5, 0.043839)	Coordenada Latex memoria: (5, 37.273015)
+Radixsort(d = 6): 0.056783, usando 51.680110MB	Coordenada Latex tempo: (6, 0.056783)	Coordenada Latex memoria: (6, 51.680110)
+Radixsort(d = 7): 0.154773, usando 195.677623MB	Coordenada Latex tempo: (7, 0.154773)	Coordenada Latex memoria: (7, 195.677623)
+
