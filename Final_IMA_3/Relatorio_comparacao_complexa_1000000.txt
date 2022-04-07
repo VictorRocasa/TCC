@@ -1,8 +1,0 @@
-Entrada complexa de tamanho 1000000
-
-Digitos do maior numero = 20
-Mergesort: 0.374424
-Quicksort: 0.644392
-Introsort(std::sort): 0.556274
-Radixsort(d = 1): 1.698752
-
