@@ -1,0 +1,8 @@
+Entrada decrescente de tamanho 1000000
+
+Digitos do maior numero = 6
+Mergesort: 0.119795
+Quicksort: -1.#IND00
+Introsort(std::sort): 0.229772
+Radixsort(d = 1): 0.243202
+

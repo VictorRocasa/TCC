@@ -1,0 +1,11 @@
+Entrada decrescente de tamanho 1000000
+
+Digitos do maior numero = 6
+Radixsort(d = 1): 0.243202, usando 100.027526MB
+Radixsort(d = 2): 0.153157, usando 100.038033MB
+Radixsort(d = 3): 0.079891, usando 99.978908MB
+Radixsort(d = 4): 0.069115, usando 100.081664MB
+Radixsort(d = 5): 0.043757, usando 100.748422MB
+Radixsort(d = 6): 0.056512, usando 115.808345MB
+Radixsort(d = 7): 0.152085, usando 259.797348MB
+

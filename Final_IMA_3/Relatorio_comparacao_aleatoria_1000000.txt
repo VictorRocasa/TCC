@@ -1,0 +1,122 @@
+Entrada aleatoria de tamanho 1000000
+
+Digitos do maior numero = 1
+Mergesort: 0.267056
+Quicksort: 0.048846
+Introsort(std::sort): 0.386697
+Radixsort(d = 1): 0.019769
+
+Digitos do maior numero = 2
+Mergesort: 0.359476
+Quicksort: 0.179364
+Introsort(std::sort): 0.481689
+Radixsort(d = 1): 0.063877
+
+Digitos do maior numero = 3
+Mergesort: 0.391908
+Quicksort: 0.345271
+Introsort(std::sort): 0.520834
+Radixsort(d = 1): 0.140388
+
+Digitos do maior numero = 4
+Mergesort: 0.404828
+Quicksort: 0.443417
+Introsort(std::sort): 0.543157
+Radixsort(d = 1): 0.228367
+
+Digitos do maior numero = 5
+Mergesort: 0.393632
+Quicksort: 0.501893
+Introsort(std::sort): 0.557276
+Radixsort(d = 1): 0.319071
+
+Digitos do maior numero = 6
+Mergesort: 0.373626
+Quicksort: 0.581919
+Introsort(std::sort): 0.551524
+Radixsort(d = 1): 0.408221
+
+Digitos do maior numero = 7
+Mergesort: 0.369723
+Quicksort: 0.627201
+Introsort(std::sort): 0.549927
+Radixsort(d = 1): 0.502299
+
+Digitos do maior numero = 8
+Mergesort: 0.376490
+Quicksort: 0.628041
+Introsort(std::sort): 0.550985
+Radixsort(d = 1): 0.589097
+
+Digitos do maior numero = 9
+Mergesort: 0.368772
+Quicksort: 0.642190
+Introsort(std::sort): 0.549270
+Radixsort(d = 1): 0.676819
+
+Digitos do maior numero = 10
+Mergesort: 0.370279
+Quicksort: 0.625834
+Introsort(std::sort): 0.550797
+Radixsort(d = 1): 0.768928
+
+Digitos do maior numero = 11
+Mergesort: 0.372560
+Quicksort: 0.629365
+Introsort(std::sort): 0.554013
+Radixsort(d = 1): 0.858362
+
+Digitos do maior numero = 12
+Mergesort: 0.374969
+Quicksort: 0.642030
+Introsort(std::sort): 0.550594
+Radixsort(d = 1): 0.866544
+
+Digitos do maior numero = 13
+Mergesort: 0.372978
+Quicksort: 0.634791
+Introsort(std::sort): 0.547058
+Radixsort(d = 1): 1.048655
+
+Digitos do maior numero = 14
+Mergesort: 0.372429
+Quicksort: 0.640515
+Introsort(std::sort): 0.552816
+Radixsort(d = 1): 1.139659
+
+Digitos do maior numero = 15
+Mergesort: 0.371456
+Quicksort: 0.619922
+Introsort(std::sort): 0.551991
+Radixsort(d = 1): 1.229167
+
+Digitos do maior numero = 16
+Mergesort: 0.370328
+Quicksort: 0.614505
+Introsort(std::sort): 0.545720
+Radixsort(d = 1): 1.307925
+
+Digitos do maior numero = 17
+Mergesort: 0.370045
+Quicksort: 0.614692
+Introsort(std::sort): 0.549502
+Radixsort(d = 1): 1.411330
+
+Digitos do maior numero = 18
+Mergesort: 0.371352
+Quicksort: 0.635988
+Introsort(std::sort): 0.551811
+Radixsort(d = 1): 1.499289
+
+Digitos do maior numero = 19
+Mergesort: 0.372581
+Quicksort: 0.635878
+Introsort(std::sort): 0.551174
+Radixsort(d = 1): 1.578331
+
+Digitos do maior numero = 20
+Mergesort: 0.377536
+Quicksort: 0.645499
+Introsort(std::sort): 0.559972
+Radixsort(d = 1): 1.687876
+

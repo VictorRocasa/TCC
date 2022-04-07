@@ -1,0 +1,11 @@
+Entrada crescente de tamanho 10000000
+
+Digitos do maior numero = 7
+Radixsort(d = 1): 3.312780, usando 328.966144MB
+Radixsort(d = 2): 1.688004, usando 329.003008MB
+Radixsort(d = 3): 1.360767, usando 329.031680MB
+Radixsort(d = 4): 0.787159, usando 329.150464MB
+Radixsort(d = 5): 0.653711, usando 330.641408MB
+Radixsort(d = 6): 0.418872, usando 345.042944MB
+Radixsort(d = 7): 0.568324, usando 489.041920MB
+

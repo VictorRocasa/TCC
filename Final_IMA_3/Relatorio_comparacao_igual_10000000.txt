@@ -1,0 +1,8 @@
+Entrada igual de tamanho 10000000
+
+Digitos do maior numero = 20
+Mergesort: 1.376038
+Quicksort: 0.088074
+Introsort(std::sort): 2.042981
+Radixsort(d = 1): 3.901791
+
