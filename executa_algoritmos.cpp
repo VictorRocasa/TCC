@@ -20,7 +20,7 @@ int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas
 
 int main(){//teste.txt
 	//provaDeOrdenacao();
-	//for(int i = 0; i < 10; i++){//loop para gerar 10 relatorios
+	for(int i = 0; i < 15; i++){//loop para gerar 10 relatorios
 		//printf("Iteracao %d\n", i+1);
 		//gera_relatorios(1000000, NULL);//executa todas as entradas de tamanho = 1000000
 		//gera_relatorios(10000000, NULL);//executa todas as entradas de tamanho = 10000000
@@ -31,7 +31,7 @@ int main(){//teste.txt
 		//gera_relatorios(100000000, (char *)"aleatoria");//executa todas as entradas complexas de tamanho = 100000000
 		//printf("Iteracao %d concluida, a proxima iniciara em 10 segundos\n", i+1);
 		//Sleep(10000);
-	//}
+	}
 	normalizarResultados();
 
     return 0;
@@ -224,7 +224,7 @@ void gera_relatorios(int tamanhoRequerido, char * tipoRequerido){
 				fprintf(p, "2;%d;%lf\n",qtd_digitos, entrada->tempo);
 			}
 			else
-				fprintf(p, "%2;d;%lf\n", qtd_digitos, 0.0);
+				fprintf(p, "2;d;%lf\n", qtd_digitos, 0.0);
 			
 			/**INTROSORT(std::sort) - utiliza estruturas do C++**/
 			desaloca_lista(entrada);//limpa a entrada atual
@@ -323,11 +323,13 @@ void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l){
 
 void normalizarResultados(){
 	printf("Normalizando resultados...\n");
-	CreateDirectory("Final", NULL);//cria o diretorio de relatorios finais se não existe
 	for(unsigned long long tamanho = MINT; tamanho <= MAXT; tamanho *=10){
 		char * arq = (char*)malloc(256*sizeof(char*));//variavel para ler arquivos
 		char * linha = (char*)malloc(256*sizeof(char*));//variavel para ler linhas de arquivos
 	    char * tipo = (char*)malloc(128*sizeof(char*));//nome dodo tipo da entrada para gerar o endereco
+	    char * diretorio = (char*)malloc(128*sizeof(char*));//nome dodo tipo da entrada para gerar o endereco
+		sprintf(diretorio, "Final_%llu", tamanho);//cria um diretorio para cada tamanho
+		CreateDirectory(diretorio, NULL);//cria o diretorio de relatorios finais se não existe
 	    
 	    /**Normaliza entradas aleatorias**/
 		sprintf(tipo, "aleatoria");
@@ -363,15 +365,21 @@ void normalizarResultados(){
 			}
 			printf("\n");
 			fclose(p);	
-			sprintf(arq, ".\\Final\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
+			sprintf(arq, ".\\%s\\Relatorio_comparacao_%s_%llu.txt", diretorio, tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
 			FILE * p = fopen(arq, "w");	
 			fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 			for(int i = 0; i < 20; i++){
-				fprintf(p, "Digitos do maior numero = %d\n", i+1);
-				fprintf(p, "Mergesort: %lf\n", tempo[0][i]/media[0][i]);
-				fprintf(p, "Quicksort: %lf\n", tempo[1][i]/media[1][i]);
-				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2][i]/media[2][i]);
-				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
+				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", i+1, media[3][i]);
+				fprintf(p, "Mergesort: %lf\t", tempo[0][i]/media[0][i]);
+				fprintf(p, "Coordenada Latex: (%d, %lf)\n", i+1, tempo[0][i]/media[0][i]);
+				if(!comparaString(tipo, (char*)"crescente") && !comparaString(tipo, (char*)"decrescente")){
+					fprintf(p, "Quicksort: %lf\t", tempo[1][i]/media[1][i]);
+					fprintf(p, "Coordenada Latex: (%d, %lf)\n", i+1,  tempo[1][i]/media[1][i]);
+				}
+				fprintf(p, "Introsort(std::sort): %lf\t", tempo[2][i]/media[2][i]);
+				fprintf(p, "Coordenada Latex: (%d, %lf)\n", i+1,  tempo[2][i]/media[2][i]);
+				fprintf(p, "Radixsort(d = 1): %lf\t", tempo[3][i]/media[3][i]);
+				fprintf(p, "Coordenada Latex: (%d, %lf)\n\n", i+1, tempo[3][i]/media[3][i]);
 			}
 				fclose(p);	
 		}
@@ -412,13 +420,16 @@ void normalizarResultados(){
 			}
 			printf("\n");
 			fclose(p);	
-			sprintf(arq, ".\\Final\\Relatorio_radix_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
+			sprintf(arq, ".\\%s\\Relatorio_radix_%s_%llu.txt", diretorio, tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
 			FILE * p = fopen(arq, "w");	
 			fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 			for(int i = 0; i < 20; i++){
-				fprintf(p, "Digitos do maior numero = %d\n", i+1);
-				for(int j = 0; j < 7; j++)
-					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
+				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", i+1, media[6][i]);
+				for(int j = 0; j < 7; j++){
+					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\t", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
+					fprintf(p, "Coordenada Latex tempo: (%d, %lf)\t", i+1, tempo[j][i]/media[j][i]);
+					fprintf(p, "Coordenada Latex memoria: (%d, %lf)\n", i+1, memoria[j][i]/media[j][i]);
+				}
 				fprintf(p, "\n");
 			}
 				fclose(p);	
@@ -460,14 +471,20 @@ void normalizarResultados(){
 				}
 				printf("\n");
 				fclose(p);	
-				sprintf(arq, ".\\Final\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
+				sprintf(arq, ".\\%s\\Relatorio_comparacao_%s_%llu.txt", diretorio, tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
 				FILE * p = fopen(arq, "w");	
 				fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
-				fprintf(p, "Digitos do maior numero = %d\n", qtd_digitos);
-				fprintf(p, "Mergesort: %lf\n", tempo[0]/media[0]);
-				fprintf(p, "Quicksort: %lf\n", tempo[1]/media[1]);
-				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2]/media[2]);
-				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3]/media[3]);
+				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", qtd_digitos, media[3]);
+				fprintf(p, "Mergesort: %lf\t", tempo[0]/media[0]);
+				fprintf(p, "Coordenada Latex: (%d, %lf)\n", qtd_digitos, tempo[0]/media[0]);
+				if(!comparaString(tipo, (char*)"crescente") && !comparaString(tipo, (char*)"decrescente")){
+					fprintf(p, "Quicksort: %lf\t", tempo[1]/media[1]);
+					fprintf(p, "Coordenada Latex: (%d, %lf)\n", qtd_digitos, tempo[1]/media[1]);
+				}
+				fprintf(p, "Introsort(std::sort): %lf\t", tempo[2]/media[2]);
+				fprintf(p, "Coordenada Latex: (%d, %lf)\n", qtd_digitos, tempo[2]/media[2]);
+				fprintf(p, "Radixsort(d = 1): %lf\t", tempo[3]/media[3]);
+				fprintf(p, "Coordenada Latex: (%d, %lf)\n\n", qtd_digitos, tempo[3]/media[3]);
 				fclose(p);	
 			}
 			
@@ -507,12 +524,15 @@ void normalizarResultados(){
 				}
 				printf("\n");
 				fclose(p);	
-				sprintf(arq, ".\\Final\\Relatorio_radix_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
+				sprintf(arq, ".\\%s\\Relatorio_radix_%s_%llu.txt", diretorio, tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
 				FILE * p = fopen(arq, "w");	
 				fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
-				fprintf(p, "Digitos do maior numero = %d\n", qtd_digitos);
-					for(int j = 0; j < 7; j++)
-						fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j]/media[j], memoria[j]/media[j]);
+				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", qtd_digitos, media[3]);
+					for(int j = 0; j < 7; j++){
+						fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\t", j+1, tempo[j]/media[j], memoria[j]/media[j]);
+						fprintf(p, "Coordenada Latex tempo: (%d, %lf)\t", j+1, tempo[j]/media[j]);
+						fprintf(p, "Coordenada Latex memoria: (%d, %lf)\n", j+1, memoria[j]/media[j]);
+					}
 					fprintf(p, "\n");
 				fclose(p);	
 			}
