@@ -32,7 +32,7 @@ int main(){//teste.txt
 		//printf("Iteracao %d concluida, a proxima iniciara em 10 segundos\n", i+1);
 		//Sleep(10000);
 	}
-	//normalizarResultados();
+	normalizarResultados();
 
     return 0;
 }
@@ -564,7 +564,7 @@ void normalizarResultados(){
 				for(int j = 0; j < 7; j++){
 					fprintf(p, "Coordenadas Tempo Latex Radixsort(d = %d):\n", j);
 					fprintf(p, "(%d,%lf)", j+1, tempo[j]/media[j]);
-					fprintf(p, "\n\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j);
+					fprintf(p, "\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j);
 					fprintf(p, "(%d,%lf)", j+1, memoria[j]/media[j]);
 					fprintf(p, "\n\n");
 				}
