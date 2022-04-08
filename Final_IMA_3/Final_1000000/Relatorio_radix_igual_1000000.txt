@@ -9,3 +9,45 @@ Radixsort(d = 5): 0.101291, usando 37.303735MB	Coordenada Latex tempo: (5, 0.101
 Radixsort(d = 6): 0.114993, usando 51.710683MB	Coordenada Latex tempo: (6, 0.114993)	Coordenada Latex memoria: (6, 51.710683)
 Radixsort(d = 7): 0.214679, usando 195.703223MB	Coordenada Latex tempo: (7, 0.214679)	Coordenada Latex memoria: (7, 195.703223)
 
+Coordenadas Tempo Latex Radixsort(d = 0):
+(1,0.393386)
+
+Coordenadas Memoria Latex Radixsort(d = 0):
+(1,35.668261)
+
+Coordenadas Tempo Latex Radixsort(d = 1):
+(2,0.217426)
+
+Coordenadas Memoria Latex Radixsort(d = 1):
+(2,35.700736)
+
+Coordenadas Tempo Latex Radixsort(d = 2):
+(3,0.159431)
+
+Coordenadas Memoria Latex Radixsort(d = 2):
+(3,35.702345)
+
+Coordenadas Tempo Latex Radixsort(d = 3):
+(4,0.119072)
+
+Coordenadas Memoria Latex Radixsort(d = 3):
+(4,35.860334)
+
+Coordenadas Tempo Latex Radixsort(d = 4):
+(5,0.101291)
+
+Coordenadas Memoria Latex Radixsort(d = 4):
+(5,37.303735)
+
+Coordenadas Tempo Latex Radixsort(d = 5):
+(6,0.114993)
+
+Coordenadas Memoria Latex Radixsort(d = 5):
+(6,51.710683)
+
+Coordenadas Tempo Latex Radixsort(d = 6):
+(7,0.214679)
+
+Coordenadas Memoria Latex Radixsort(d = 6):
+(7,195.703223)
+

@@ -1,122 +1,134 @@
 Entrada aleatoria de tamanho 100000000
 
 Digitos do maior numero = 1, tamanho da amostra = 1
-Mergesort: 47.742128	Coordenada Latex: (1, 47.742128)
-Quicksort: 5.423825	Coordenada Latex: (1, 5.423825)
-Introsort(std::sort): 60.746964	Coordenada Latex: (1, 60.746964)
-Radixsort(d = 1): 2.006532	Coordenada Latex: (1, 2.006532)
+Mergesort: 47.742128
+Quicksort: 5.423825
+Introsort(std::sort): 60.746964
+Radixsort(d = 1): 2.006532
 
 Digitos do maior numero = 2, tamanho da amostra = 1
-Mergesort: 76.856960	Coordenada Latex: (2, 76.856960)
-Quicksort: 19.376269	Coordenada Latex: (2, 19.376269)
-Introsort(std::sort): 88.109446	Coordenada Latex: (2, 88.109446)
-Radixsort(d = 1): 6.332125	Coordenada Latex: (2, 6.332125)
+Mergesort: 76.856960
+Quicksort: 19.376269
+Introsort(std::sort): 88.109446
+Radixsort(d = 1): 6.332125
 
 Digitos do maior numero = 3, tamanho da amostra = 1
-Mergesort: 87.986172	Coordenada Latex: (3, 87.986172)
-Quicksort: 45.839927	Coordenada Latex: (3, 45.839927)
-Introsort(std::sort): 101.158269	Coordenada Latex: (3, 101.158269)
-Radixsort(d = 1): 14.349879	Coordenada Latex: (3, 14.349879)
+Mergesort: 87.986172
+Quicksort: 45.839927
+Introsort(std::sort): 101.158269
+Radixsort(d = 1): 14.349879
 
 Digitos do maior numero = 4, tamanho da amostra = 1
-Mergesort: 98.814650	Coordenada Latex: (4, 98.814650)
-Quicksort: 83.899269	Coordenada Latex: (4, 83.899269)
-Introsort(std::sort): 111.814564	Coordenada Latex: (4, 111.814564)
-Radixsort(d = 1): 24.878421	Coordenada Latex: (4, 24.878421)
+Mergesort: 98.814650
+Quicksort: 83.899269
+Introsort(std::sort): 111.814564
+Radixsort(d = 1): 24.878421
 
 Digitos do maior numero = 5, tamanho da amostra = 1
-Mergesort: 98.814407	Coordenada Latex: (5, 98.814407)
-Quicksort: 112.777804	Coordenada Latex: (5, 112.777804)
-Introsort(std::sort): 115.592405	Coordenada Latex: (5, 115.592405)
-Radixsort(d = 1): 36.343788	Coordenada Latex: (5, 36.343788)
+Mergesort: 98.814407
+Quicksort: 112.777804
+Introsort(std::sort): 115.592405
+Radixsort(d = 1): 36.343788
 
 Digitos do maior numero = 6, tamanho da amostra = 1
-Mergesort: 96.972892	Coordenada Latex: (6, 96.972892)
-Quicksort: 137.033153	Coordenada Latex: (6, 137.033153)
-Introsort(std::sort): 117.187696	Coordenada Latex: (6, 117.187696)
-Radixsort(d = 1): 49.513955	Coordenada Latex: (6, 49.513955)
+Mergesort: 96.972892
+Quicksort: 137.033153
+Introsort(std::sort): 117.187696
+Radixsort(d = 1): 49.513955
 
 Digitos do maior numero = 7, tamanho da amostra = 1
-Mergesort: 89.697314	Coordenada Latex: (7, 89.697314)
-Quicksort: 141.509723	Coordenada Latex: (7, 141.509723)
-Introsort(std::sort): 118.869151	Coordenada Latex: (7, 118.869151)
-Radixsort(d = 1): 64.228962	Coordenada Latex: (7, 64.228962)
+Mergesort: 89.697314
+Quicksort: 141.509723
+Introsort(std::sort): 118.869151
+Radixsort(d = 1): 64.228962
 
 Digitos do maior numero = 8, tamanho da amostra = 1
-Mergesort: 85.515419	Coordenada Latex: (8, 85.515419)
-Quicksort: 150.906671	Coordenada Latex: (8, 150.906671)
-Introsort(std::sort): 113.604627	Coordenada Latex: (8, 113.604627)
-Radixsort(d = 1): 76.418924	Coordenada Latex: (8, 76.418924)
+Mergesort: 85.515419
+Quicksort: 150.906671
+Introsort(std::sort): 113.604627
+Radixsort(d = 1): 76.418924
 
 Digitos do maior numero = 9, tamanho da amostra = 1
-Mergesort: 87.436129	Coordenada Latex: (9, 87.436129)
-Quicksort: 161.527260	Coordenada Latex: (9, 161.527260)
-Introsort(std::sort): 113.579453	Coordenada Latex: (9, 113.579453)
-Radixsort(d = 1): 91.778627	Coordenada Latex: (9, 91.778627)
+Mergesort: 87.436129
+Quicksort: 161.527260
+Introsort(std::sort): 113.579453
+Radixsort(d = 1): 91.778627
 
 Digitos do maior numero = 10, tamanho da amostra = 1
-Mergesort: 84.964079	Coordenada Latex: (10, 84.964079)
-Quicksort: 156.419151	Coordenada Latex: (10, 156.419151)
-Introsort(std::sort): 113.806993	Coordenada Latex: (10, 113.806993)
-Radixsort(d = 1): 106.300350	Coordenada Latex: (10, 106.300350)
+Mergesort: 84.964079
+Quicksort: 156.419151
+Introsort(std::sort): 113.806993
+Radixsort(d = 1): 106.300350
 
 Digitos do maior numero = 11, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (11, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (11, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (11, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (11, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 12, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (12, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (12, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (12, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (12, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 13, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (13, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (13, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (13, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (13, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 14, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (14, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (14, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (14, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (14, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 15, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (15, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (15, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (15, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (15, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 16, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (16, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (16, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (16, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (16, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 17, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (17, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (17, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (17, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (17, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 18, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (18, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (18, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (18, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (18, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 19, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (19, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (19, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (19, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (19, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
 
 Digitos do maior numero = 20, tamanho da amostra = 0
-Mergesort: -1.#IND00	Coordenada Latex: (20, -1.#IND00)
-Quicksort: -1.#IND00	Coordenada Latex: (20, -1.#IND00)
-Introsort(std::sort): -1.#IND00	Coordenada Latex: (20, -1.#IND00)
-Radixsort(d = 1): -1.#IND00	Coordenada Latex: (20, -1.#IND00)
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
+
+Coordenadas Latex Mergesort:
+(1,47.742128)(2,76.856960)(3,87.986172)(4,98.814650)(5,98.814407)(6,96.972892)(7,89.697314)(8,85.515419)(9,87.436129)(10,84.964079)(11,-1.#IND00)(12,-1.#IND00)(13,-1.#IND00)(14,-1.#IND00)(15,-1.#IND00)(16,-1.#IND00)(17,-1.#IND00)(18,-1.#IND00)(19,-1.#IND00)(20,-1.#IND00)
+
+Coordenadas Latex Quicksort:
+(1,5.423825)(2,19.376269)(3,45.839927)(4,83.899269)(5,112.777804)(6,137.033153)(7,141.509723)(8,150.906671)(9,161.527260)(10,156.419151)(11,-1.#IND00)(12,-1.#IND00)(13,-1.#IND00)(14,-1.#IND00)(15,-1.#IND00)(16,-1.#IND00)(17,-1.#IND00)(18,-1.#IND00)(19,-1.#IND00)(20,-1.#IND00)
+
+Coordenadas Latex Introsort:
+(1,60.746964)(2,88.109446)(3,101.158269)(4,111.814564)(5,115.592405)(6,117.187696)(7,118.869151)(8,113.604627)(9,113.579453)(10,113.806993)(11,-1.#IND00)(12,-1.#IND00)(13,-1.#IND00)(14,-1.#IND00)(15,-1.#IND00)(16,-1.#IND00)(17,-1.#IND00)(18,-1.#IND00)(19,-1.#IND00)(20,-1.#IND00)
+
+Coordenadas Latex Radixsort:
+(1,2.006532)(2,6.332125)(3,14.349879)(4,24.878421)(5,36.343788)(6,49.513955)(7,64.228962)(8,76.418924)(9,91.778627)(10,106.300350)(11,-1.#IND00)(12,-1.#IND00)(13,-1.#IND00)(14,-1.#IND00)(15,-1.#IND00)(16,-1.#IND00)(17,-1.#IND00)(18,-1.#IND00)(19,-1.#IND00)(20,-1.#IND00)
 
