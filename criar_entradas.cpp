@@ -55,6 +55,8 @@ int main(){
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
         printf("Maior numero %llu...", MAXN-1);
 		gravar_entrada_igual(t,MAXN-1);//entradas iguais com o maior numero possivel
+        printf("Maior numero %llu...", t);
+		gravar_entrada_igual(t,t-1);//entradas iguais com t-1
 		gravar_entrada_pior_caso(t);
         printf("Maior numero %llu...", t-1);
 		gravar_entrada_crescente(t);
@@ -68,19 +70,33 @@ int main(){
 }
 
 void gravar_entrada_aleatoria(unsigned long long t,unsigned long long n){
+	int rep;//variavel para gerar multiplas entradas
+	if(t == MINN)
+		rep = 10;
+	else if(t < MAXN)
+		rep = 5;
+	else if(t == MAXN)
+		rep = 2;
+	else
+		rep = 1;
+		
 	unsigned long long j;//contador para gerar n numeros
 	char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
 	srand(time(NULL));
 	CreateDirectory("entradas_aleatorias", NULL);//cria o diretorio se nao existir
-    conta_aleatoria++;
-	sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", conta_aleatoria);//caminho da entrada
-	FILE * p = criar_arquivo(arq);
-    for(j = 0; j < t; j++)
-        fprintf(p, "%llu\n", rand() * rand() * rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
-	fclose(p);
-	if(sob)
-    	fprintf(info, "aleatorias aleatoria %d %llu %llu\n", conta_aleatoria, t, n);//salva entrada no arquivo que armazena as entradas criadas
-	printf("Aleatoria %d salva\n", conta_aleatoria);//feedback visual
+	for(int i = 0; i <= rep; i++){
+	    conta_aleatoria++;
+		sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", conta_aleatoria);//caminho da entrada
+		FILE * p = criar_arquivo(arq);
+		if(p!=NULL){//p = NULL, entrada já existe então pula
+		    for(j = 0; j < t; j++)
+		        fprintf(p, "%llu\n", (0llu + rand()) * rand() * rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
+			fclose(p);
+			if(sob)
+		    	fprintf(info, "aleatorias aleatoria %d %llu %llu\n", conta_aleatoria, t, n);//salva entrada no arquivo que armazena as entradas criadas  	
+			printf("Aleatoria %d salva\n", conta_aleatoria);//feedback visual
+		}
+	}
 	free(arq);
 }
 
@@ -146,7 +162,7 @@ void gravar_entrada_pior_caso(unsigned long long t){
 	sprintf(arq, ".\\entradas_complexas\\entrada_complexa_%d.txt", conta_pior_caso);
     FILE * p = criar_arquivo(arq);
     for(j = 0; j < t; j++)
-         fprintf(p, "%llu\n" , 10000000000000000000llu + rand() *  rand() *  rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
+         fprintf(p, "%llu\n" , (10000000000000000000llu + rand()) *  rand() *  rand() % n);//salva cada elemento gerado aleatóriamente seguido de ;
     fclose(p);
 	if(sob)
     	fprintf(info, "complexas complexa %d %llu %llu\n", conta_pior_caso, t, MAXN);//salva entrada no arquivo que armazena as entradas criadas
@@ -156,7 +172,8 @@ void gravar_entrada_pior_caso(unsigned long long t){
 
 FILE * criar_arquivo(char * arq){
     FILE * p;
-    p =  fopen(arq,"w");
-    p =  fopen(arq,"a");
+    p =  fopen(arq,"r");
+    if(p==NULL || sob)
+    	p =  fopen(arq,"w");
     return p;
 }

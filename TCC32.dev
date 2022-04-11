@@ -29,7 +29,7 @@ IncludeVersionInfo=0
 SupportXPThemes=0
 CompilerSet=3
 CompilerSettings=0000000100000000000000000
-UnitCount=12
+UnitCount=10
 
 [VersionInfo]
 Major=1
@@ -141,7 +141,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=gfg_merge.cpp
+FileName=executa_algoritmos.cpp
 CompileCpp=1
 Folder=
 Compile=1
