@@ -22,10 +22,6 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     QueryPerformanceFrequency(&frequency);
     QueryPerformanceCounter(&start);
     
-    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
-    GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
-    SIZE_T m0 = pmc.WorkingSetSize;//Salva a memória alocada por essa entrada no comeco do programa
-    
 	if(d < 1)//menor digito possivel e 1
 		exit(1);
     if(l->raiz == NULL)//Lista vazia
@@ -100,8 +96,10 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
             }
     }
     
+    
+    PROCESS_MEMORY_COUNTERS pmc;//variavel para acessar os dados da memoria primaria
     GetProcessMemoryInfo(GetCurrentProcess(), &pmc, sizeof(pmc));//Coleta os dados da memoria do processo
-    l->memoria = (double) (pmc.WorkingSetSize- m0)/1000000 ;//Salva a memória alocada por essa entrada antes de ser liberada
+    l->memoria = (double) pmc.WorkingSetSize/1000000;//Salva a memória alocada por essa entrada antes de ser liberada
     
 	for(unsigned long long i = 0; i < qtd_baldes; i++){//aponta os baldes final para NULL
 		baldes_final[i] = NULL;
