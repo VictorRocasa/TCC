@@ -22,8 +22,7 @@ int main(){//teste.txt
 	//provaDeOrdenacao();
 	for(int i = 0; i < 10; i++){//loop para gerar 10 relatorios
 		//printf("Iteracao %d\n", i+1);
-		//gera_relatorios(10000, NULL, i);
-		//gera_relatorios(1000000, NULL, i);//executa todas as entradas de tamanho = 1000000
+		gera_relatorios(1000000, NULL, i);//executa todas as entradas de tamanho = 1000000
 		//gera_relatorios(10000000, NULL);//executa todas as entradas de tamanho = 10000000
 	 	//gera_relatorios(100000000llu, (char *)"complexa");//executa todas as entradas complexas de tamanho = 100000000
 		////gera_relatorios(100000000llu, (char *)"crescente");//executa todas as entradas complexas de tamanho = 100000000

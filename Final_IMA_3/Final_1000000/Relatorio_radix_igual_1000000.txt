@@ -1,53 +1,69 @@
 Entrada igual de tamanho 1000000
 
+Digitos do maior numero = 20, tamanho da amostra = 0
+Radixsort(d = 1): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+Radixsort(d = 2): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+Radixsort(d = 3): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+Radixsort(d = 4): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+Radixsort(d = 5): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+Radixsort(d = 6): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+Radixsort(d = 7): -1.#IND00, usando -1.#IND00MB	Coordenada Latex tempo: (1, -1.#IND00)	Coordenada Latex memoria: (1, -1.#IND00)
+
 Digitos do maior numero = 20, tamanho da amostra = 28
-Radixsort(d = 1): 0.393386, usando 35.668261MB	Coordenada Latex tempo: (1, 0.393386)	Coordenada Latex memoria: (1, 35.668261)
+Radixsort(d = 1): 0.393386, usando 35.668261MB	Coordenada Latex tempo: (2, 0.393386)	Coordenada Latex memoria: (2, 35.668261)
 Radixsort(d = 2): 0.217426, usando 35.700736MB	Coordenada Latex tempo: (2, 0.217426)	Coordenada Latex memoria: (2, 35.700736)
-Radixsort(d = 3): 0.159431, usando 35.702345MB	Coordenada Latex tempo: (3, 0.159431)	Coordenada Latex memoria: (3, 35.702345)
-Radixsort(d = 4): 0.119072, usando 35.860334MB	Coordenada Latex tempo: (4, 0.119072)	Coordenada Latex memoria: (4, 35.860334)
-Radixsort(d = 5): 0.101291, usando 37.303735MB	Coordenada Latex tempo: (5, 0.101291)	Coordenada Latex memoria: (5, 37.303735)
-Radixsort(d = 6): 0.114993, usando 51.710683MB	Coordenada Latex tempo: (6, 0.114993)	Coordenada Latex memoria: (6, 51.710683)
-Radixsort(d = 7): 0.214679, usando 195.703223MB	Coordenada Latex tempo: (7, 0.214679)	Coordenada Latex memoria: (7, 195.703223)
+Radixsort(d = 3): 0.159431, usando 35.702345MB	Coordenada Latex tempo: (2, 0.159431)	Coordenada Latex memoria: (2, 35.702345)
+Radixsort(d = 4): 0.119072, usando 35.860334MB	Coordenada Latex tempo: (2, 0.119072)	Coordenada Latex memoria: (2, 35.860334)
+Radixsort(d = 5): 0.101291, usando 37.303735MB	Coordenada Latex tempo: (2, 0.101291)	Coordenada Latex memoria: (2, 37.303735)
+Radixsort(d = 6): 0.114993, usando 51.710683MB	Coordenada Latex tempo: (2, 0.114993)	Coordenada Latex memoria: (2, 51.710683)
+Radixsort(d = 7): 0.214679, usando 195.703223MB	Coordenada Latex tempo: (2, 0.214679)	Coordenada Latex memoria: (2, 195.703223)
+
 
 Coordenadas Tempo Latex Radixsort(d = 0):
-(1,0.393386)
+(1,-1.#IND00)(2,0.393386)
 
 Coordenadas Memoria Latex Radixsort(d = 0):
-(1,35.668261)
+(1,-1.#IND00)(2,35.668261)
+
 
 Coordenadas Tempo Latex Radixsort(d = 1):
-(2,0.217426)
+(1,-1.#IND00)(2,0.217426)
 
 Coordenadas Memoria Latex Radixsort(d = 1):
-(2,35.700736)
+(1,-1.#IND00)(2,35.700736)
+
 
 Coordenadas Tempo Latex Radixsort(d = 2):
-(3,0.159431)
+(1,-1.#IND00)(2,0.159431)
 
 Coordenadas Memoria Latex Radixsort(d = 2):
-(3,35.702345)
+(1,-1.#IND00)(2,35.702345)
+
 
 Coordenadas Tempo Latex Radixsort(d = 3):
-(4,0.119072)
+(1,-1.#IND00)(2,0.119072)
 
 Coordenadas Memoria Latex Radixsort(d = 3):
-(4,35.860334)
+(1,-1.#IND00)(2,35.860334)
+
 
 Coordenadas Tempo Latex Radixsort(d = 4):
-(5,0.101291)
+(1,-1.#IND00)(2,0.101291)
 
 Coordenadas Memoria Latex Radixsort(d = 4):
-(5,37.303735)
+(1,-1.#IND00)(2,37.303735)
+
 
 Coordenadas Tempo Latex Radixsort(d = 5):
-(6,0.114993)
+(1,-1.#IND00)(2,0.114993)
 
 Coordenadas Memoria Latex Radixsort(d = 5):
-(6,51.710683)
+(1,-1.#IND00)(2,51.710683)
+
 
 Coordenadas Tempo Latex Radixsort(d = 6):
-(7,0.214679)
+(1,-1.#IND00)(2,0.214679)
 
 Coordenadas Memoria Latex Radixsort(d = 6):
-(7,195.703223)
+(1,-1.#IND00)(2,195.703223)
 

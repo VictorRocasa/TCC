@@ -1,53 +1,46 @@
 Entrada decrescente de tamanho 10000000
 
 Digitos do maior numero = 7, tamanho da amostra = 11
-Radixsort(d = 1): 3.429725, usando 328.327913MB	Coordenada Latex tempo: (1, 3.429725)	Coordenada Latex memoria: (1, 328.327913)
-Radixsort(d = 2): 1.728906, usando 328.327168MB	Coordenada Latex tempo: (2, 1.728906)	Coordenada Latex memoria: (2, 328.327168)
-Radixsort(d = 3): 1.409530, usando 328.329402MB	Coordenada Latex tempo: (3, 1.409530)	Coordenada Latex memoria: (3, 328.329402)
-Radixsort(d = 4): 0.822395, usando 328.527127MB	Coordenada Latex tempo: (4, 0.822395)	Coordenada Latex memoria: (4, 328.527127)
-Radixsort(d = 5): 0.687157, usando 329.918278MB	Coordenada Latex tempo: (5, 0.687157)	Coordenada Latex memoria: (5, 329.918278)
-Radixsort(d = 6): 0.429021, usando 344.335825MB	Coordenada Latex tempo: (6, 0.429021)	Coordenada Latex memoria: (6, 344.335825)
-Radixsort(d = 7): 0.555446, usando 488.351185MB	Coordenada Latex tempo: (7, 0.555446)	Coordenada Latex memoria: (7, 488.351185)
+Radixsort(d = 1): 3.429725, usando 328.327913MB
+Radixsort(d = 2): 1.728906, usando 328.327168MB
+Radixsort(d = 3): 1.409530, usando 328.329402MB
+Radixsort(d = 4): 0.822395, usando 328.527127MB
+Radixsort(d = 5): 0.687157, usando 329.918278MB
+Radixsort(d = 6): 0.429021, usando 344.335825MB
+Radixsort(d = 7): 0.555446, usando 488.351185MB
 
 Coordenadas Tempo Latex Radixsort(d = 0):
 (1,3.429725)
-
 Coordenadas Memoria Latex Radixsort(d = 0):
 (1,328.327913)
 
 Coordenadas Tempo Latex Radixsort(d = 1):
 (2,1.728906)
-
 Coordenadas Memoria Latex Radixsort(d = 1):
 (2,328.327168)
 
 Coordenadas Tempo Latex Radixsort(d = 2):
 (3,1.409530)
-
 Coordenadas Memoria Latex Radixsort(d = 2):
 (3,328.329402)
 
 Coordenadas Tempo Latex Radixsort(d = 3):
 (4,0.822395)
-
 Coordenadas Memoria Latex Radixsort(d = 3):
 (4,328.527127)
 
 Coordenadas Tempo Latex Radixsort(d = 4):
 (5,0.687157)
-
 Coordenadas Memoria Latex Radixsort(d = 4):
 (5,329.918278)
 
 Coordenadas Tempo Latex Radixsort(d = 5):
 (6,0.429021)
-
 Coordenadas Memoria Latex Radixsort(d = 5):
 (6,344.335825)
 
 Coordenadas Tempo Latex Radixsort(d = 6):
 (7,0.555446)
-
 Coordenadas Memoria Latex Radixsort(d = 6):
 (7,488.351185)
 

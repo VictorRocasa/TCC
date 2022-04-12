@@ -46,12 +46,12 @@ int main(){
 		unsigned long long maxn = MAXN/10;//criterio de parada
 		unsigned long long n = MINN;
         for(; n < maxn; n *= 10){//valor de n variando de <10 a <MAXN
-        	printf("Maior numero %llu...", n-1);
+        	printf("Maior numero %llu\n", n-1);
             gravar_entrada_aleatoria(t,n);
         }
-        printf("Maior numero %llu...", n-1);
+        printf("Maior numero %llu\n", n-1);
         gravar_entrada_aleatoria(t,n);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
-        printf("Maior numero %llu...", MAXN-1);
+        printf("Maior numero %llu\n", MAXN-1);
         gravar_entrada_aleatoria(t,MAXN);//valor de n = MAXN(sai do loop antes de chegar a MAXN)
         printf("Maior numero %llu...", MAXN-1);
 		gravar_entrada_igual(t,MAXN-1);//entradas iguais com o maior numero possivel
@@ -71,11 +71,12 @@ int main(){
 
 void gravar_entrada_aleatoria(unsigned long long t,unsigned long long n){
 	int rep;//variavel para gerar multiplas entradas
-	if(t == MINN)
+
+	if(t == MINT)
 		rep = 10;
-	else if(t < MAXN)
+	else if(t < MAXT)
 		rep = 5;
-	else if(t == MAXN)
+	else if(t == MAXT)
 		rep = 2;
 	else
 		rep = 1;
@@ -84,7 +85,7 @@ void gravar_entrada_aleatoria(unsigned long long t,unsigned long long n){
 	char * arq = (char*)malloc(256*sizeof(char));//string para guardar o caminho da entrada
 	srand(time(NULL));
 	CreateDirectory("entradas_aleatorias", NULL);//cria o diretorio se nao existir
-	for(int i = 0; i <= rep; i++){
+	for(int i = 0; i < rep; i++){
 	    conta_aleatoria++;
 		sprintf(arq, ".\\entradas_aleatorias\\entrada_aleatoria_%d.txt", conta_aleatoria);//caminho da entrada
 		FILE * p = criar_arquivo(arq);

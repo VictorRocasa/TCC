@@ -1,13 +1,10 @@
 Entrada decrescente de tamanho 1000000
 
 Digitos do maior numero = 6, tamanho da amostra = 28
-Mergesort: 0.121266	Introsort(std::sort): 0.233854	Radixsort(d = 1): 0.249268	Coordenadas Latex Mergesort:
+Mergesort: 0.121266
+Introsort(std::sort): 0.233854
+Radixsort(d = 1): 0.249268
+
+Coordenadas Latex Mergesort:
 (6,0.121266)
-
-Coordenadas Latex Introsort:
-(6,0.233854)
-
-
-Coordenadas Latex Radixsort:
-(6,0.249268)
 

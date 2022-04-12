@@ -1,16 +1,26 @@
 Entrada igual de tamanho 1000000
 
+Digitos do maior numero = 20, tamanho da amostra = 0
+Mergesort: -1.#IND00
+Quicksort: -1.#IND00
+Introsort(std::sort): -1.#IND00
+Radixsort(d = 1): -1.#IND00
+
 Digitos do maior numero = 20, tamanho da amostra = 28
-Mergesort: 0.122489	Quicksort: 0.009302	Introsort(std::sort): 0.186924	Radixsort(d = 1): 0.393386	Coordenadas Latex Mergesort:
-(20,0.122489)
+Mergesort: 0.122489
+Quicksort: 0.009302
+Introsort(std::sort): 0.186924
+Radixsort(d = 1): 0.393386
+
+Coordenadas Latex Mergesort:
+(1,-1.#IND00)(2,0.122489)
 
 Coordenadas Latex Quicksort:
-(20,0.009302)
+(1,-1.#IND00)(2,0.009302)
 
 Coordenadas Latex Introsort:
-(20,0.186924)
-
+(1,-1.#IND00)(2,0.186924)
 
 Coordenadas Latex Radixsort:
-(20,0.393386)
+(1,-1.#IND00)(2,0.393386)
 

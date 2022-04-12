@@ -1,16 +1,14 @@
 Entrada complexa de tamanho 1000000
 
 Digitos do maior numero = 20, tamanho da amostra = 31
-Mergesort: 0.376740	Quicksort: 0.655364	Introsort(std::sort): 0.557376	Radixsort(d = 1): 1.702592	Coordenadas Latex Mergesort:
+Mergesort: 0.376740
+Quicksort: 0.655364
+Introsort(std::sort): 0.557376
+Radixsort(d = 1): 1.702592
+
+Coordenadas Latex Mergesort:
 (20,0.376740)
 
 Coordenadas Latex Quicksort:
 (20,0.655364)
-
-Coordenadas Latex Introsort:
-(20,0.557376)
-
-
-Coordenadas Latex Radixsort:
-(20,1.702592)
 

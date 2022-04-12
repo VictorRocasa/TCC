@@ -1,13 +1,10 @@
 Entrada crescente de tamanho 10000000
 
 Digitos do maior numero = 7, tamanho da amostra = 11
-Mergesort: 1.392729	Introsort(std::sort): 2.092383	Radixsort(d = 1): 3.379424	Coordenadas Latex Mergesort:
+Mergesort: 1.392729
+Introsort(std::sort): 2.092383
+Radixsort(d = 1): 3.379424
+
+Coordenadas Latex Mergesort:
 (7,1.392729)
-
-Coordenadas Latex Introsort:
-(7,2.092383)
-
-
-Coordenadas Latex Radixsort:
-(7,3.379424)
 
