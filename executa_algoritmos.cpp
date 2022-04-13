@@ -20,7 +20,7 @@ int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas
 
 int main(){//teste.txt
 	//provaDeOrdenacao();
-	for(int i = 0; i < 10; i++){//loop para gerar 10 relatorios
+	for(int i = 1; i <= 1; i++){//loop para gerar 10 relatorios
 		//printf("Iteracao %d\n", i+1);
 		gera_relatorios(1000000, NULL, i);//executa todas as entradas de tamanho = 1000000
 		//gera_relatorios(10000000, NULL);//executa todas as entradas de tamanho = 10000000
@@ -145,7 +145,6 @@ void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequerido, 
     char * tipo = (char*)malloc(128*sizeof(char));//nome dodo tipo da entrada para gerar o endereco
     char * arq = (char*)malloc(256*sizeof(char));//string de arquivo
     unsigned long long tamanho;//tamanho da entrada
-    unsigned long long maior_numero;//numero de digitos do maior numero da entrada
     int qtd_digitos;
 	int i;//numero da entrada
     lista * entrada = inicia_lista();//cabeca da lista que será usada para guardar as entradas e depois ser ordenada. Serve para coletar informacoes das funcoes	
@@ -160,9 +159,8 @@ void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequerido, 
 			return;
 		}
 		
-		sscanf(cab, "%s %s %d %llu %llu", diretorio, tipo, &i, &tamanho, &maior_numero);
+		sscanf(cab, "%s %s %d %llu %d", diretorio, tipo, &i, &tamanho, &qtd_digitos);
 		if((tamanho == tamanhoRequerido || tamanhoRequerido == 0) && (comparaString(tipoRequerido,tipo) || tipoRequerido == NULL)){//executa apenas as entradas de tamanho e tipo especificado. 0 ignora tamanho e NULL tipo
-			qtd_digitos = conta_digitos(maior_numero-1);//maior numero é o limite superior da rand, logo -1 ex: 1000 = 3 e 1001 = 4
 		    sprintf(arq, ".\\dados\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
 			p =  fopen(arq,"a");//abre o arquivo para adicionar dados da execucao
 		    sprintf(arq, ".\\dados\\Relatorio_radix_%s_%llu.txt", tipo, tamanho);//cria um relatorio csv com dados das execucoes do radix para cada entrada de um certo tipo e tamanho: DigitosRadix;DigitosMaiorNumero;Tempo;Memoria
