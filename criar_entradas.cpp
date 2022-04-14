@@ -63,8 +63,6 @@ int main(){
         printf("%d-0...", t-1);
 		gravar_entrada_decrescente(t);
 		printf("\n");
-	fclose(info);
-		return 0;
 	}
 	fclose(info);
 

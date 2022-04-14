@@ -1,0 +1,46 @@
+Entrada crescente de tamanho 1000000
+
+Digitos do maior numero = 1000000, tamanho da amostra = 10
+Radixsort(d = 1): 0.132427, usando 40.770355MB
+Radixsort(d = 2): 0.075469, usando 40.770765MB
+Radixsort(d = 3): 0.046882, usando 40.777728MB
+Radixsort(d = 4): 0.040986, usando 40.809267MB
+Radixsort(d = 5): 0.025550, usando 41.112781MB
+Radixsort(d = 6): 0.028593, usando 56.959795MB
+Radixsort(d = 7): 0.081798, usando 200.958771MB
+
+Coordenadas Tempo Latex Radixsort(d = 0):
+(1,0.132427)
+Coordenadas Memoria Latex Radixsort(d = 0):
+(1,40.770355)
+
+Coordenadas Tempo Latex Radixsort(d = 1):
+(2,0.075469)
+Coordenadas Memoria Latex Radixsort(d = 1):
+(2,40.770765)
+
+Coordenadas Tempo Latex Radixsort(d = 2):
+(3,0.046882)
+Coordenadas Memoria Latex Radixsort(d = 2):
+(3,40.777728)
+
+Coordenadas Tempo Latex Radixsort(d = 3):
+(4,0.040986)
+Coordenadas Memoria Latex Radixsort(d = 3):
+(4,40.809267)
+
+Coordenadas Tempo Latex Radixsort(d = 4):
+(5,0.025550)
+Coordenadas Memoria Latex Radixsort(d = 4):
+(5,41.112781)
+
+Coordenadas Tempo Latex Radixsort(d = 5):
+(6,0.028593)
+Coordenadas Memoria Latex Radixsort(d = 5):
+(6,56.959795)
+
+Coordenadas Tempo Latex Radixsort(d = 6):
+(7,0.081798)
+Coordenadas Memoria Latex Radixsort(d = 6):
+(7,200.958771)
+

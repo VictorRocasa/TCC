@@ -21,18 +21,15 @@ int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas
 int main(){//teste.txt
 	//provaDeOrdenacao();
 	for(int i = 1; i <= 1; i++){//loop para gerar 10 relatorios
-		//printf("Iteracao %d\n", i+1);
-		gera_relatorios(1000000, NULL, i);//executa todas as entradas de tamanho = 1000000
-		//gera_relatorios(10000000, NULL);//executa todas as entradas de tamanho = 10000000
-	 	//gera_relatorios(100000000llu, (char *)"complexa");//executa todas as entradas complexas de tamanho = 100000000
-		////gera_relatorios(100000000llu, (char *)"crescente");//executa todas as entradas complexas de tamanho = 100000000
-		//gera_relatorios(100000000llu, (char *)"decrescente");//executa todas as entradas complexas de tamanho = 100000000
-		//gera_relatorios(100000000llu, (char *)"igual");//executa todas as entradas complexas de tamanho = 100000000
-		//gera_relatorios(100000000, (char *)"aleatoria");//executa todas as entradas complexas de tamanho = 100000000
-		//printf("Iteracao %d concluida, a proxima iniciara em 10 segundos\n", i+1);
-		//Sleep(10000);
+		//gera_relatorios(1000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000
+	 	//gera_relatorios(10000000llu, (char *)"complexa", i);//executa todas as entradas complexas de tamanho = 100000000
+		//gera_relatorios(10000000llu, (char *)"crescente", i);//executa todas as entradas complexas de tamanho = 100000000
+		//gera_relatorios(10000000llu, (char *)"decrescente", i);//executa todas as entradas complexas de tamanho = 100000000
+		//gera_relatorios(10000000llu, (char *)"igual", i);//executa todas as entradas complexas de tamanho = 100000000
+		//gera_relatorios(10000000llu, (char *)"aleatoria", i);//executa todas as entradas complexas de tamanho = 100000000/
 	}
 	normalizarResultados();
+  	system("c:\\windows\\system32\\shutdown /s");
 
     return 0;
 }
@@ -434,21 +431,25 @@ void normalizarResultados(){
 			for(int i = 0; i < 20; i++){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", i+1, media[6][i]);
 				for(int j = 0; j < 7; j++){
-					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\t", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
-					fprintf(p, "Coordenada Latex tempo: (%d, %lf)\t", i+1, tempo[j][i]/media[j][i]);
-					fprintf(p, "Coordenada Latex memoria: (%d, %lf)\n", i+1, memoria[j][i]/media[j][i]);
+					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
 				}
 				fprintf(p, "\n");
 			}
+			
 			for(int j = 0; j < 7; j++){
-				fprintf(p, "\nCoordenadas Tempo Latex Radixsort(d = %d):\n", j);
+				fprintf(p, "\nCoordenadas Tempo Latex Radixsort(d = %d):\n", j+1);
 				for(int i = 0; i < 20; i++)
 					fprintf(p, "(%d,%lf)", i+1, tempo[j][i]/media[j][i]);
-				fprintf(p, "\n\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j);
+				fprintf(p, "\n");
+			}
+			
+			for(int j = 0; j < 7; j++){
+				fprintf(p, "\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j+1);
 				for(int i = 0; i < 20; i++)
 					fprintf(p, "(%d,%lf)", i+1, memoria[j][i]/media[j][i]);
-				fprintf(p, "\n\n");
+				fprintf(p, "\n");
 			}
+			
 			fclose(p);	
 		}
 		
@@ -574,18 +575,16 @@ void normalizarResultados(){
 			for(int i = 0; i < 2; i++){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", real, media[6][i]);
 				for(int j = 0; j < 7; j++){
-					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\t", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
-					fprintf(p, "Coordenada Latex tempo: (%d, %lf)\t", i+1, tempo[j][i]/media[j][i]);
-					fprintf(p, "Coordenada Latex memoria: (%d, %lf)\n", i+1, memoria[j][i]/media[j][i]);
+					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
 					real = 20;
 				}
 				fprintf(p, "\n");
 			}
 			for(int j = 0; j < 7; j++){
-				fprintf(p, "\nCoordenadas Tempo Latex Radixsort(d = %d):\n", j);
+				fprintf(p, "\nCoordenadas Tempo Latex Radixsort(d = %d):\n", j+1);
 				for(int i = 0; i < 2; i++)
 					fprintf(p, "(%d,%lf)", i+1, tempo[j][i]/media[j][i]);
-				fprintf(p, "\n\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j);
+				fprintf(p, "\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j+1);
 				for(int i = 0; i < 2; i++)
 					fprintf(p, "(%d,%lf)", i+1, memoria[j][i]/media[j][i]);
 				fprintf(p, "\n\n");
