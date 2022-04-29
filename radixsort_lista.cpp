@@ -67,7 +67,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
             baldes_raiz[i]=NULL;//"limpa" os baldes de raiz dentro da iteracao
         }
     int qtd_digitos_maior_numero = conta_digitos(maior);
-    for(int j = 1; j < qtd_digitos_maior_numero; j+=d)//mesma coisa que o loop acima, exceto a parte de pegar o maior
+    for(int j = d; j < qtd_digitos_maior_numero; j+=d)//mesma coisa que o loop acima, exceto a parte de pegar o maior
     {
 	    divisor *= qtd_baldes;//atualiza o divisor para a proxima iteracao
 	    modulador *= qtd_baldes;//atualiza o modulador para a proxima iteracao
