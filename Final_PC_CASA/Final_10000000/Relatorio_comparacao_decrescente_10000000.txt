@@ -1,10 +1,10 @@
 Entrada decrescente de tamanho 10000000
 
-Digitos do maior numero = 10000000, tamanho da amostra = 10
-Mergesort: 0.747413
-Introsort(std::sort): 1.742935
-Radixsort(d = 1): 3.186811
+Digitos do maior numero = 8, tamanho da amostra = 10
+Mergesort: 0.750170
+Introsort(std::sort): 1.908231
+Radixsort(d = 1): 3.138003
 
 Coordenadas Latex Mergesort:
-(10000000,0.747413)
+(8,0.750170)
 

@@ -1,46 +1,46 @@
 Entrada decrescente de tamanho 10000000
 
-Digitos do maior numero = 10000000, tamanho da amostra = 10
-Radixsort(d = 1): 3.186811, usando 329.184461MB
-Radixsort(d = 2): 1.534791, usando 329.313894MB
-Radixsort(d = 3): 0.850102, usando 329.367552MB
-Radixsort(d = 4): 0.677359, usando 329.408512MB
-Radixsort(d = 5): 0.642188, usando 330.981376MB
-Radixsort(d = 6): 0.343301, usando 345.296486MB
-Radixsort(d = 7): 0.338258, usando 489.299149MB
+Digitos do maior numero = 8, tamanho da amostra = 10
+Radixsort(d = 1): 3.138003, usando 329.804186MB
+Radixsort(d = 2): 1.519173, usando 329.812787MB
+Radixsort(d = 3): 0.840217, usando 329.810739MB
+Radixsort(d = 4): 0.550291, usando 329.980723MB
+Radixsort(d = 5): 0.517824, usando 331.417600MB
+Radixsort(d = 6): 0.341381, usando 345.810944MB
+Radixsort(d = 7): 0.211568, usando 489.787392MB
 
 Coordenadas Tempo Latex Radixsort(d = 0):
-(1,3.186811)
+(1,3.138003)
 Coordenadas Memoria Latex Radixsort(d = 0):
-(1,329.184461)
+(1,329.804186)
 
 Coordenadas Tempo Latex Radixsort(d = 1):
-(2,1.534791)
+(2,1.519173)
 Coordenadas Memoria Latex Radixsort(d = 1):
-(2,329.313894)
+(2,329.812787)
 
 Coordenadas Tempo Latex Radixsort(d = 2):
-(3,0.850102)
+(3,0.840217)
 Coordenadas Memoria Latex Radixsort(d = 2):
-(3,329.367552)
+(3,329.810739)
 
 Coordenadas Tempo Latex Radixsort(d = 3):
-(4,0.677359)
+(4,0.550291)
 Coordenadas Memoria Latex Radixsort(d = 3):
-(4,329.408512)
+(4,329.980723)
 
 Coordenadas Tempo Latex Radixsort(d = 4):
-(5,0.642188)
+(5,0.517824)
 Coordenadas Memoria Latex Radixsort(d = 4):
-(5,330.981376)
+(5,331.417600)
 
 Coordenadas Tempo Latex Radixsort(d = 5):
-(6,0.343301)
+(6,0.341381)
 Coordenadas Memoria Latex Radixsort(d = 5):
-(6,345.296486)
+(6,345.810944)
 
 Coordenadas Tempo Latex Radixsort(d = 6):
-(7,0.338258)
+(7,0.211568)
 Coordenadas Memoria Latex Radixsort(d = 6):
-(7,489.299149)
+(7,489.787392)
 
