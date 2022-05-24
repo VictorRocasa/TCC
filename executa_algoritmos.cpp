@@ -20,11 +20,10 @@ int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas
 
 int main(){//teste.txt
 	for(int i = 1; i <= 1; i++){//loop para gerar 10 relatorios
-		//gera_relatorios(100000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000/
-		gera_relatorios(1000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000/
+		gera_relatorios(100000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000/
 	}
 	normalizarResultados();
-  	//system("c:\\windows\\system32\\shutdown /s");
+  	system("c:\\windows\\system32\\shutdown /s");
 
     return 0;
 }

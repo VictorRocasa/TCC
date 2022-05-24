@@ -1,0 +1,10 @@
+Entrada crescente de tamanho 100000000
+
+Digitos do maior numero = 9, tamanho da amostra = 2
+Mergesort: 9.421314
+Introsort(std::sort): 14.389283
+Radixsort(d = 1): 38.431428
+
+Coordenadas Latex Mergesort:
+(9,9.421314)
+
