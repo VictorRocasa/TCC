@@ -19,11 +19,12 @@ void normalizarResultados();//funcao que gera relatorios com as medias dos relat
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
-	for(int i = 1; i <= 1; i++){//loop para gerar 10 relatorios
-		gera_relatorios(100000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000/
-	}
+	//for(int i = 1; i <= 1; i++){//loop para gerar 10 relatorios
+	//	gera_relatorios(100000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000/
+	//}
+	//gera_relatorios(1000000llu, NULL, 1);
 	normalizarResultados();
-  	system("c:\\windows\\system32\\shutdown /s");
+  	//system("c:\\windows\\system32\\shutdown /s");
 
     return 0;
 }
@@ -240,7 +241,7 @@ void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequerido, 
 			
 			/**RADIXSORT: executa com quantidades de digito variando de 1 a 7.**/
 			int d;//numero de digitos do Radixsort
-			for(d = 1; d <=7; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)
+			for(d = 1; d <=8; d++){//de 1 a 7 digitos - melhor caso na pior entrada possivel(valor calculado manualmente através da fórmula de desenpenho)
 				if(ler_entrada(entrada,arq) != 1)//acabaram as entradas existentes ou a memória do computador
 				{
 					printf("5. Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
@@ -364,21 +365,32 @@ void normalizarResultados(){
 				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2][i]/media[2][i]);
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
 			}
-			
 			fprintf(p, "Coordenadas Latex Mergesort:\n");
-			for(int i = 0; i < 20; i++)
+			for(int i = 0; i < 20; i++){
 				fprintf(p, "(%d,%lf)", i+1, tempo[0][i]/media[0][i]);
+				if((i+1)%4==0)
+					fprintf(p, "\n");
+			}
 			if(!comparaString(tipo, (char*)"crescente") && !comparaString(tipo, (char*)"decrescente")){
 				fprintf(p, "\n\nCoordenadas Latex Quicksort:\n");
-				for(int i = 0; i < 20; i++)
+				for(int i = 0; i < 20; i++){
 					fprintf(p, "(%d,%lf)", i+1,  tempo[1][i]/media[1][i]);
+					if((i+1)%4==0)
+						fprintf(p, "\n");
+				}
 			}
 			fprintf(p, "\n\nCoordenadas Latex Introsort:\n");
-			for(int i = 0; i < 20; i++)
+			for(int i = 0; i < 20; i++){
 				fprintf(p, "(%d,%lf)", i+1,  tempo[2][i]/media[2][i]);
+				if((i+1)%4==0)
+					fprintf(p, "\n");
+			}
 			fprintf(p, "\n\nCoordenadas Latex Radixsort:\n");
-			for(int i = 0; i < 20; i++)
+			for(int i = 0; i < 20; i++){
 				fprintf(p, "(%d,%lf)", i+1, tempo[3][i]/media[3][i]);
+				if((i+1)%4==0)
+					fprintf(p, "\n");
+			}
 			fprintf(p, "\n\n");
 			fclose(p);	
 		}
@@ -396,10 +408,10 @@ void normalizarResultados(){
 		}
 		else{
 			printf("Gerando relatorio normalizado para execucoes do Radixsort...");
-			double tempo[7][20];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
-			double memoria[7][20];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
-			int media[7][20];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
-			for(int i = 0; i < 7; i++)//zera a matriz e o vetor
+			double tempo[8][20];//8 digitos e 20 digitos para salvar o tempo medio de cada algoritmo
+			double memoria[8][20];//8 digitos e 20 digitos para salvar o tempo medio de cada algoritmo
+			int media[8][20];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
+			for(int i = 0; i < 8; i++)//zera a matriz e o vetor
 				for(int j = 0; j < 20; j++){
 					tempo[i][j] = 0.0;
 					memoria[i][j] = 0.0;
@@ -424,24 +436,26 @@ void normalizarResultados(){
 			fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 			for(int i = 0; i < 20; i++){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", i+1, media[6][i]);
-				for(int j = 0; j < 7; j++){
+				for(int j = 0; j < 8; j++){
 					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
 				}
 				fprintf(p, "\n");
 			}
-			
-			for(int j = 0; j < 7; j++){
-				fprintf(p, "\nCoordenadas Tempo Latex Radixsort(d = %d):\n", j+1);
-				for(int i = 0; i < 20; i++)
-					fprintf(p, "(%d,%lf)", i+1, tempo[j][i]/media[j][i]);
-				fprintf(p, "\n");
+				
+			fprintf(p, "\nTabela tempo:\nk & d = 1 & d = 2 & d = 3 &  d = 4 &  d = 5 &  d = 6 &  d = 7 & d = 8 \\\\\n\\midrule");		
+			for(int i = 0; i < 20; i++)	{
+				fprintf(p, "\n%d", i+1);
+				for(int j = 0; j < 8; j++)
+					fprintf(p, " & %lf", tempo[j][i]/media[j][i]);
+				fprintf(p, " \\\\");
 			}
-			
-			for(int j = 0; j < 7; j++){
-				fprintf(p, "\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j+1);
-				for(int i = 0; i < 20; i++)
-					fprintf(p, "(%d,%lf)", i+1, memoria[j][i]/media[j][i]);
-				fprintf(p, "\n");
+				
+			fprintf(p, "\n\nTabela memoria:\nk & d = 1 & d = 2 & d = 3 &  d = 4 &  d = 5 &  d = 6 &  d = 7 & d = 8 \\\\\n\\midrule");		
+			for(int i = 0; i < 20; i++)	{
+				fprintf(p, "\n%d", i+1);
+				for(int j = 0; j < 8; j++)
+					fprintf(p, " & %.1lf", memoria[j][i]/media[j][i]);
+				fprintf(p, " \\\\");
 			}
 			
 			fclose(p);	
@@ -489,6 +503,7 @@ void normalizarResultados(){
 				tempo[algoritmo-1][ref] += tempoAtual;
 				media[algoritmo-1][ref]++;
 			}
+			
 			printf("\n");
 			fclose(p);	
 			sprintf(arq, ".\\%s\\Relatorio_comparacao_%s_%llu.txt", diretorio, tipo, tamanho);//cria um relatorio csv com dados das execucoes dos algoritmos para cada entrada de um certo tipo e tamanho: Algoritmo;DigitosMaiorNumero;Tempo
@@ -500,23 +515,14 @@ void normalizarResultados(){
 				fprintf(p, "Quicksort: %lf\n", tempo[1][i]/media[1][i]);
 				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2][i]/media[2][i]);
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
+					
+				fprintf(p, "\nTabela latex da entrada de k = %d:\n", real);
+				fprintf(p, "\\textit{Quicksort} & %lf \\\\\n", tempo[0][i]/media[0][i]);
+				fprintf(p, "\\textit{Mergesort1} & %lf \\\\\n", tempo[1][i]/media[1][i]);
+				fprintf(p, "\\textit{Mergesort2} & %lf \\\\\n",  tempo[2][i]/media[2][i]);
+				fprintf(p, "\\textit{Radix-base} & %lf \\\\\n\n\n\n", tempo[3][i]/media[3][i]);
 				real = 20;
 			}
-			
-			fprintf(p, "Coordenadas Latex Mergesort:\n");
-			for(int i = 0; i < 2; i++)
-				fprintf(p, "(%d,%lf)", i+1, tempo[0][i]/media[0][i]);
-			fprintf(p, "\n\nCoordenadas Latex Quicksort:\n");
-			for(int i = 0; i < 2; i++)
-				fprintf(p, "(%d,%lf)", i+1,  tempo[1][i]/media[1][i]);
-			fprintf(p, "\n\nCoordenadas Latex Introsort:\n");
-			for(int i = 0; i < 2; i++)
-				fprintf(p, "(%d,%lf)", i+1,  tempo[2][i]/media[2][i]);
-			fprintf(p, "\n\nCoordenadas Latex Radixsort:\n");
-			for(int i = 0; i < 2; i++)
-				fprintf(p, "(%d,%lf)", i+1, tempo[3][i]/media[3][i]);
-			fprintf(p, "\n\n");
-			fclose(p);	
 		}
 		
 	    /**Normaliza entradas iguais do radixsort**/
@@ -532,11 +538,11 @@ void normalizarResultados(){
 		}
 		else{
 			printf("Gerando relatorio normalizado para execucoes do Radixsort...");
-			double tempo[7][2];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
-			double memoria[7][2];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
+			double tempo[8][2];//8 valores para d e 20 digitos para salvar o tempo medio de cada algoritmo
+			double memoria[8][2];//8 valores para d e 20 digitos para salvar o tempo medio de cada algoritmo
 			int real = 20;//referencia da posicao do vetor
-			int media[7][2];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
-			for(int i = 0; i < 7; i++)//zera a matriz e o vetor
+			int media[8][2];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
+			for(int i = 0; i < 8; i++)//zera a matriz e o vetor
 				for(int j = 0; j < 2; j++){
 					tempo[i][j] = 0.0;
 					memoria[i][j] = 0.0;
@@ -568,25 +574,19 @@ void normalizarResultados(){
 			fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 			for(int i = 0; i < 2; i++){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", real, media[6][i]);
-				for(int j = 0; j < 7; j++){
+				for(int j = 0; j < 8; j++){
 					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
-					real = 20;
 				}
-				fprintf(p, "\n");
-			}
-			for(int j = 0; j < 7; j++){
-				fprintf(p, "\nCoordenadas Tempo Latex Radixsort(d = %d):\n", j+1);
-				for(int i = 0; i < 2; i++)
-					fprintf(p, "(%d,%lf)", i+1, tempo[j][i]/media[j][i]);
-				fprintf(p, "\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j+1);
-				for(int i = 0; i < 2; i++)
-					fprintf(p, "(%d,%lf)", i+1, memoria[j][i]/media[j][i]);
-				fprintf(p, "\n\n");
-			}
+					
+				fprintf(p, "\nTabela latex da entrada de k = %d:\n", real);
+				fprintf(p, "%d & %lf & %lf & - \\\\\n", 1, tempo[0][i]/media[0][i], memoria[0][i]/media[0][i]);
+				for(int j = 1; j < 8; j++)
+					fprintf(p, "%d & %lf & %.1lf & %.2lfx \\\\\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i], (tempo[0][i]/media[0][i])/(tempo[j][i]/media[j][i]));
+				real = 20;
+				fprintf(p, "\n\n\n\n");
+			}			
 			fclose(p);	
-		}
-		
-	    
+		}    
 		
 	    /**Normaliza outras entradas**/
 	    int f = 0;
@@ -629,22 +629,25 @@ void normalizarResultados(){
 				fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", qtd_digitos, media[3]);
 				fprintf(p, "Mergesort: %lf\n", tempo[0]/media[0]);
-				if(!comparaString(tipo, (char*)"crescente") && !comparaString(tipo, (char*)"decrescente"))
+				if(comparaString(tipo, (char*)"complexa"))
 					fprintf(p, "Quicksort: %lf\n", tempo[1]/media[1]);
 				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2]/media[2]);
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3]/media[3]);
-			
-				fprintf(p, "Coordenadas Latex Mergesort:\n");
-				fprintf(p, "(%d,%lf)", qtd_digitos, tempo[0]/media[0]);
-				if(!comparaString(tipo, (char*)"crescente") && !comparaString(tipo, (char*)"decrescente")){
-					fprintf(p, "\n\nCoordenadas Latex Quicksort:\n");
-					fprintf(p, "(%d,%lf)", qtd_digitos, tempo[1]/media[1]);
-				}
+				
+				fprintf(p, "\nTabela latex da entrada");
+				if(comparaString(tipo, (char*)"complexa"))
+					fprintf(p, "\\textit{Quicksort} & %lf \\\\\n", tempo[0]/media[0]);
+				else
+					fprintf(p, "\\textit{Quicksort} & -  \\\\\n");
+				fprintf(p, "\\textit{Mergesort1} & %lf \\\\\n", tempo[1]/media[1]);
+				fprintf(p, "\\textit{Mergesort2} & %lf \\\\\n",  tempo[2]/media[2]);
+				fprintf(p, "\\textit{Radix-base} & %lf \\\\\n\n\n\n", tempo[3]/media[3]);
+				
 				fprintf(p, "\n\n");
 				fclose(p);	
 			}
 			
-		    /**Normaliza entradas aleatorias do radixsort**/
+		    /**Normaliza entradas do radixsort**/
 			sprintf(arq, ".\\dados\\Relatorio_radix_%s_%llu.txt", tipo, tamanho);
 			p = fopen(arq, "r");
 			if(p == NULL){
@@ -657,10 +660,10 @@ void normalizarResultados(){
 			}
 			else{
 				printf("Gerando relatorio normalizado para execucoes do Radixsort...");
-				double tempo[7];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
-				double memoria[7];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
-				int media[7];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
-				for(int i = 0; i < 7; i++)//zera a matriz e o vetor
+				double tempo[8];//8 digitos por iteracao e 20 digitos para salvar o tempo medio de cada algoritmo
+				double memoria[8];//4 algoritmos e 20 digitos para salvar o tempo medio de cada algoritmo
+				int media[8];//Conta o numero de vezes que determinada combinacao foi registrada para tirar media ao fim
+				for(int i = 0; i < 8; i++)//zera a matriz e o vetor
 				{
 						tempo[i] = 0.0;
 						memoria[i] = 0.0;
@@ -684,25 +687,22 @@ void normalizarResultados(){
 				FILE * p = fopen(arq, "w");	
 				fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", qtd_digitos, media[3]);
-					for(int j = 0; j < 7; j++)
+					for(int j = 0; j < 8; j++)
 						fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j]/media[j], memoria[j]/media[j]);
-				fprintf(p, "\n");
-				for(int j = 0; j < 7; j++){
-					fprintf(p, "Coordenadas Tempo Latex Radixsort(d = %d):\n", j);
-					fprintf(p, "(%d,%lf)", j+1, tempo[j]/media[j]);
-					fprintf(p, "\nCoordenadas Memoria Latex Radixsort(d = %d):\n", j);
-					fprintf(p, "(%d,%lf)", j+1, memoria[j]/media[j]);
+					fprintf(p, "\n\nTabela latex:\n");
+					fprintf(p, "%d & %lf & %.1lf & - \\\\\n", 1, tempo[0]/media[0], memoria[0]/media[0]);
+					for(int j = 1; j < 8; j++)
+						fprintf(p, "%d & %lf & %.1lf & %.2lfx \\\\\n", j+1, tempo[j]/media[j], memoria[j]/media[j], (tempo[0]/media[0])/(tempo[j]/media[j]));
 					fprintf(p, "\n\n");
-				}
 				fclose(p);	
 			}
-		if(f == 0)
-			sprintf(tipo, "crescente");
-		else if(f == 1)
-			sprintf(tipo, "decrescente");
-		else if(f == 2)
-			break;
-		f++;
+			if(f == 0)
+				sprintf(tipo, "crescente");
+			else if(f == 1)
+				sprintf(tipo, "decrescente");
+			else if(f == 2)
+				break;
+			f++;
 		}
 		free(linha);
 		free(arq);

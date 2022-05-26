@@ -85,8 +85,8 @@ unsigned long long geraNumero(int maxDigitos){
 
 unsigned long long geraNumero20(){
     unsigned long long n = geraNumero(19);
-	if(n > 8446744073709551615)//maior numero possivel que ao somado a 10000000000000000000 não vai dar overflow
-		n = 8446744073709551615;	
+	while(n > 8446744073709551615)//maior numero possivel que ao somado a 10000000000000000000 não vai dar overflow
+		n = geraNumero(19);	
 	return n + 10000000000000000000llu;
 }
 
@@ -165,15 +165,14 @@ void gravar_entrada_igual(int t,unsigned long long n){
         fprintf(p, "%llu\n", n);//salva cada elemento seguido de \n
     fclose(p);
     
-    int digitosMaior = 1;
-	while(n > 1){
-		n = n/10;
+    int digitosMaior = 0;
+	while(n > 0){
+		n /= 10;
 		digitosMaior++;
-		
 	}
 	
     if(sob)
-        fprintf(info, "iguais igual %d %llu %llu\n", conta_igual, t, digitosMaior);//salva entrada no arquivo que armazena as entradas criadas
+        fprintf(info, "iguais igual %d %d %d\n", conta_igual, t, digitosMaior);//salva entrada no arquivo que armazena as entradas criadas
     printf("Igual %d salva\n", conta_igual);//feedback visual
     free(arq);
 }
