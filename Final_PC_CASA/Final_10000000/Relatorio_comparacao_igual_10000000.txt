@@ -1,26 +1,32 @@
 Entrada igual de tamanho 10000000
 
-Digitos do maior numero = 8, tamanho da amostra = 10
-Mergesort: 0.857910
-Quicksort: 0.067352
-Introsort(std::sort): 1.482673
-Radixsort(d = 1): 0.801794
+Digitos do maior numero = 7, tamanho da amostra = 3
+Mergesort: 0.863851
+Quicksort: 0.067880
+Introsort(std::sort): 1.559481
+Radixsort(d = 1): 0.811864
 
-Digitos do maior numero = 20, tamanho da amostra = 10
-Mergesort: 0.859116
-Quicksort: 0.067148
-Introsort(std::sort): 1.481162
-Radixsort(d = 1): 2.381149
 
-Coordenadas Latex Mergesort:
-(1,0.857910)(2,0.859116)
+Tabela latex da entrada de k = 7:
+\textit{Quicksort} & 0.863851 \\
+\textit{Mergesort1} & 0.067880 \\
+\textit{Mergesort2} & 1.559481 \\
+\textit{Radix-base} & 0.811864 \\
 
-Coordenadas Latex Quicksort:
-(1,0.067352)(2,0.067148)
 
-Coordenadas Latex Introsort:
-(1,1.482673)(2,1.481162)
 
-Coordenadas Latex Radixsort:
-(1,0.801794)(2,2.381149)
+Digitos do maior numero = 20, tamanho da amostra = 3
+Mergesort: 0.855811
+Quicksort: 0.068209
+Introsort(std::sort): 1.564698
+Radixsort(d = 1): 2.407847
+
+
+Tabela latex da entrada de k = 20:
+\textit{Quicksort} & 0.855811 \\
+\textit{Mergesort1} & 0.068209 \\
+\textit{Mergesort2} & 1.564698 \\
+\textit{Radix-base} & 2.407847 \\
+
+
 

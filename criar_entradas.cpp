@@ -25,7 +25,7 @@ int sob = 1;
 
 int main(){
     info =  fopen((char *)"cabecalho.txt","r");
-    if(info!=NULL)
+	if(info!=NULL)
     	do{
 	    	printf("Ja existem entradas, feche o programa para preserva-las. Caso contrario, deseja recriar o cabecalho? S/N\n");
 	    	char escolha;

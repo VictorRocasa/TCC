@@ -1,46 +1,24 @@
 Entrada crescente de tamanho 100000000
 
-Digitos do maior numero = 9, tamanho da amostra = 2
-Radixsort(d = 1): 38.431428, usando 3270.492160MB
-Radixsort(d = 2): 17.996999, usando 3270.799360MB
-Radixsort(d = 3): 12.702918, usando 3270.682624MB
-Radixsort(d = 4): 6.243893, usando 3270.955008MB
-Radixsort(d = 5): 4.608311, usando 3272.361984MB
-Radixsort(d = 6): 4.652892, usando 3286.810624MB
-Radixsort(d = 7): 3.445931, usando 3430.752256MB
+Digitos do maior numero = 100000000, tamanho da amostra = 10
+Radixsort(d = 1): 38.242149, usando 3260.307866MB
+Radixsort(d = 2): 18.000620, usando 3260.378726MB
+Radixsort(d = 3): 12.671022, usando 3260.641280MB
+Radixsort(d = 4): 6.260716, usando 3261.181133MB
+Radixsort(d = 5): 4.615328, usando 3262.485299MB
+Radixsort(d = 6): 4.657017, usando 3277.015450MB
+Radixsort(d = 7): 3.441175, usando 3421.097984MB
+Radixsort(d = 8): 2.153260, usando 4861.210214MB
 
-Coordenadas Tempo Latex Radixsort(d = 0):
-(1,38.431428)
-Coordenadas Memoria Latex Radixsort(d = 0):
-(1,3270.492160)
 
-Coordenadas Tempo Latex Radixsort(d = 1):
-(2,17.996999)
-Coordenadas Memoria Latex Radixsort(d = 1):
-(2,3270.799360)
+Tabela latex:
+1 & 38.242149 & 3260.3 & - \\
+2 & 18.000620 & 3260.4 & 2.12x \\
+3 & 12.671022 & 3260.6 & 3.02x \\
+4 & 6.260716 & 3261.2 & 6.11x \\
+5 & 4.615328 & 3262.5 & 8.29x \\
+6 & 4.657017 & 3277.0 & 8.21x \\
+7 & 3.441175 & 3421.1 & 11.11x \\
+8 & 2.153260 & 4861.2 & 17.76x \\
 
-Coordenadas Tempo Latex Radixsort(d = 2):
-(3,12.702918)
-Coordenadas Memoria Latex Radixsort(d = 2):
-(3,3270.682624)
-
-Coordenadas Tempo Latex Radixsort(d = 3):
-(4,6.243893)
-Coordenadas Memoria Latex Radixsort(d = 3):
-(4,3270.955008)
-
-Coordenadas Tempo Latex Radixsort(d = 4):
-(5,4.608311)
-Coordenadas Memoria Latex Radixsort(d = 4):
-(5,3272.361984)
-
-Coordenadas Tempo Latex Radixsort(d = 5):
-(6,4.652892)
-Coordenadas Memoria Latex Radixsort(d = 5):
-(6,3286.810624)
-
-Coordenadas Tempo Latex Radixsort(d = 6):
-(7,3.445931)
-Coordenadas Memoria Latex Radixsort(d = 6):
-(7,3430.752256)
 

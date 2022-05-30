@@ -19,12 +19,14 @@ void normalizarResultados();//funcao que gera relatorios com as medias dos relat
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
-	//for(int i = 1; i <= 1; i++){//loop para gerar 10 relatorios
-	//	gera_relatorios(100000000llu, NULL, i);//executa todas as entradas complexas de tamanho = 100000000/
-	//}
-	//gera_relatorios(1000000llu, NULL, 1);
 	normalizarResultados();
-  	//system("c:\\windows\\system32\\shutdown /s");
+    return 0;
+	for(int i = 1; i <= 7; i++){//loop para gerar 10 relatorios
+		gera_relatorios(10000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
+		gera_relatorios(100000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
+	}
+	normalizarResultados();
+  	system("c:\\windows\\system32\\shutdown /s");
 
     return 0;
 }
@@ -320,12 +322,13 @@ void normalizarResultados(){
 	    char * diretorio = (char*)malloc(128*sizeof(char*));//nome dodo tipo da entrada para gerar o endereco
 		sprintf(diretorio, "Final_%llu", tamanho);//cria um diretorio para cada tamanho
 		CreateDirectory(diretorio, NULL);//cria o diretorio de relatorios finais se não existe
-	    
 	    /**Normaliza entradas aleatorias**/
 		sprintf(tipo, "aleatoria");
 		printf("Lendo resultados da entrada %s de tamanho %llu.\n", tipo, tamanho);
 		sprintf(arq, ".\\dados\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);
 		FILE * p = fopen(arq, "r");
+	    
+	    goto skip;
 		if(p == NULL){
 			printf("Nao existem dados para a entrada %s de tamanho %llu, favor executar o algoritmo de relatorio!\n", tipo, tamanho);
 			fclose(p);
@@ -394,7 +397,6 @@ void normalizarResultados(){
 			fprintf(p, "\n\n");
 			fclose(p);	
 		}
-		
 	    /**Normaliza entradas aleatorias do radixsort**/
 		sprintf(arq, ".\\dados\\Relatorio_radix_%s_%llu.txt", tipo, tamanho);
 		p = fopen(arq, "r");
@@ -461,7 +463,7 @@ void normalizarResultados(){
 			fclose(p);	
 		}
 		
-	    
+	    skip: 
 	    /**Normaliza entradas iguais**/
 		sprintf(tipo, "igual");
 		printf("Lendo resultados da entrada %s de tamanho %llu.\n", tipo, tamanho);

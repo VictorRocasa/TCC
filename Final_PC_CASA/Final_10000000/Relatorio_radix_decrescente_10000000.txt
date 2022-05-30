@@ -1,46 +1,24 @@
 Entrada decrescente de tamanho 10000000
 
-Digitos do maior numero = 8, tamanho da amostra = 10
-Radixsort(d = 1): 3.138003, usando 329.804186MB
-Radixsort(d = 2): 1.519173, usando 329.812787MB
-Radixsort(d = 3): 0.840217, usando 329.810739MB
-Radixsort(d = 4): 0.550291, usando 329.980723MB
-Radixsort(d = 5): 0.517824, usando 331.417600MB
-Radixsort(d = 6): 0.341381, usando 345.810944MB
-Radixsort(d = 7): 0.211568, usando 489.787392MB
+Digitos do maior numero = 10000000, tamanho da amostra = 10
+Radixsort(d = 1): 3.096711, usando 362.693018MB
+Radixsort(d = 2): 1.497151, usando 362.579968MB
+Radixsort(d = 3): 0.833774, usando 362.392781MB
+Radixsort(d = 4): 0.533994, usando 362.459136MB
+Radixsort(d = 5): 0.504819, usando 364.081562MB
+Radixsort(d = 6): 0.338475, usando 379.919974MB
+Radixsort(d = 7): 0.213193, usando 523.951309MB
+Radixsort(d = 8): 0.623996, usando 1963.928371MB
 
-Coordenadas Tempo Latex Radixsort(d = 0):
-(1,3.138003)
-Coordenadas Memoria Latex Radixsort(d = 0):
-(1,329.804186)
 
-Coordenadas Tempo Latex Radixsort(d = 1):
-(2,1.519173)
-Coordenadas Memoria Latex Radixsort(d = 1):
-(2,329.812787)
+Tabela latex:
+1 & 3.096711 & 362.7 & - \\
+2 & 1.497151 & 362.6 & 2.07x \\
+3 & 0.833774 & 362.4 & 3.71x \\
+4 & 0.533994 & 362.5 & 5.80x \\
+5 & 0.504819 & 364.1 & 6.13x \\
+6 & 0.338475 & 379.9 & 9.15x \\
+7 & 0.213193 & 524.0 & 14.53x \\
+8 & 0.623996 & 1963.9 & 4.96x \\
 
-Coordenadas Tempo Latex Radixsort(d = 2):
-(3,0.840217)
-Coordenadas Memoria Latex Radixsort(d = 2):
-(3,329.810739)
-
-Coordenadas Tempo Latex Radixsort(d = 3):
-(4,0.550291)
-Coordenadas Memoria Latex Radixsort(d = 3):
-(4,329.980723)
-
-Coordenadas Tempo Latex Radixsort(d = 4):
-(5,0.517824)
-Coordenadas Memoria Latex Radixsort(d = 4):
-(5,331.417600)
-
-Coordenadas Tempo Latex Radixsort(d = 5):
-(6,0.341381)
-Coordenadas Memoria Latex Radixsort(d = 5):
-(6,345.810944)
-
-Coordenadas Tempo Latex Radixsort(d = 6):
-(7,0.211568)
-Coordenadas Memoria Latex Radixsort(d = 6):
-(7,489.787392)
 

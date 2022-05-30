@@ -1,154 +1,154 @@
 Entrada aleatoria de tamanho 1000000
 
-Digitos do maior numero = 1, tamanho da amostra = 10
-Mergesort: 0.167858
-Quicksort: 0.051619
-Introsort(std::sort): 0.308410
-Radixsort(d = 1): 0.010122
+Digitos do maior numero = 1, tamanho da amostra = 20
+Mergesort: 0.168852
+Quicksort: 0.051209
+Introsort(std::sort): 0.290861
+Radixsort(d = 1): 0.010167
 
-Digitos do maior numero = 2, tamanho da amostra = 10
-Mergesort: 0.188052
-Quicksort: 0.085119
-Introsort(std::sort): 0.341486
-Radixsort(d = 1): 0.055432
+Digitos do maior numero = 2, tamanho da amostra = 20
+Mergesort: 0.191706
+Quicksort: 0.085184
+Introsort(std::sort): 0.321859
+Radixsort(d = 1): 0.054574
 
-Digitos do maior numero = 3, tamanho da amostra = 10
-Mergesort: 0.196918
-Quicksort: 0.124668
-Introsort(std::sort): 0.355209
-Radixsort(d = 1): 0.086573
+Digitos do maior numero = 3, tamanho da amostra = 20
+Mergesort: 0.202688
+Quicksort: 0.128962
+Introsort(std::sort): 0.341150
+Radixsort(d = 1): 0.086350
 
-Digitos do maior numero = 4, tamanho da amostra = 10
-Mergesort: 0.199262
-Quicksort: 0.150902
-Introsort(std::sort): 0.364197
-Radixsort(d = 1): 0.119678
+Digitos do maior numero = 4, tamanho da amostra = 20
+Mergesort: 0.210318
+Quicksort: 0.161208
+Introsort(std::sort): 0.346994
+Radixsort(d = 1): 0.121213
 
-Digitos do maior numero = 5, tamanho da amostra = 10
-Mergesort: 0.200565
-Quicksort: 0.180709
-Introsort(std::sort): 0.371049
-Radixsort(d = 1): 0.154714
+Digitos do maior numero = 5, tamanho da amostra = 20
+Mergesort: 0.209170
+Quicksort: 0.193477
+Introsort(std::sort): 0.353273
+Radixsort(d = 1): 0.156380
 
-Digitos do maior numero = 6, tamanho da amostra = 10
-Mergesort: 0.199988
-Quicksort: 0.210787
-Introsort(std::sort): 0.374439
-Radixsort(d = 1): 0.195160
+Digitos do maior numero = 6, tamanho da amostra = 20
+Mergesort: 0.204147
+Quicksort: 0.219592
+Introsort(std::sort): 0.357768
+Radixsort(d = 1): 0.195707
 
-Digitos do maior numero = 7, tamanho da amostra = 10
-Mergesort: 0.200748
-Quicksort: 0.233296
-Introsort(std::sort): 0.377517
-Radixsort(d = 1): 0.224657
+Digitos do maior numero = 7, tamanho da amostra = 20
+Mergesort: 0.207418
+Quicksort: 0.238418
+Introsort(std::sort): 0.360199
+Radixsort(d = 1): 0.225914
 
-Digitos do maior numero = 8, tamanho da amostra = 10
-Mergesort: 0.206669
-Quicksort: 0.260545
-Introsort(std::sort): 0.402797
-Radixsort(d = 1): 0.291146
+Digitos do maior numero = 8, tamanho da amostra = 20
+Mergesort: 0.206060
+Quicksort: 0.263068
+Introsort(std::sort): 0.372970
+Radixsort(d = 1): 0.279728
 
-Digitos do maior numero = 9, tamanho da amostra = 10
-Mergesort: 0.202827
-Quicksort: 0.264003
-Introsort(std::sort): 0.381555
-Radixsort(d = 1): 0.302680
+Digitos do maior numero = 9, tamanho da amostra = 20
+Mergesort: 0.200708
+Quicksort: 0.259031
+Introsort(std::sort): 0.364712
+Radixsort(d = 1): 0.304573
 
-Digitos do maior numero = 10, tamanho da amostra = 10
-Mergesort: 0.200096
-Quicksort: 0.269642
-Introsort(std::sort): 0.383758
-Radixsort(d = 1): 0.340507
+Digitos do maior numero = 10, tamanho da amostra = 20
+Mergesort: 0.204218
+Quicksort: 0.277307
+Introsort(std::sort): 0.364903
+Radixsort(d = 1): 0.337787
 
-Digitos do maior numero = 11, tamanho da amostra = 10
-Mergesort: 0.201379
-Quicksort: 0.287693
-Introsort(std::sort): 0.381617
-Radixsort(d = 1): 0.370477
+Digitos do maior numero = 11, tamanho da amostra = 20
+Mergesort: 0.203786
+Quicksort: 0.293307
+Introsort(std::sort): 0.363870
+Radixsort(d = 1): 0.368895
 
-Digitos do maior numero = 12, tamanho da amostra = 10
-Mergesort: 0.199597
-Quicksort: 0.288677
-Introsort(std::sort): 0.382495
-Radixsort(d = 1): 0.404894
+Digitos do maior numero = 12, tamanho da amostra = 20
+Mergesort: 0.202736
+Quicksort: 0.295996
+Introsort(std::sort): 0.365612
+Radixsort(d = 1): 0.404873
 
-Digitos do maior numero = 13, tamanho da amostra = 10
-Mergesort: 0.199471
-Quicksort: 0.288610
-Introsort(std::sort): 0.383012
-Radixsort(d = 1): 0.439743
+Digitos do maior numero = 13, tamanho da amostra = 20
+Mergesort: 0.205378
+Quicksort: 0.293774
+Introsort(std::sort): 0.364681
+Radixsort(d = 1): 0.441869
 
-Digitos do maior numero = 14, tamanho da amostra = 10
-Mergesort: 0.197442
-Quicksort: 0.292256
-Introsort(std::sort): 0.383665
-Radixsort(d = 1): 0.481547
+Digitos do maior numero = 14, tamanho da amostra = 20
+Mergesort: 0.200958
+Quicksort: 0.307830
+Introsort(std::sort): 0.365034
+Radixsort(d = 1): 0.479224
 
-Digitos do maior numero = 15, tamanho da amostra = 10
-Mergesort: 0.199663
-Quicksort: 0.295788
-Introsort(std::sort): 0.388340
-Radixsort(d = 1): 0.508365
+Digitos do maior numero = 15, tamanho da amostra = 20
+Mergesort: 0.206348
+Quicksort: 0.303968
+Introsort(std::sort): 0.369309
+Radixsort(d = 1): 0.509500
 
-Digitos do maior numero = 16, tamanho da amostra = 10
-Mergesort: 0.202094
-Quicksort: 0.294246
-Introsort(std::sort): 0.386021
-Radixsort(d = 1): 0.546713
+Digitos do maior numero = 16, tamanho da amostra = 20
+Mergesort: 0.203305
+Quicksort: 0.313052
+Introsort(std::sort): 0.366380
+Radixsort(d = 1): 0.548200
 
-Digitos do maior numero = 17, tamanho da amostra = 10
-Mergesort: 0.199194
-Quicksort: 0.301083
-Introsort(std::sort): 0.385141
-Radixsort(d = 1): 0.582707
+Digitos do maior numero = 17, tamanho da amostra = 20
+Mergesort: 0.201550
+Quicksort: 0.312040
+Introsort(std::sort): 0.366811
+Radixsort(d = 1): 0.583318
 
-Digitos do maior numero = 18, tamanho da amostra = 10
-Mergesort: 0.196345
-Quicksort: 0.301064
-Introsort(std::sort): 0.383869
-Radixsort(d = 1): 0.619020
+Digitos do maior numero = 18, tamanho da amostra = 20
+Mergesort: 0.198910
+Quicksort: 0.309083
+Introsort(std::sort): 0.367033
+Radixsort(d = 1): 0.623881
 
-Digitos do maior numero = 19, tamanho da amostra = 10
-Mergesort: 0.204905
-Quicksort: 0.324842
-Introsort(std::sort): 0.389015
-Radixsort(d = 1): 0.671743
+Digitos do maior numero = 19, tamanho da amostra = 20
+Mergesort: 0.205380
+Quicksort: 0.327152
+Introsort(std::sort): 0.371459
+Radixsort(d = 1): 0.675682
 
-Digitos do maior numero = 20, tamanho da amostra = 10
-Mergesort: 0.218661
-Quicksort: 0.343652
-Introsort(std::sort): 0.408560
-Radixsort(d = 1): 0.861153
+Digitos do maior numero = 20, tamanho da amostra = 20
+Mergesort: 0.212893
+Quicksort: 0.338263
+Introsort(std::sort): 0.380854
+Radixsort(d = 1): 0.796383
 
 Coordenadas Latex Mergesort:
-(1,0.167858)(2,0.188052)(3,0.196918)(4,0.199262)
-(5,0.200565)(6,0.199988)(7,0.200748)(8,0.206669)
-(9,0.202827)(10,0.200096)(11,0.201379)(12,0.199597)
-(13,0.199471)(14,0.197442)(15,0.199663)(16,0.202094)
-(17,0.199194)(18,0.196345)(19,0.204905)(20,0.218661)
+(1,0.168852)(2,0.191706)(3,0.202688)(4,0.210318)
+(5,0.209170)(6,0.204147)(7,0.207418)(8,0.206060)
+(9,0.200708)(10,0.204218)(11,0.203786)(12,0.202736)
+(13,0.205378)(14,0.200958)(15,0.206348)(16,0.203305)
+(17,0.201550)(18,0.198910)(19,0.205380)(20,0.212893)
 
 
 Coordenadas Latex Quicksort:
-(1,0.051619)(2,0.085119)(3,0.124668)(4,0.150902)
-(5,0.180709)(6,0.210787)(7,0.233296)(8,0.260545)
-(9,0.264003)(10,0.269642)(11,0.287693)(12,0.288677)
-(13,0.288610)(14,0.292256)(15,0.295788)(16,0.294246)
-(17,0.301083)(18,0.301064)(19,0.324842)(20,0.343652)
+(1,0.051209)(2,0.085184)(3,0.128962)(4,0.161208)
+(5,0.193477)(6,0.219592)(7,0.238418)(8,0.263068)
+(9,0.259031)(10,0.277307)(11,0.293307)(12,0.295996)
+(13,0.293774)(14,0.307830)(15,0.303968)(16,0.313052)
+(17,0.312040)(18,0.309083)(19,0.327152)(20,0.338263)
 
 
 Coordenadas Latex Introsort:
-(1,0.308410)(2,0.341486)(3,0.355209)(4,0.364197)
-(5,0.371049)(6,0.374439)(7,0.377517)(8,0.402797)
-(9,0.381555)(10,0.383758)(11,0.381617)(12,0.382495)
-(13,0.383012)(14,0.383665)(15,0.388340)(16,0.386021)
-(17,0.385141)(18,0.383869)(19,0.389015)(20,0.408560)
+(1,0.290861)(2,0.321859)(3,0.341150)(4,0.346994)
+(5,0.353273)(6,0.357768)(7,0.360199)(8,0.372970)
+(9,0.364712)(10,0.364903)(11,0.363870)(12,0.365612)
+(13,0.364681)(14,0.365034)(15,0.369309)(16,0.366380)
+(17,0.366811)(18,0.367033)(19,0.371459)(20,0.380854)
 
 
 Coordenadas Latex Radixsort:
-(1,0.010122)(2,0.055432)(3,0.086573)(4,0.119678)
-(5,0.154714)(6,0.195160)(7,0.224657)(8,0.291146)
-(9,0.302680)(10,0.340507)(11,0.370477)(12,0.404894)
-(13,0.439743)(14,0.481547)(15,0.508365)(16,0.546713)
-(17,0.582707)(18,0.619020)(19,0.671743)(20,0.861153)
+(1,0.010167)(2,0.054574)(3,0.086350)(4,0.121213)
+(5,0.156380)(6,0.195707)(7,0.225914)(8,0.279728)
+(9,0.304573)(10,0.337787)(11,0.368895)(12,0.404873)
+(13,0.441869)(14,0.479224)(15,0.509500)(16,0.548200)
+(17,0.583318)(18,0.623881)(19,0.675682)(20,0.796383)
 
 

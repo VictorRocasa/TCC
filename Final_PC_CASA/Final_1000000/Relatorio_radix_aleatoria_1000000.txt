@@ -1,250 +1,250 @@
 Entrada aleatoria de tamanho 1000000
 
-Digitos do maior numero = 1, tamanho da amostra = 10
-Radixsort(d = 1): 0.010122, usando 35.503718MB
-Radixsort(d = 2): 0.010180, usando 35.508224MB
-Radixsort(d = 3): 0.010238, usando 35.513958MB
-Radixsort(d = 4): 0.010316, usando 35.665101MB
-Radixsort(d = 5): 0.011017, usando 37.108122MB
-Radixsort(d = 6): 0.014856, usando 51.520717MB
-Radixsort(d = 7): 0.057042, usando 195.520102MB
-Radixsort(d = 8): 0.473473, usando 1635.514368MB
+Digitos do maior numero = 1, tamanho da amostra = 20
+Radixsort(d = 1): 0.010167, usando 35.830374MB
+Radixsort(d = 2): 0.010166, usando 35.834061MB
+Radixsort(d = 3): 0.010222, usando 35.839795MB
+Radixsort(d = 4): 0.010313, usando 35.993805MB
+Radixsort(d = 5): 0.011039, usando 37.434778MB
+Radixsort(d = 6): 0.014887, usando 51.847373MB
+Radixsort(d = 7): 0.057713, usando 195.848192MB
+Radixsort(d = 8): 0.472493, usando 1635.846144MB
 
-Digitos do maior numero = 2, tamanho da amostra = 10
-Radixsort(d = 1): 0.055432, usando 35.561882MB
-Radixsort(d = 2): 0.010542, usando 35.603251MB
-Radixsort(d = 3): 0.010562, usando 35.611443MB
-Radixsort(d = 4): 0.010709, usando 35.756851MB
-Radixsort(d = 5): 0.011349, usando 37.199053MB
-Radixsort(d = 6): 0.015392, usando 51.613286MB
-Radixsort(d = 7): 0.058150, usando 195.615130MB
-Radixsort(d = 8): 0.473274, usando 1635.608576MB
+Digitos do maior numero = 2, tamanho da amostra = 20
+Radixsort(d = 1): 0.054574, usando 35.899802MB
+Radixsort(d = 2): 0.010558, usando 35.927245MB
+Radixsort(d = 3): 0.010547, usando 35.928883MB
+Radixsort(d = 4): 0.010615, usando 36.080845MB
+Radixsort(d = 5): 0.011355, usando 37.520179MB
+Radixsort(d = 6): 0.015455, usando 51.923354MB
+Radixsort(d = 7): 0.058595, usando 195.928474MB
+Radixsort(d = 8): 0.472638, usando 1635.913728MB
 
-Digitos do maior numero = 3, tamanho da amostra = 10
-Radixsort(d = 1): 0.086573, usando 35.792486MB
-Radixsort(d = 2): 0.053235, usando 35.873178MB
-Radixsort(d = 3): 0.011742, usando 35.858022MB
-Radixsort(d = 4): 0.011794, usando 36.030054MB
-Radixsort(d = 5): 0.012414, usando 37.440307MB
-Radixsort(d = 6): 0.016687, usando 51.822182MB
-Radixsort(d = 7): 0.060343, usando 195.872768MB
-Radixsort(d = 8): 0.475925, usando 1635.858022MB
+Digitos do maior numero = 3, tamanho da amostra = 20
+Radixsort(d = 1): 0.086350, usando 36.051763MB
+Radixsort(d = 2): 0.054072, usando 36.100506MB
+Radixsort(d = 3): 0.011824, usando 36.106650MB
+Radixsort(d = 4): 0.011797, usando 36.260454MB
+Radixsort(d = 5): 0.012546, usando 37.687296MB
+Radixsort(d = 6): 0.016734, usando 52.089856MB
+Radixsort(d = 7): 0.061004, usando 196.117709MB
+Radixsort(d = 8): 0.473161, usando 1636.109517MB
 
-Digitos do maior numero = 4, tamanho da amostra = 10
-Radixsort(d = 1): 0.119678, usando 35.899392MB
-Radixsort(d = 2): 0.053440, usando 35.934618MB
-Radixsort(d = 3): 0.055853, usando 35.934208MB
-Radixsort(d = 4): 0.014836, usando 36.132864MB
-Radixsort(d = 5): 0.015258, usando 37.538611MB
-Radixsort(d = 6): 0.021069, usando 51.944243MB
-Radixsort(d = 7): 0.064715, usando 195.943219MB
-Radixsort(d = 8): 0.478600, usando 1635.959603MB
+Digitos do maior numero = 4, tamanho da amostra = 20
+Radixsort(d = 1): 0.121213, usando 36.105421MB
+Radixsort(d = 2): 0.054133, usando 36.113613MB
+Radixsort(d = 3): 0.057930, usando 36.132864MB
+Radixsort(d = 4): 0.015007, usando 36.294042MB
+Radixsort(d = 5): 0.015435, usando 37.739110MB
+Radixsort(d = 6): 0.021313, usando 52.140851MB
+Radixsort(d = 7): 0.065445, usando 196.128973MB
+Radixsort(d = 8): 0.477547, usando 1636.147405MB
 
-Digitos do maior numero = 5, tamanho da amostra = 10
-Radixsort(d = 1): 0.154714, usando 35.835085MB
-Radixsort(d = 2): 0.089124, usando 35.868262MB
-Radixsort(d = 3): 0.056026, usando 35.878093MB
-Radixsort(d = 4): 0.056154, usando 36.063642MB
-Radixsort(d = 5): 0.022099, usando 37.450138MB
-Radixsort(d = 6): 0.026565, usando 51.896730MB
-Radixsort(d = 7): 0.070391, usando 195.888742MB
-Radixsort(d = 8): 0.484648, usando 1635.879322MB
+Digitos do maior numero = 5, tamanho da amostra = 20
+Radixsort(d = 1): 0.156380, usando 36.070810MB
+Radixsort(d = 2): 0.091523, usando 36.083712MB
+Radixsort(d = 3): 0.056902, usando 36.095386MB
+Radixsort(d = 4): 0.056830, usando 36.262707MB
+Radixsort(d = 5): 0.022224, usando 37.684634MB
+Radixsort(d = 6): 0.027259, usando 52.101530MB
+Radixsort(d = 7): 0.071862, usando 196.101530MB
+Radixsort(d = 8): 0.484198, usando 1636.109312MB
 
-Digitos do maior numero = 6, tamanho da amostra = 10
-Radixsort(d = 1): 0.195160, usando 35.852698MB
-Radixsort(d = 2): 0.090629, usando 35.846554MB
-Radixsort(d = 3): 0.054739, usando 35.823206MB
-Radixsort(d = 4): 0.056938, usando 36.022272MB
-Radixsort(d = 5): 0.065091, usando 37.458739MB
-Radixsort(d = 6): 0.040089, usando 51.853312MB
-Radixsort(d = 7): 0.084140, usando 195.867034MB
-Radixsort(d = 8): 0.497732, usando 1635.835085MB
+Digitos do maior numero = 6, tamanho da amostra = 20
+Radixsort(d = 1): 0.195707, usando 36.084122MB
+Radixsort(d = 2): 0.089849, usando 36.089446MB
+Radixsort(d = 3): 0.055508, usando 36.073062MB
+Radixsort(d = 4): 0.057336, usando 36.249395MB
+Radixsort(d = 5): 0.065285, usando 37.685658MB
+Radixsort(d = 6): 0.040984, usando 52.089446MB
+Radixsort(d = 7): 0.084758, usando 196.094362MB
+Radixsort(d = 8): 0.497083, usando 1636.066714MB
 
-Digitos do maior numero = 7, tamanho da amostra = 10
-Radixsort(d = 1): 0.224657, usando 35.887514MB
-Radixsort(d = 2): 0.125651, usando 35.918234MB
-Radixsort(d = 3): 0.091643, usando 35.869082MB
-Radixsort(d = 4): 0.058206, usando 36.052582MB
-Radixsort(d = 5): 0.066388, usando 37.461197MB
-Radixsort(d = 6): 0.091454, usando 51.885261MB
-Radixsort(d = 7): 0.108519, usando 195.864166MB
-Radixsort(d = 8): 0.523582, usando 1635.903898MB
+Digitos do maior numero = 7, tamanho da amostra = 20
+Radixsort(d = 1): 0.225914, usando 36.117299MB
+Radixsort(d = 2): 0.125700, usando 36.131226MB
+Radixsort(d = 3): 0.092552, usando 36.092723MB
+Radixsort(d = 4): 0.059880, usando 36.259840MB
+Radixsort(d = 5): 0.067913, usando 37.693645MB
+Radixsort(d = 6): 0.092530, usando 52.111360MB
+Radixsort(d = 7): 0.109699, usando 196.086170MB
+Radixsort(d = 8): 0.521671, usando 1636.110746MB
 
-Digitos do maior numero = 8, tamanho da amostra = 10
-Radixsort(d = 1): 0.291146, usando 35.932160MB
-Radixsort(d = 2): 0.144081, usando 35.901030MB
-Radixsort(d = 3): 0.100897, usando 35.924787MB
-Radixsort(d = 4): 0.062306, usando 36.094362MB
-Radixsort(d = 5): 0.068218, usando 37.531648MB
-Radixsort(d = 6): 0.095854, usando 51.931546MB
-Radixsort(d = 7): 0.178558, usando 195.939123MB
-Radixsort(d = 8): 0.543471, usando 1635.929293MB
+Digitos do maior numero = 8, tamanho da amostra = 20
+Radixsort(d = 1): 0.279728, usando 36.146381MB
+Radixsort(d = 2): 0.137474, usando 36.114637MB
+Radixsort(d = 3): 0.096912, usando 36.140851MB
+Radixsort(d = 4): 0.060910, usando 36.299981MB
+Radixsort(d = 5): 0.068084, usando 37.734605MB
+Radixsort(d = 6): 0.095620, usando 52.140032MB
+Radixsort(d = 7): 0.179558, usando 196.130202MB
+Radixsort(d = 8): 0.542929, usando 1636.138598MB
 
-Digitos do maior numero = 9, tamanho da amostra = 10
-Radixsort(d = 1): 0.302680, usando 36.015718MB
-Radixsort(d = 2): 0.161406, usando 36.009574MB
-Radixsort(d = 3): 0.094557, usando 36.015309MB
-Radixsort(d = 4): 0.099099, usando 36.208640MB
-Radixsort(d = 5): 0.068787, usando 37.595955MB
-Radixsort(d = 6): 0.097268, usando 52.001997MB
-Radixsort(d = 7): 0.188299, usando 196.013670MB
-Radixsort(d = 8): 0.694148, usando 1636.010803MB
+Digitos do maior numero = 9, tamanho da amostra = 20
+Radixsort(d = 1): 0.304573, usando 36.175258MB
+Radixsort(d = 2): 0.162578, usando 36.178330MB
+Radixsort(d = 3): 0.093472, usando 36.164813MB
+Radixsort(d = 4): 0.097367, usando 36.344832MB
+Radixsort(d = 5): 0.068558, usando 37.759181MB
+Radixsort(d = 6): 0.097674, usando 52.161126MB
+Radixsort(d = 7): 0.187595, usando 196.167066MB
+Radixsort(d = 8): 0.691309, usando 1636.163174MB
 
-Digitos do maior numero = 10, tamanho da amostra = 10
-Radixsort(d = 1): 0.340507, usando 35.850240MB
-Radixsort(d = 2): 0.161572, usando 35.914957MB
-Radixsort(d = 3): 0.129095, usando 35.896115MB
-Radixsort(d = 4): 0.097978, usando 36.106650MB
-Radixsort(d = 5): 0.073891, usando 37.487821MB
-Radixsort(d = 6): 0.096617, usando 51.865600MB
-Radixsort(d = 7): 0.191800, usando 195.909222MB
-Radixsort(d = 8): 0.700399, usando 1635.887514MB
+Digitos do maior numero = 10, tamanho da amostra = 20
+Radixsort(d = 1): 0.337787, usando 36.067942MB
+Radixsort(d = 2): 0.162347, usando 36.109107MB
+Radixsort(d = 3): 0.130143, usando 36.109107MB
+Radixsort(d = 4): 0.097805, usando 36.262502MB
+Radixsort(d = 5): 0.073264, usando 37.685453MB
+Radixsort(d = 6): 0.098232, usando 52.098048MB
+Radixsort(d = 7): 0.192518, usando 196.098867MB
+Radixsort(d = 8): 0.698022, usando 1636.094976MB
 
-Digitos do maior numero = 11, tamanho da amostra = 10
-Radixsort(d = 1): 0.370477, usando 35.907174MB
-Radixsort(d = 2): 0.198096, usando 35.911270MB
-Radixsort(d = 3): 0.128941, usando 35.926016MB
-Radixsort(d = 4): 0.099058, usando 36.065690MB
-Radixsort(d = 5): 0.110102, usando 37.494374MB
-Radixsort(d = 6): 0.100319, usando 51.926221MB
-Radixsort(d = 7): 0.194097, usando 195.936256MB
-Radixsort(d = 8): 0.705756, usando 1635.905126MB
+Digitos do maior numero = 11, tamanho da amostra = 20
+Radixsort(d = 1): 0.368895, usando 36.113408MB
+Radixsort(d = 2): 0.199373, usando 36.118733MB
+Radixsort(d = 3): 0.129579, usando 36.120371MB
+Radixsort(d = 4): 0.097847, usando 36.266598MB
+Radixsort(d = 5): 0.110153, usando 37.695078MB
+Radixsort(d = 6): 0.101946, usando 52.123034MB
+Radixsort(d = 7): 0.196169, usando 196.114022MB
+Radixsort(d = 8): 0.703634, usando 1636.111360MB
 
-Digitos do maior numero = 12, tamanho da amostra = 10
-Radixsort(d = 1): 0.404894, usando 35.887104MB
-Radixsort(d = 2): 0.197198, usando 35.878502MB
-Radixsort(d = 3): 0.128939, usando 35.879322MB
-Radixsort(d = 4): 0.100090, usando 36.081664MB
-Radixsort(d = 5): 0.112765, usando 37.479629MB
-Radixsort(d = 6): 0.110315, usando 51.912704MB
-Radixsort(d = 7): 0.198941, usando 195.874816MB
-Radixsort(d = 8): 0.714454, usando 1635.898573MB
+Digitos do maior numero = 12, tamanho da amostra = 20
+Radixsort(d = 1): 0.404873, usando 36.098458MB
+Radixsort(d = 2): 0.196488, usando 36.110950MB
+Radixsort(d = 3): 0.129047, usando 36.097434MB
+Radixsort(d = 4): 0.099373, usando 36.291584MB
+Radixsort(d = 5): 0.113129, usando 37.687706MB
+Radixsort(d = 6): 0.111678, usando 52.127949MB
+Radixsort(d = 7): 0.201311, usando 196.091085MB
+Radixsort(d = 8): 0.711628, usando 1636.129178MB
 
-Digitos do maior numero = 13, tamanho da amostra = 10
-Radixsort(d = 1): 0.439743, usando 35.919462MB
-Radixsort(d = 2): 0.234912, usando 35.914138MB
-Radixsort(d = 3): 0.164632, usando 35.935437MB
-Radixsort(d = 4): 0.135794, usando 36.113613MB
-Radixsort(d = 5): 0.114463, usando 37.523456MB
-Radixsort(d = 6): 0.159706, usando 51.926630MB
-Radixsort(d = 7): 0.210550, usando 195.939123MB
-Radixsort(d = 8): 0.725583, usando 1635.923558MB
+Digitos do maior numero = 13, tamanho da amostra = 20
+Radixsort(d = 1): 0.441869, usando 36.120576MB
+Radixsort(d = 2): 0.233973, usando 36.121395MB
+Radixsort(d = 3): 0.165887, usando 36.132864MB
+Radixsort(d = 4): 0.135589, usando 36.294861MB
+Radixsort(d = 5): 0.113608, usando 37.727027MB
+Radixsort(d = 6): 0.162026, usando 52.121805MB
+Radixsort(d = 7): 0.211979, usando 196.131635MB
+Radixsort(d = 8): 0.723961, usando 1636.126106MB
 
-Digitos do maior numero = 14, tamanho da amostra = 10
-Radixsort(d = 1): 0.481547, usando 35.924787MB
-Radixsort(d = 2): 0.232459, usando 35.927245MB
-Radixsort(d = 3): 0.163330, usando 35.928064MB
-Radixsort(d = 4): 0.134488, usando 36.127130MB
-Radixsort(d = 5): 0.113682, usando 37.526733MB
-Radixsort(d = 6): 0.162798, usando 51.935232MB
-Radixsort(d = 7): 0.222903, usando 195.941171MB
-Radixsort(d = 8): 0.734843, usando 1635.925197MB
+Digitos do maior numero = 14, tamanho da amostra = 20
+Radixsort(d = 1): 0.479224, usando 36.110131MB
+Radixsort(d = 2): 0.233437, usando 36.126106MB
+Radixsort(d = 3): 0.164803, usando 36.125082MB
+Radixsort(d = 4): 0.134967, usando 36.299571MB
+Radixsort(d = 5): 0.114053, usando 37.729075MB
+Radixsort(d = 6): 0.165534, usando 52.133683MB
+Radixsort(d = 7): 0.224194, usando 196.131430MB
+Radixsort(d = 8): 0.733304, usando 1636.126720MB
 
-Digitos do maior numero = 15, tamanho da amostra = 10
-Radixsort(d = 1): 0.508365, usando 35.908403MB
-Radixsort(d = 2): 0.272437, usando 35.866624MB
-Radixsort(d = 3): 0.165585, usando 35.894477MB
-Radixsort(d = 4): 0.135020, usando 36.065690MB
-Radixsort(d = 5): 0.117322, usando 37.507891MB
-Radixsort(d = 6): 0.167179, usando 51.895091MB
-Radixsort(d = 7): 0.290436, usando 195.907994MB
-Radixsort(d = 8): 0.749395, usando 1635.887514MB
+Digitos do maior numero = 15, tamanho da amostra = 20
+Radixsort(d = 1): 0.509500, usando 36.116685MB
+Radixsort(d = 2): 0.273629, usando 36.104192MB
+Radixsort(d = 3): 0.165582, usando 36.092928MB
+Radixsort(d = 4): 0.135166, usando 36.268851MB
+Radixsort(d = 5): 0.117468, usando 37.709619MB
+Radixsort(d = 6): 0.168438, usando 52.120576MB
+Radixsort(d = 7): 0.289725, usando 196.105011MB
+Radixsort(d = 8): 0.748291, usando 1636.104602MB
 
-Digitos do maior numero = 16, tamanho da amostra = 10
-Radixsort(d = 1): 0.546713, usando 35.973120MB
-Radixsort(d = 2): 0.270332, usando 35.972301MB
-Radixsort(d = 3): 0.202167, usando 35.922739MB
-Radixsort(d = 4): 0.137449, usando 36.116890MB
-Radixsort(d = 5): 0.157509, usando 37.556224MB
-Radixsort(d = 6): 0.168848, usando 51.975782MB
-Radixsort(d = 7): 0.296114, usando 195.960832MB
-Radixsort(d = 8): 0.766927, usando 1635.939123MB
+Digitos do maior numero = 16, tamanho da amostra = 20
+Radixsort(d = 1): 0.548200, usando 36.175462MB
+Radixsort(d = 2): 0.270415, usando 36.186726MB
+Radixsort(d = 3): 0.202504, usando 36.162560MB
+Radixsort(d = 4): 0.137446, usando 36.353434MB
+Radixsort(d = 5): 0.157270, usando 37.780890MB
+Radixsort(d = 6): 0.171306, usando 52.189594MB
+Radixsort(d = 7): 0.299120, usando 196.185498MB
+Radixsort(d = 8): 0.764244, usando 1636.184474MB
 
-Digitos do maior numero = 17, tamanho da amostra = 10
-Radixsort(d = 1): 0.582707, usando 36.067328MB
-Radixsort(d = 2): 0.306561, usando 36.070195MB
-Radixsort(d = 3): 0.200405, usando 36.091085MB
-Radixsort(d = 4): 0.173536, usando 36.226253MB
-Radixsort(d = 5): 0.156567, usando 37.675827MB
-Radixsort(d = 6): 0.173491, usando 52.060979MB
-Radixsort(d = 7): 0.303281, usando 196.052582MB
-Radixsort(d = 8): 0.900310, usando 1636.074701MB
+Digitos do maior numero = 17, tamanho da amostra = 20
+Radixsort(d = 1): 0.583318, usando 36.353434MB
+Radixsort(d = 2): 0.306479, usando 36.342989MB
+Radixsort(d = 3): 0.201466, usando 36.362035MB
+Radixsort(d = 4): 0.173742, usando 36.518502MB
+Radixsort(d = 5): 0.156704, usando 37.952922MB
+Radixsort(d = 6): 0.175355, usando 52.337664MB
+Radixsort(d = 7): 0.303290, usando 196.351181MB
+Radixsort(d = 8): 0.900365, usando 1636.346266MB
 
-Digitos do maior numero = 18, tamanho da amostra = 10
-Radixsort(d = 1): 0.619020, usando 36.071834MB
-Radixsort(d = 2): 0.305585, usando 36.080845MB
-Radixsort(d = 3): 0.200437, usando 36.058726MB
-Radixsort(d = 4): 0.173327, usando 36.263117MB
-Radixsort(d = 5): 0.157894, usando 37.686886MB
-Radixsort(d = 6): 0.180465, usando 52.092109MB
-Radixsort(d = 7): 0.310370, usando 196.052992MB
-Radixsort(d = 8): 0.915055, usando 1636.070195MB
+Digitos do maior numero = 18, tamanho da amostra = 20
+Radixsort(d = 1): 0.623881, usando 36.332954MB
+Radixsort(d = 2): 0.309693, usando 36.330086MB
+Radixsort(d = 3): 0.202930, usando 36.322099MB
+Radixsort(d = 4): 0.174570, usando 36.502323MB
+Radixsort(d = 5): 0.157206, usando 37.931213MB
+Radixsort(d = 6): 0.182403, usando 52.336230MB
+Radixsort(d = 7): 0.311060, usando 196.311859MB
+Radixsort(d = 8): 0.910577, usando 1636.325990MB
 
-Digitos do maior numero = 19, tamanho da amostra = 10
-Radixsort(d = 1): 0.671743, usando 36.053811MB
-Radixsort(d = 2): 0.349549, usando 36.014490MB
-Radixsort(d = 3): 0.236883, usando 36.055859MB
-Radixsort(d = 4): 0.176190, usando 36.253696MB
-Radixsort(d = 5): 0.158876, usando 37.600051MB
-Radixsort(d = 6): 0.232033, usando 52.026163MB
-Radixsort(d = 7): 0.323525, usando 196.018586MB
-Radixsort(d = 8): 0.922732, usando 1636.024320MB
+Digitos do maior numero = 19, tamanho da amostra = 20
+Radixsort(d = 1): 0.675682, usando 36.293837MB
+Radixsort(d = 2): 0.344654, usando 36.252877MB
+Radixsort(d = 3): 0.237780, usando 36.270694MB
+Radixsort(d = 4): 0.175978, usando 36.457267MB
+Radixsort(d = 5): 0.158291, usando 37.847654MB
+Radixsort(d = 6): 0.232204, usando 52.267622MB
+Radixsort(d = 7): 0.320445, usando 196.267213MB
+Radixsort(d = 8): 0.922450, usando 1636.272128MB
 
-Digitos do maior numero = 20, tamanho da amostra = 10
-Radixsort(d = 1): 0.861153, usando 36.058317MB
-Radixsort(d = 2): 0.467736, usando 36.055040MB
-Radixsort(d = 3): 0.288602, usando 36.063232MB
-Radixsort(d = 4): 0.215656, usando 36.241818MB
-Radixsort(d = 5): 0.187028, usando 37.681971MB
-Radixsort(d = 6): 0.267479, usando 52.139213MB
-Radixsort(d = 7): 0.339289, usando 196.139008MB
-Radixsort(d = 8): 0.938810, usando 1636.132045MB
+Digitos do maior numero = 20, tamanho da amostra = 20
+Radixsort(d = 1): 0.796383, usando 36.294246MB
+Radixsort(d = 2): 0.404347, usando 36.289946MB
+Radixsort(d = 3): 0.264713, usando 36.296294MB
+Radixsort(d = 4): 0.195714, usando 36.465664MB
+Radixsort(d = 5): 0.173002, usando 37.899059MB
+Radixsort(d = 6): 0.250309, usando 52.335411MB
+Radixsort(d = 7): 0.327151, usando 196.325376MB
+Radixsort(d = 8): 0.927708, usando 1636.339098MB
 
 
 Tabela tempo:
 k & d = 1 & d = 2 & d = 3 &  d = 4 &  d = 5 &  d = 6 &  d = 7 & d = 8 \\
 \midrule
-1 & 0.010122 & 0.010180 & 0.010238 & 0.010316 & 0.011017 & 0.014856 & 0.057042 & 0.473473 \\
-2 & 0.055432 & 0.010542 & 0.010562 & 0.010709 & 0.011349 & 0.015392 & 0.058150 & 0.473274 \\
-3 & 0.086573 & 0.053235 & 0.011742 & 0.011794 & 0.012414 & 0.016687 & 0.060343 & 0.475925 \\
-4 & 0.119678 & 0.053440 & 0.055853 & 0.014836 & 0.015258 & 0.021069 & 0.064715 & 0.478600 \\
-5 & 0.154714 & 0.089124 & 0.056026 & 0.056154 & 0.022099 & 0.026565 & 0.070391 & 0.484648 \\
-6 & 0.195160 & 0.090629 & 0.054739 & 0.056938 & 0.065091 & 0.040089 & 0.084140 & 0.497732 \\
-7 & 0.224657 & 0.125651 & 0.091643 & 0.058206 & 0.066388 & 0.091454 & 0.108519 & 0.523582 \\
-8 & 0.291146 & 0.144081 & 0.100897 & 0.062306 & 0.068218 & 0.095854 & 0.178558 & 0.543471 \\
-9 & 0.302680 & 0.161406 & 0.094557 & 0.099099 & 0.068787 & 0.097268 & 0.188299 & 0.694148 \\
-10 & 0.340507 & 0.161572 & 0.129095 & 0.097978 & 0.073891 & 0.096617 & 0.191800 & 0.700399 \\
-11 & 0.370477 & 0.198096 & 0.128941 & 0.099058 & 0.110102 & 0.100319 & 0.194097 & 0.705756 \\
-12 & 0.404894 & 0.197198 & 0.128939 & 0.100090 & 0.112765 & 0.110315 & 0.198941 & 0.714454 \\
-13 & 0.439743 & 0.234912 & 0.164632 & 0.135794 & 0.114463 & 0.159706 & 0.210550 & 0.725583 \\
-14 & 0.481547 & 0.232459 & 0.163330 & 0.134488 & 0.113682 & 0.162798 & 0.222903 & 0.734843 \\
-15 & 0.508365 & 0.272437 & 0.165585 & 0.135020 & 0.117322 & 0.167179 & 0.290436 & 0.749395 \\
-16 & 0.546713 & 0.270332 & 0.202167 & 0.137449 & 0.157509 & 0.168848 & 0.296114 & 0.766927 \\
-17 & 0.582707 & 0.306561 & 0.200405 & 0.173536 & 0.156567 & 0.173491 & 0.303281 & 0.900310 \\
-18 & 0.619020 & 0.305585 & 0.200437 & 0.173327 & 0.157894 & 0.180465 & 0.310370 & 0.915055 \\
-19 & 0.671743 & 0.349549 & 0.236883 & 0.176190 & 0.158876 & 0.232033 & 0.323525 & 0.922732 \\
-20 & 0.861153 & 0.467736 & 0.288602 & 0.215656 & 0.187028 & 0.267479 & 0.339289 & 0.938810 \\
+1 & 0.010167 & 0.010166 & 0.010222 & 0.010313 & 0.011039 & 0.014887 & 0.057713 & 0.472493 \\
+2 & 0.054574 & 0.010558 & 0.010547 & 0.010615 & 0.011355 & 0.015455 & 0.058595 & 0.472638 \\
+3 & 0.086350 & 0.054072 & 0.011824 & 0.011797 & 0.012546 & 0.016734 & 0.061004 & 0.473161 \\
+4 & 0.121213 & 0.054133 & 0.057930 & 0.015007 & 0.015435 & 0.021313 & 0.065445 & 0.477547 \\
+5 & 0.156380 & 0.091523 & 0.056902 & 0.056830 & 0.022224 & 0.027259 & 0.071862 & 0.484198 \\
+6 & 0.195707 & 0.089849 & 0.055508 & 0.057336 & 0.065285 & 0.040984 & 0.084758 & 0.497083 \\
+7 & 0.225914 & 0.125700 & 0.092552 & 0.059880 & 0.067913 & 0.092530 & 0.109699 & 0.521671 \\
+8 & 0.279728 & 0.137474 & 0.096912 & 0.060910 & 0.068084 & 0.095620 & 0.179558 & 0.542929 \\
+9 & 0.304573 & 0.162578 & 0.093472 & 0.097367 & 0.068558 & 0.097674 & 0.187595 & 0.691309 \\
+10 & 0.337787 & 0.162347 & 0.130143 & 0.097805 & 0.073264 & 0.098232 & 0.192518 & 0.698022 \\
+11 & 0.368895 & 0.199373 & 0.129579 & 0.097847 & 0.110153 & 0.101946 & 0.196169 & 0.703634 \\
+12 & 0.404873 & 0.196488 & 0.129047 & 0.099373 & 0.113129 & 0.111678 & 0.201311 & 0.711628 \\
+13 & 0.441869 & 0.233973 & 0.165887 & 0.135589 & 0.113608 & 0.162026 & 0.211979 & 0.723961 \\
+14 & 0.479224 & 0.233437 & 0.164803 & 0.134967 & 0.114053 & 0.165534 & 0.224194 & 0.733304 \\
+15 & 0.509500 & 0.273629 & 0.165582 & 0.135166 & 0.117468 & 0.168438 & 0.289725 & 0.748291 \\
+16 & 0.548200 & 0.270415 & 0.202504 & 0.137446 & 0.157270 & 0.171306 & 0.299120 & 0.764244 \\
+17 & 0.583318 & 0.306479 & 0.201466 & 0.173742 & 0.156704 & 0.175355 & 0.303290 & 0.900365 \\
+18 & 0.623881 & 0.309693 & 0.202930 & 0.174570 & 0.157206 & 0.182403 & 0.311060 & 0.910577 \\
+19 & 0.675682 & 0.344654 & 0.237780 & 0.175978 & 0.158291 & 0.232204 & 0.320445 & 0.922450 \\
+20 & 0.796383 & 0.404347 & 0.264713 & 0.195714 & 0.173002 & 0.250309 & 0.327151 & 0.927708 \\
 
 Tabela memoria:
 k & d = 1 & d = 2 & d = 3 &  d = 4 &  d = 5 &  d = 6 &  d = 7 & d = 8 \\
 \midrule
-1 & 35.5 & 35.5 & 35.5 & 35.7 & 37.1 & 51.5 & 195.5 & 1635.5 \\
-2 & 35.6 & 35.6 & 35.6 & 35.8 & 37.2 & 51.6 & 195.6 & 1635.6 \\
-3 & 35.8 & 35.9 & 35.9 & 36.0 & 37.4 & 51.8 & 195.9 & 1635.9 \\
-4 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1636.0 \\
-5 & 35.8 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-6 & 35.9 & 35.8 & 35.8 & 36.0 & 37.5 & 51.9 & 195.9 & 1635.8 \\
-7 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-8 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-9 & 36.0 & 36.0 & 36.0 & 36.2 & 37.6 & 52.0 & 196.0 & 1636.0 \\
-10 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-11 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-12 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-13 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-14 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-15 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
-16 & 36.0 & 36.0 & 35.9 & 36.1 & 37.6 & 52.0 & 196.0 & 1635.9 \\
-17 & 36.1 & 36.1 & 36.1 & 36.2 & 37.7 & 52.1 & 196.1 & 1636.1 \\
-18 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
-19 & 36.1 & 36.0 & 36.1 & 36.3 & 37.6 & 52.0 & 196.0 & 1636.0 \\
-20 & 36.1 & 36.1 & 36.1 & 36.2 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+1 & 35.8 & 35.8 & 35.8 & 36.0 & 37.4 & 51.8 & 195.8 & 1635.8 \\
+2 & 35.9 & 35.9 & 35.9 & 36.1 & 37.5 & 51.9 & 195.9 & 1635.9 \\
+3 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+4 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+5 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+6 & 36.1 & 36.1 & 36.1 & 36.2 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+7 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+8 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+9 & 36.2 & 36.2 & 36.2 & 36.3 & 37.8 & 52.2 & 196.2 & 1636.2 \\
+10 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+11 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+12 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+13 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+14 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+15 & 36.1 & 36.1 & 36.1 & 36.3 & 37.7 & 52.1 & 196.1 & 1636.1 \\
+16 & 36.2 & 36.2 & 36.2 & 36.4 & 37.8 & 52.2 & 196.2 & 1636.2 \\
+17 & 36.4 & 36.3 & 36.4 & 36.5 & 38.0 & 52.3 & 196.4 & 1636.3 \\
+18 & 36.3 & 36.3 & 36.3 & 36.5 & 37.9 & 52.3 & 196.3 & 1636.3 \\
+19 & 36.3 & 36.3 & 36.3 & 36.5 & 37.8 & 52.3 & 196.3 & 1636.3 \\
+20 & 36.3 & 36.3 & 36.3 & 36.5 & 37.9 & 52.3 & 196.3 & 1636.3 \\
