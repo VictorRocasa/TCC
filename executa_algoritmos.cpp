@@ -20,8 +20,8 @@ void normalizarResultados();//funcao que gera relatorios com as medias dos relat
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
-	provaDeOrdenacao();
-    return 0;
+	//provaDeOrdenacao();
+    //return 0;
 	for(int i = 1; i <= 7; i++){//loop para gerar 10 relatorios
 		gera_relatorios(10000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
 		gera_relatorios(100000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
@@ -543,8 +543,8 @@ void normalizarResultados(){
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
 					
 				fprintf(p, "\nTabela latex da entrada de k = %d:\n", real);
-				fprintf(p, "\\textit{Quicksort} & %lf \\\\\n", tempo[0][i]/media[0][i]);
-				fprintf(p, "\\textit{Mergesort1} & %lf \\\\\n", tempo[1][i]/media[1][i]);
+				fprintf(p, "\\textit{Quicksort} & %lf \\\\\n", tempo[1][i]/media[1][i]);
+				fprintf(p, "\\textit{Mergesort1} & %lf \\\\\n", tempo[0][i]/media[0][i]);
 				fprintf(p, "\\textit{Mergesort2} & %lf \\\\\n",  tempo[2][i]/media[2][i]);
 				fprintf(p, "\\textit{Radix-base} & %lf \\\\\n\n\n\n", tempo[3][i]/media[3][i]);
 				real = 20;
@@ -662,10 +662,10 @@ void normalizarResultados(){
 				
 				fprintf(p, "\nTabela latex da entrada");
 				if(comparaString(tipo, (char*)"complexa"))
-					fprintf(p, "\\textit{Quicksort} & %lf \\\\\n", tempo[0]/media[0]);
+					fprintf(p, "\n\\textit{Quicksort} & %lf \\\\\n", tempo[1]/media[1]);
 				else
-					fprintf(p, "\\textit{Quicksort} & -  \\\\\n");
-				fprintf(p, "\\textit{Mergesort1} & %lf \\\\\n", tempo[1]/media[1]);
+					fprintf(p, "\n\\textit{Quicksort} & -  \\\\\n");
+				fprintf(p, "\\textit{Mergesort1} & %lf \\\\\n", tempo[0]/media[0]);
 				fprintf(p, "\\textit{Mergesort2} & %lf \\\\\n",  tempo[2]/media[2]);
 				fprintf(p, "\\textit{Radix-base} & %lf \\\\\n\n\n\n", tempo[3]/media[3]);
 				
