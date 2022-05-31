@@ -28,13 +28,18 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
         return 1;
     if(l->raiz->prox == NULL)//1 elemento
     	return 1;
-    unsigned long long qtd_baldes = pow(10,d);//numero exato de hashes por iteracao
-    unsigned long long divisor = qtd_baldes;//divisor para extrair os digitos
-    unsigned long long modulador = 1;//modulador para extrair os digitos
+    unsigned long long qtd_baldes = (unsigned long long) pow(10,d);//numero exato de hashes por iteracao
+    unsigned __int128 divisor = qtd_baldes;//divisor para extrair os digitos
+    unsigned __int128 modulador = 1;//modulador para extrair os digitos
     no ** baldes_raiz = (no **)malloc(qtd_baldes*sizeof(no*));//vetor de baldes apontando para o inicio da sublista
-    no ** baldes_final = (no **)malloc(qtd_baldes*sizeof(no*));//vetor de baldes apontando para o final da sublista
-    if(baldes_raiz == NULL || baldes_final == NULL)//sem memoria
+    if(baldes_raiz == NULL)//sem memoria
     	return 0;//falha ao ordenar
+    no ** baldes_final = (no **)malloc(qtd_baldes*sizeof(no*));//vetor de baldes apontando para o final da sublista
+    if(baldes_final == NULL)//sem memoria
+    {
+    	free(baldes_raiz);
+    	return 0;//falha ao ordenar
+	}
     for(unsigned long long i = 0; i < qtd_baldes; i++)//inicia todos os baldes com NULL
     {
         baldes_raiz[i]=NULL;
@@ -45,7 +50,7 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     unsigned long long maior = prox->n;//maior numero
     while(prox!=NULL)//Coleta o maior elemento e faz a primeira iteracao ao mesmo tempo
 	{
-        unsigned long long n = (prox->n%divisor)/modulador;//variavel auxiliar para evitar a repetição da operação de extração do dígito
+        unsigned long long n = (unsigned long long) (prox->n%divisor)/modulador;//variavel auxiliar para evitar a repetição da operação de extração do dígito
         if(baldes_raiz[n]==NULL)//se o balde tiver vazio adiciona no comeco
             baldes_raiz[n] = prox;
         else//senao encadeia no final
@@ -69,13 +74,13 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
     int qtd_digitos_maior_numero = conta_digitos(maior);
     for(int j = d; j < qtd_digitos_maior_numero; j+=d)//mesma coisa que o loop acima, exceto a parte de pegar o maior
     {
-	    divisor *= qtd_baldes;//atualiza o divisor para a proxima iteracao
+	    divisor *= qtd_baldes;//atualiza o divisor para a proxima iteracao d=2	8000010461812853982
 	    modulador *= qtd_baldes;//atualiza o modulador para a proxima iteracao
         prox = l->raiz;
         l->raiz = NULL;
         while(prox!=NULL)
         {
-            unsigned long long n = (prox->n%divisor)/modulador;
+            unsigned long long n = (unsigned long long) (prox->n%divisor)/modulador;
             if(baldes_raiz[n]==NULL)
                 baldes_raiz[n] = prox;
             else

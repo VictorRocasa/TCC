@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <psapi.h>
+#include <iterator>
 #include <list>
 #include "lista.h"
 #include "maximos.h"
@@ -19,15 +20,16 @@ void normalizarResultados();//funcao que gera relatorios com as medias dos relat
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
-	normalizarResultados();
+	provaDeOrdenacao();
     return 0;
 	for(int i = 1; i <= 7; i++){//loop para gerar 10 relatorios
 		gera_relatorios(10000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
 		gera_relatorios(100000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
 	}
+	gera_relatorios(0, (char*)"aleatoria",0);
 	normalizarResultados();
+	
   	system("c:\\windows\\system32\\shutdown /s");
-
     return 0;
 }
 
@@ -61,7 +63,7 @@ void provaDeOrdenacao(){
 	lista * e2 = inicia_lista();
 	lista * e3 = inicia_lista();
 	printf("Lendo entrada aleatoria 1 para testes\n");
-	char * arq = (char *)".\\entradas_aleatorias\\entrada_aleatoria_1.txt";
+	char * arq = (char *)".\\entradas_aleatorias\\entrada_aleatoria_100.txt";
 	if(ler_entrada(e1,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 	{
 		printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
@@ -90,7 +92,28 @@ void provaDeOrdenacao(){
 		exit(1);
 	}
 	printf("Radixsort...\n");
-	radix_lista(e3,1);
+	radix_lista(e3,8);
+	
+	std::list<unsigned long long> entradaCPP;
+	lerEntradaCPP(entradaCPP, arq);
+	printf("Mergesort2(std::sort)...");
+	entradaCPP.sort();
+	no * prox = e3->raiz;
+	int i = 1; 
+    std::list<unsigned long long>::iterator j = entradaCPP.begin();
+	while(prox!=NULL){
+		if(prox->n != *j){
+			printf("Erro no indice %d!\n", i);
+			printf("%llu != %llu", prox->n, *j);
+			getchar();
+		}
+		prox = prox->prox;
+		j++;
+		i++;
+	}
+	entradaCPP.clear();
+	
+	
 	no * prox1 = e1->raiz;
 	no * prox2 = e2->raiz;
 	no * prox3 = e3->raiz;
@@ -101,7 +124,8 @@ void provaDeOrdenacao(){
 		}
 		else if(prox1->n == prox2->n && prox1->n != prox3->n && prox2->n != prox3->n){
 			printf("\nRadix incorreto\n");
-			exit(1);
+			printf("%llu != %llu e %llu", prox3->n, prox2->n, prox1->n);
+			getchar();
 		}
 		else if(prox1->n != prox2->n && prox1->n == prox3->n && prox2->n != prox3->n){
 			printf("\nMerge incorreto\n");
@@ -218,7 +242,7 @@ void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequerido, 
 			else
 				fprintf(p, "2;d;%lf\n", qtd_digitos, 0.0);
 			
-			/**INTROSORT(std::sort) - utiliza estruturas do C++**/
+			/**Mergesort2(std::sort) - utiliza estruturas do C++**/
 			desaloca_lista(entrada);//limpa a entrada atual
 			std::list<unsigned long long> entradaCPP;
 			if(lerEntradaCPP(entradaCPP, arq) != 1)//acabaram as entradas existentes ou a memória do computador
@@ -234,7 +258,7 @@ void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequerido, 
 		    	fclose(pr);
 				exit(1);
 			}
-			printf("Introsort(std::sort)...");
+			printf("Mergesort2(std::sort)...");
 			cppSortAux(entradaCPP, entrada);
 			printf("Tempo total: %lf segundos\n", entrada->tempo);
 			fprintf(p, "3;%d;%lf\n", qtd_digitos, entrada->tempo);
@@ -365,7 +389,7 @@ void normalizarResultados(){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", i+1, media[3][i]);
 				fprintf(p, "Mergesort: %lf\n", tempo[0][i]/media[0][i]);
 				fprintf(p, "Quicksort: %lf\n", tempo[1][i]/media[1][i]);
-				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2][i]/media[2][i]);
+				fprintf(p, "Mergesort2(std::sort): %lf\n", tempo[2][i]/media[2][i]);
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
 			}
 			fprintf(p, "Coordenadas Latex Mergesort:\n");
@@ -382,7 +406,7 @@ void normalizarResultados(){
 						fprintf(p, "\n");
 				}
 			}
-			fprintf(p, "\n\nCoordenadas Latex Introsort:\n");
+			fprintf(p, "\n\nCoordenadas Latex Mergesort2:\n");
 			for(int i = 0; i < 20; i++){
 				fprintf(p, "(%d,%lf)", i+1,  tempo[2][i]/media[2][i]);
 				if((i+1)%4==0)
@@ -515,7 +539,7 @@ void normalizarResultados(){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", real, media[3][i]);
 				fprintf(p, "Mergesort: %lf\n", tempo[0][i]/media[0][i]);
 				fprintf(p, "Quicksort: %lf\n", tempo[1][i]/media[1][i]);
-				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2][i]/media[2][i]);
+				fprintf(p, "Mergesort2(std::sort): %lf\n", tempo[2][i]/media[2][i]);
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
 					
 				fprintf(p, "\nTabela latex da entrada de k = %d:\n", real);
@@ -633,7 +657,7 @@ void normalizarResultados(){
 				fprintf(p, "Mergesort: %lf\n", tempo[0]/media[0]);
 				if(comparaString(tipo, (char*)"complexa"))
 					fprintf(p, "Quicksort: %lf\n", tempo[1]/media[1]);
-				fprintf(p, "Introsort(std::sort): %lf\n", tempo[2]/media[2]);
+				fprintf(p, "Mergesort2(std::sort): %lf\n", tempo[2]/media[2]);
 				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3]/media[3]);
 				
 				fprintf(p, "\nTabela latex da entrada");
