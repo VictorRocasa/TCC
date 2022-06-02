@@ -1,16 +1,17 @@
 Entrada complexa de tamanho 10000000
 
 Digitos do maior numero = 20, tamanho da amostra = 10
-Mergesort: 4.423732
-Quicksort: 7.357208
-Introsort(std::sort): 6.483810
-Radixsort(d = 1): 16.931908
+Mergesort: 4.440233
+Quicksort: 7.324977
+Mergesort2(std::sort): 6.435429
+Radixsort(d = 1): 17.391252
 
 
-Tabela latex da entrada\textit{Quicksort} & 4.423732 \\
-\textit{Mergesort1} & 7.357208 \\
-\textit{Mergesort2} & 6.483810 \\
-\textit{Radix-base} & 16.931908 \\
+Tabela latex da entrada
+\textit{Quicksort} & 7.324977 \\
+\textit{Mergesort1} & 4.440233 \\
+\textit{Mergesort2} & 6.435429 \\
+\textit{Radix-base} & 17.391252 \\
 
 
 

@@ -1,24 +1,24 @@
 Entrada crescente de tamanho 1000000
 
-Digitos do maior numero = 1000000, tamanho da amostra = 11
-Radixsort(d = 1): 0.134820, usando 35.812073MB
-Radixsort(d = 2): 0.065387, usando 35.815052MB
-Radixsort(d = 3): 0.038763, usando 35.816913MB
-Radixsort(d = 4): 0.031314, usando 35.975913MB
-Radixsort(d = 5): 0.027305, usando 37.418077MB
-Radixsort(d = 6): 0.019162, usando 51.825199MB
-Radixsort(d = 7): 0.063010, usando 195.825292MB
-Radixsort(d = 8): 0.479256, usando 1635.823616MB
+Digitos do maior numero = 1000000, tamanho da amostra = 10
+Radixsort(d = 1): 0.199029, usando 1218.268365MB
+Radixsort(d = 2): 0.101105, usando 1218.268774MB
+Radixsort(d = 3): 0.070523, usando 1218.271232MB
+Radixsort(d = 4): 0.067779, usando 1218.338816MB
+Radixsort(d = 5): 0.068068, usando 1219.230925MB
+Radixsort(d = 6): 0.045854, usando 1235.238093MB
+Radixsort(d = 7): 0.090780, usando 1379.237069MB
+Radixsort(d = 8): 0.498686, usando 2819.235021MB
 
 
 Tabela latex:
-1 & 0.134820 & 35.8 & - \\
-2 & 0.065387 & 35.8 & 2.06x \\
-3 & 0.038763 & 35.8 & 3.48x \\
-4 & 0.031314 & 36.0 & 4.31x \\
-5 & 0.027305 & 37.4 & 4.94x \\
-6 & 0.019162 & 51.8 & 7.04x \\
-7 & 0.063010 & 195.8 & 2.14x \\
-8 & 0.479256 & 1635.8 & 0.28x \\
+1 & 0.199029 & 1218.3 & - \\
+2 & 0.101105 & 1218.3 & 1.97x \\
+3 & 0.070523 & 1218.3 & 2.82x \\
+4 & 0.067779 & 1218.3 & 2.94x \\
+5 & 0.068068 & 1219.2 & 2.92x \\
+6 & 0.045854 & 1235.2 & 4.34x \\
+7 & 0.090780 & 1379.2 & 2.19x \\
+8 & 0.498686 & 2819.2 & 0.40x \\
 
 

@@ -1,47 +1,47 @@
 Entrada igual de tamanho 10000000
 
-Digitos do maior numero = 7, tamanho da amostra = 3
-Radixsort(d = 1): 0.811864, usando 336.364885MB
-Radixsort(d = 2): 0.461138, usando 336.416768MB
-Radixsort(d = 3): 0.347473, usando 336.442709MB
-Radixsort(d = 4): 0.234188, usando 336.541013MB
-Radixsort(d = 5): 0.228240, usando 338.049707MB
-Radixsort(d = 6): 0.233889, usando 353.561259MB
-Radixsort(d = 7): 0.163172, usando 497.580715MB
-Radixsort(d = 8): 0.568534, usando 1937.580032MB
+Digitos do maior numero = 7, tamanho da amostra = 10
+Radixsort(d = 1): 1.935193, usando 363.063706MB
+Radixsort(d = 2): 1.133612, usando 363.099750MB
+Radixsort(d = 3): 0.876704, usando 363.124326MB
+Radixsort(d = 4): 0.613630, usando 363.150541MB
+Radixsort(d = 5): 0.610191, usando 363.811635MB
+Radixsort(d = 6): 0.618051, usando 379.376435MB
+Radixsort(d = 7): 0.393327, usando 523.405312MB
+Radixsort(d = 8): 0.806214, usando 1963.404902MB
 
 Tabela latex da entrada de k = 7:
-1 & 0.811864 & 336.364885 & - \\
-2 & 0.461138 & 336.4 & 1.76x \\
-3 & 0.347473 & 336.4 & 2.34x \\
-4 & 0.234188 & 336.5 & 3.47x \\
-5 & 0.228240 & 338.0 & 3.56x \\
-6 & 0.233889 & 353.6 & 3.47x \\
-7 & 0.163172 & 497.6 & 4.98x \\
-8 & 0.568534 & 1937.6 & 1.43x \\
+1 & 1.935193 & 363.063706 & - \\
+2 & 1.133612 & 363.1 & 1.71x \\
+3 & 0.876704 & 363.1 & 2.21x \\
+4 & 0.613630 & 363.2 & 3.15x \\
+5 & 0.610191 & 363.8 & 3.17x \\
+6 & 0.618051 & 379.4 & 3.13x \\
+7 & 0.393327 & 523.4 & 4.92x \\
+8 & 0.806214 & 1963.4 & 2.40x \\
 
 
 
 
-Digitos do maior numero = 20, tamanho da amostra = 3
-Radixsort(d = 1): 2.407847, usando 336.232448MB
-Radixsort(d = 2): 1.203328, usando 336.232448MB
-Radixsort(d = 3): 0.839850, usando 336.293888MB
-Radixsort(d = 4): 0.606610, usando 336.433152MB
-Radixsort(d = 5): 0.484170, usando 337.956864MB
-Radixsort(d = 6): 0.484490, usando 353.437013MB
-Radixsort(d = 7): 0.424849, usando 497.464661MB
-Radixsort(d = 8): 0.950935, usando 1937.462613MB
+Digitos do maior numero = 20, tamanho da amostra = 10
+Radixsort(d = 1): 5.368425, usando 363.683430MB
+Radixsort(d = 2): 2.740100, usando 362.973594MB
+Radixsort(d = 3): 1.948465, usando 362.947789MB
+Radixsort(d = 4): 1.422548, usando 363.011686MB
+Radixsort(d = 5): 1.157990, usando 363.948032MB
+Radixsort(d = 6): 1.162152, usando 379.633254MB
+Radixsort(d = 7): 0.955995, usando 523.634278MB
+Radixsort(d = 8): 1.506250, usando 1963.634688MB
 
 Tabela latex da entrada de k = 20:
-1 & 2.407847 & 336.232448 & - \\
-2 & 1.203328 & 336.2 & 2.00x \\
-3 & 0.839850 & 336.3 & 2.87x \\
-4 & 0.606610 & 336.4 & 3.97x \\
-5 & 0.484170 & 338.0 & 4.97x \\
-6 & 0.484490 & 353.4 & 4.97x \\
-7 & 0.424849 & 497.5 & 5.67x \\
-8 & 0.950935 & 1937.5 & 2.53x \\
+1 & 5.368425 & 363.683430 & - \\
+2 & 2.740100 & 363.0 & 1.96x \\
+3 & 1.948465 & 362.9 & 2.76x \\
+4 & 1.422548 & 363.0 & 3.77x \\
+5 & 1.157990 & 363.9 & 4.64x \\
+6 & 1.162152 & 379.6 & 4.62x \\
+7 & 0.955995 & 523.6 & 5.62x \\
+8 & 1.506250 & 1963.6 & 3.56x \\
 
 
 

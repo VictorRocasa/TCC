@@ -1,24 +1,24 @@
 Entrada decrescente de tamanho 10000000
 
 Digitos do maior numero = 10000000, tamanho da amostra = 10
-Radixsort(d = 1): 3.096711, usando 362.693018MB
-Radixsort(d = 2): 1.497151, usando 362.579968MB
-Radixsort(d = 3): 0.833774, usando 362.392781MB
-Radixsort(d = 4): 0.533994, usando 362.459136MB
-Radixsort(d = 5): 0.504819, usando 364.081562MB
-Radixsort(d = 6): 0.338475, usando 379.919974MB
-Radixsort(d = 7): 0.213193, usando 523.951309MB
-Radixsort(d = 8): 0.623996, usando 1963.928371MB
+Radixsort(d = 1): 3.568473, usando 365.558579MB
+Radixsort(d = 2): 1.882370, usando 365.399654MB
+Radixsort(d = 3): 1.230182, usando 364.840550MB
+Radixsort(d = 4): 0.830650, usando 364.621824MB
+Radixsort(d = 5): 0.795412, usando 365.755187MB
+Radixsort(d = 6): 0.723982, usando 381.762355MB
+Radixsort(d = 7): 0.459631, usando 525.761331MB
+Radixsort(d = 8): 0.859832, usando 1965.759283MB
 
 
 Tabela latex:
-1 & 3.096711 & 362.7 & - \\
-2 & 1.497151 & 362.6 & 2.07x \\
-3 & 0.833774 & 362.4 & 3.71x \\
-4 & 0.533994 & 362.5 & 5.80x \\
-5 & 0.504819 & 364.1 & 6.13x \\
-6 & 0.338475 & 379.9 & 9.15x \\
-7 & 0.213193 & 524.0 & 14.53x \\
-8 & 0.623996 & 1963.9 & 4.96x \\
+1 & 3.568473 & 365.6 & - \\
+2 & 1.882370 & 365.4 & 1.90x \\
+3 & 1.230182 & 364.8 & 2.90x \\
+4 & 0.830650 & 364.6 & 4.30x \\
+5 & 0.795412 & 365.8 & 4.49x \\
+6 & 0.723982 & 381.8 & 4.93x \\
+7 & 0.459631 & 525.8 & 7.76x \\
+8 & 0.859832 & 1965.8 & 4.15x \\
 
 
