@@ -16,20 +16,29 @@ void provaDeOrdenacao();//Mostra que a saída de todos os algoritmos são iguais e
 void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequeridom, int rep);//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);//le entrada para a lista nativa do C++
 void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);//auxiliar para marcar o tempo do std::sort
-void normalizarResultados();//funcao que gera relatorios com as medias dos relatorios gerados pelas diversas execucoes da funcao anterior
+void normalizarResultados(int aleatorias);//funcao que gera relatorios com as medias dos relatorios gerados pelas diversas execucoes da funcao anterior
 int comparaString(char * str1, char * str2);//funcao auxiliar para comparar duas strings passadas por parametro
 
 int main(){//teste.txt
-	//provaDeOrdenacao();
-    //return 0;
-	for(int i = 1; i <= 7; i++){//loop para gerar 10 relatorios
-		gera_relatorios(10000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
-		gera_relatorios(100000000llu, (char*)"igual",i);//executa todas as entradas complexas de tamanho = 100000000/
+	/*planop de testes final:
+	dia 1 - todas as entradas nao aleatorias
+	dia 2 e 3 - 5 entradas aleatorias de tamanhos 10^6 e 10^7
+	dia 4 a 14 - entradas aleatorias de tamanho 10^8
+	*/
+	/*dia 1
+	for(int i = 1; i <= 10; i++){//loop para gerar 10 relatorios
+		gera_relatorios(0llu, (char*)"igual", i);//executa todas as entradas complexas de tamanho = 100000000/
+		gera_relatorios(0llu, (char*)"crescente", i);//executa todas as entradas complexas de tamanho = 100000000/
+		gera_relatorios(0llu, (char*)"decrescente", i);//executa todas as entradas complexas de tamanho = 100000000/
+		gera_relatorios(0llu, (char*)"complexa", i);//executa todas as entradas complexas de tamanho = 100000000/
+	}*/
+	/*dia 2 - 3
+	for(int i = 1; i <= 5; i++){
+		gera_relatorios(1000000llu, (char*)"aleatoria", i);//executa todas as entradas complexas de tamanho = 100000000/
+		gera_relatorios(10000000llu, (char*)"aleatoria", i);//executa todas as entradas complexas de tamanho = 100000000/
 	}
-	gera_relatorios(0, (char*)"aleatoria",0);
-	normalizarResultados();
-	
-  	system("c:\\windows\\system32\\shutdown /s");
+  	system("c:\\windows\\system32\\shutdown /s");*/
+  	normalizarResultados(0);
     return 0;
 }
 
@@ -337,7 +346,7 @@ void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l){
 	l->tempo = (double) (end.QuadPart - start.QuadPart) / frequency.QuadPart;//salva o tempo em segundos
 }	
 
-void normalizarResultados(){
+void normalizarResultados(int aleatorias){
 	printf("Normalizando resultados...\n");
 	for(unsigned long long tamanho = MINT; tamanho <= MAXT; tamanho *=10){
 		char * arq = (char*)malloc(256*sizeof(char*));//variavel para ler arquivos
@@ -352,7 +361,8 @@ void normalizarResultados(){
 		sprintf(arq, ".\\dados\\Relatorio_comparacao_%s_%llu.txt", tipo, tamanho);
 		FILE * p = fopen(arq, "r");
 	    
-	    goto skip;
+		if(!aleatorias)//pula a normalizacao das entradas aleatorias
+	    	goto skip;
 		if(p == NULL){
 			printf("Nao existem dados para a entrada %s de tamanho %llu, favor executar o algoritmo de relatorio!\n", tipo, tamanho);
 			fclose(p);
