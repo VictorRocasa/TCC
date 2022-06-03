@@ -10,6 +10,7 @@
 #include "merge_sort.h"
 #include "quick_sort.h"
 #include "radixsort_lista.h"
+#include <math.h>
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
 void provaDeOrdenacao();//Mostra que a saída de todos os algoritmos são iguais e ordenadas
@@ -38,7 +39,7 @@ int main(){//teste.txt
 		gera_relatorios(10000000llu, (char*)"aleatoria", i);//executa todas as entradas complexas de tamanho = 100000000/
 	}
   	system("c:\\windows\\system32\\shutdown /s");*/
-  	normalizarResultados(0);
+  	normalizarResultados(1);
     return 0;
 }
 
@@ -397,12 +398,21 @@ void normalizarResultados(int aleatorias){
 			fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 			for(int i = 0; i < 20; i++){
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", i+1, media[3][i]);
-				fprintf(p, "Mergesort: %lf\n", tempo[0][i]/media[0][i]);
 				fprintf(p, "Quicksort: %lf\n", tempo[1][i]/media[1][i]);
-				fprintf(p, "Mergesort2(std::sort): %lf\n", tempo[2][i]/media[2][i]);
-				fprintf(p, "Radixsort(d = 1): %lf\n\n", tempo[3][i]/media[3][i]);
+				fprintf(p, "Mergesort1: %lf\n", tempo[0][i]/media[0][i]);
+				fprintf(p, "Mergesort2: %lf\n", tempo[2][i]/media[2][i]);
+				fprintf(p, "Radix-base: %lf\n\n", tempo[3][i]/media[3][i]);
 			}
-			fprintf(p, "Coordenadas Latex Mergesort:\n");
+			fprintf(p, "\nTabela comparacao aleatorias:\n");
+			for(int i = 1; i <= 20; i++){
+				fprintf(p, "%d & ", i);
+				fprintf(p, "%lf & ", tempo[1][i]/media[1][i]);
+				fprintf(p, "%lf & ", tempo[0][i]/media[0][i]);
+				fprintf(p, "%lf & ", tempo[2][i]/media[2][i]);
+				fprintf(p, "%lf & ", tempo[3][i]/media[3][i]);
+				fprintf(p, "0.00000 \\\\\n");
+			}
+			fprintf(p, "\n\nCoordenadas Latex Mergesort:\n");
 			for(int i = 0; i < 20; i++){
 				fprintf(p, "(%d,%lf)", i+1, tempo[0][i]/media[0][i]);
 				if((i+1)%4==0)
@@ -613,11 +623,10 @@ void normalizarResultados(int aleatorias){
 				for(int j = 0; j < 8; j++){
 					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i]);
 				}
-					
 				fprintf(p, "\nTabela latex da entrada de k = %d:\n", real);
-				fprintf(p, "%d & %lf & %lf & - \\\\\n", 1, tempo[0][i]/media[0][i], memoria[0][i]/media[0][i]);
+				fprintf(p, "%d & $10^%d$ & %d & %lf & - \\\\\n", 1, 1, (int)ceil(real/1), tempo[0][i]/media[0][i]);
 				for(int j = 1; j < 8; j++)
-					fprintf(p, "%d & %lf & %.1lf & %.2lfx \\\\\n", j+1, tempo[j][i]/media[j][i], memoria[j][i]/media[j][i], (tempo[0][i]/media[0][i])/(tempo[j][i]/media[j][i]));
+					fprintf(p, "%d & $10^%d$ & %d & %lf & %.2lf \\\\\n", j+1, j+1, (int)ceil(real/(j+1.0)), tempo[j][i]/media[j][i], (tempo[0][i]/media[0][i])/(tempo[j][i]/media[j][i]));
 				real = 20;
 				fprintf(p, "\n\n\n\n");
 			}			
@@ -723,13 +732,15 @@ void normalizarResultados(int aleatorias){
 				FILE * p = fopen(arq, "w");	
 				fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", qtd_digitos, media[3]);
-					for(int j = 0; j < 8; j++)
-						fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j]/media[j], memoria[j]/media[j]);
-					fprintf(p, "\n\nTabela latex:\n");
-					fprintf(p, "%d & %lf & %.1lf & - \\\\\n", 1, tempo[0]/media[0], memoria[0]/media[0]);
-					for(int j = 1; j < 8; j++)
-						fprintf(p, "%d & %lf & %.1lf & %.2lfx \\\\\n", j+1, tempo[j]/media[j], memoria[j]/media[j], (tempo[0]/media[0])/(tempo[j]/media[j]));
-					fprintf(p, "\n\n");
+				if(qtd_digitos > 20)
+					qtd_digitos = conta_digitos(qtd_digitos-1);
+				for(int j = 0; j < 8; j++)
+					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j]/media[j], memoria[j]/media[j]);
+				fprintf(p, "\n\nTabela latex:\n");
+				fprintf(p, "%d & $10^%d$ & %d & %lf & - \\\\\n", 1, 1, (int)ceil(qtd_digitos/1), tempo[0]/media[0]);
+				for(int j = 1; j < 8; j++)
+					fprintf(p, "%d & $10^%d$ & %d & %lf & %.2lf \\\\\n", j+1, j+1, (int)ceil(+qtd_digitos/(j+1.0)), tempo[j]/media[j], (tempo[0]/media[0])/(tempo[j]/media[j]));
+				fprintf(p, "\n\n");
 				fclose(p);	
 			}
 			if(f == 0)
