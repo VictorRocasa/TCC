@@ -23,6 +23,15 @@ FILE * info;
 int sob = 1;
 
 
+int contaDigitos(unsigned long long n){
+    int digitosMaior = 0;
+	while(n > 0){
+		n /= 10;
+		digitosMaior++;
+	}
+	return digitosMaior;
+}
+
 int main(){
     info =  fopen((char *)"cabecalho.txt","r");
 	if(info!=NULL)
@@ -128,11 +137,11 @@ void gravar_entrada_crescente(int t){
 	CreateDirectory("entradas_crescentes", NULL);//cria o diretorio se nao existir
     sprintf(arq, ".\\entradas_crescentes\\entrada_crescente_%d.txt", ordenada_crescente);
     FILE * p = criar_arquivo(arq);
-    for(int i = 0; i < t; i++)
+    for(unsigned long long i = 0; i < t; i++)
         fprintf(p, "%llu\n", i);//salva cada elemento seguido de ;
     fclose(p);
     if(sob)
-        fprintf(info, "crescentes crescente %d %d %d\n", ordenada_crescente, t, t);//salva entrada no arquivo que armazena as entradas criadas
+        fprintf(info, "crescentes crescente %d %d %d\n", ordenada_crescente, t, contaDigitos(t-1));//salva entrada no arquivo que armazena as entradas criadas
     printf("Crescente %d salva\n", ordenada_crescente);//feedback visual
     free(arq);
 }
@@ -150,7 +159,7 @@ void gravar_entrada_decrescente(int t){
     }
     fclose(p);
     if(sob)
-        fprintf(info, "decrescentes decrescente %d %d %d\n", ordenada_decrescente, t, t);//salva entrada no arquivo que armazena as entradas criadas
+        fprintf(info, "decrescentes decrescente %d %d %d\n", ordenada_decrescente, t, contaDigitos(t-1));//salva entrada no arquivo que armazena as entradas criadas
     printf("Decrescente %d salva\n", ordenada_decrescente);//feedback visual
     free(arq);
 }
@@ -164,15 +173,9 @@ void gravar_entrada_igual(int t,unsigned long long n){
     for(int i = 0; i < t; i++)
         fprintf(p, "%llu\n", n);//salva cada elemento seguido de \n
     fclose(p);
-    
-    int digitosMaior = 0;
-	while(n > 0){
-		n /= 10;
-		digitosMaior++;
-	}
-	
+    	
     if(sob)
-        fprintf(info, "iguais igual %d %d %d\n", conta_igual, t, digitosMaior);//salva entrada no arquivo que armazena as entradas criadas
+        fprintf(info, "iguais igual %d %d %d\n", conta_igual, t, contaDigitos(n));//salva entrada no arquivo que armazena as entradas criadas
     printf("Igual %d salva\n", conta_igual);//feedback visual
     free(arq);
 }
