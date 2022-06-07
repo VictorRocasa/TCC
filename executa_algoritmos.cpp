@@ -13,7 +13,7 @@
 #include <math.h>
 
 int ler_entrada(lista * l, char * arq);//funcao para ler uma entrada de a partir de um arquivo com seu endereco passado por parâmetro
-void provaDeOrdenacao();//Mostra que a saída de todos os algoritmos são iguais e ordenadas
+void provaDeOrdenacao(char * arq);//Mostra que a saída de todos os algoritmos são iguais e ordenadas
 void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequeridom, int rep);//executa os algoritmos usando um tipo de entrada dentro de um diretorio passados por parametro
 int lerEntradaCPP(std::list<unsigned long long>& entradaCPP, char * arq);//le entrada para a lista nativa do C++
 void cppSortAux(std::list<unsigned long long>& entradaCPP, lista * l);//auxiliar para marcar o tempo do std::sort
@@ -39,7 +39,10 @@ int main(){//teste.txt
 		gera_relatorios(10000000llu, (char*)"aleatoria", i);//executa todas as entradas complexas de tamanho = 100000000/
 	}
   	system("c:\\windows\\system32\\shutdown /s");*/
-  	normalizarResultados(1);
+  	//normalizarResultados(1);
+  	//provaDeOrdenacao((char *)".\\entradas_aleatorias\\entrada_aleatoria_100.txt");
+  	//provaDeOrdenacao((char *)".\\entradas_crescentes\\entrada_crescente_1.txt");
+  	normalizarResultados(0);
     return 0;
 }
 
@@ -68,13 +71,12 @@ int ler_entrada(lista * l, char * arq){
 	return 1;//retorna 1 para sucesso
 }
 
-void provaDeOrdenacao(){
-	lista * e1 = inicia_lista();
-	lista * e2 = inicia_lista();
+void provaDeOrdenacao(char * arq){
+	//lista * e1 = inicia_lista();
+	//lista * e2 = inicia_lista();
 	lista * e3 = inicia_lista();
-	printf("Lendo entrada aleatoria 1 para testes\n");
-	char * arq = (char *)".\\entradas_aleatorias\\entrada_aleatoria_100.txt";
-	if(ler_entrada(e1,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
+	printf("Lendo entrada para testes\n");
+	/*if(ler_entrada(e1,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 	{
 		printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
 		free(arq);
@@ -93,11 +95,11 @@ void provaDeOrdenacao(){
 	}
 	printf("Mergesort...\n");
 	mergeSort(e2);
-	if(ler_entrada(e3,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
+	*/if(ler_entrada(e3,arq) != 1)//erro de referencia para as entradas existentes ou a memória do computador
 	{
 		printf("Erro ao carregar a lista, tente novamente mais tarde. Se o problema persistir contate um desenvolvedor!\n");
-		finalizaLista(e1);
-		finalizaLista(e2);
+		//finalizaLista(e1);
+		//finalizaLista(e2);
 		free(arq);
 		exit(1);
 	}
@@ -124,7 +126,7 @@ void provaDeOrdenacao(){
 	entradaCPP.clear();
 	
 	
-	no * prox1 = e1->raiz;
+	/*no * prox1 = e1->raiz;
 	no * prox2 = e2->raiz;
 	no * prox3 = e3->raiz;
 	while(prox1!=NULL){		
@@ -151,7 +153,7 @@ void provaDeOrdenacao(){
 	}
 	printf("Algoritmos apresentaram a mesma saida, prova de ordenacao concluida!\n\n");
 	finalizaLista(e1);
-	finalizaLista(e2);
+	finalizaLista(e2);*/
 	finalizaLista(e3);
 }
 
@@ -404,8 +406,8 @@ void normalizarResultados(int aleatorias){
 				fprintf(p, "Radix-base: %lf\n\n", tempo[3][i]/media[3][i]);
 			}
 			fprintf(p, "\nTabela comparacao aleatorias:\n");
-			for(int i = 1; i <= 20; i++){
-				fprintf(p, "%d & ", i);
+			for(int i = 0; i < 20; i++){
+				fprintf(p, "%d & ", i+1);
 				fprintf(p, "%lf & ", tempo[1][i]/media[1][i]);
 				fprintf(p, "%lf & ", tempo[0][i]/media[0][i]);
 				fprintf(p, "%lf & ", tempo[2][i]/media[2][i]);
