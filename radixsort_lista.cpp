@@ -79,9 +79,9 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
             baldes_raiz[i]=NULL;
         }
     #if WIN64
-    	unsigned __int128 divisor =  qtd_baldes;//divisor para extrair os digitos
+    	unsigned __int128 divisor =  qtd_baldes;//divisor para extrair os digitos em sistemas de 64 bits
     #else
-    	unsigned __int64 divisor = qtd_baldes;//divisor para extrair os digitos
+    	unsigned __int64 divisor = qtd_baldes;//divisor para extrair os digitos em sistemas de 32 bits
     #endif
     unsigned int qtd_digitos_maior_numero = conta_digitos(maior);
     for(int j = d; j < qtd_digitos_maior_numero; j+=d)//mesma coisa que o loop acima, exceto a parte de pegar o maior
@@ -117,7 +117,14 @@ int radix_lista(lista * l, int d)//d = numero de digitos por iteracao
                 prox = baldes_final[i];
                 baldes_raiz[i]=NULL;
             }
-	    divisor *= qtd_baldes;//atualiza o divisor para a proxima iteracao d=2	
+        #if WIN64//executando em sistemas de 64bits
+	    	if(j<(20-d))
+		    	divisor *= qtd_baldes;//atualiza o divisor para a proxima iteracao d=2	
+		    else
+		    	unsigned __int128 divisor = (unsigned __int128) divisor*qtd_baldes;//divisor para extrair os digitos em sistemas de 32 bits
+		#else//sistemas de 32bits que nao suportam inteiro de 128 e portanto a ordenação se limita a 14 digitos
+		    	divisor *= qtd_baldes;//atualiza o divisor para a proxima iteracao d=2	
+		#endif
     }
     
 	for(unsigned long long i = 0; i < qtd_baldes; i++){//aponta os baldes final para NULL - raiz ja estao como NULL
