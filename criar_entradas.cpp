@@ -57,6 +57,7 @@ int main(){
 	for(int t = MINT; t <= MAXT; t *= 10){//valor de t variando de 10000 a MAXT
         printf("Entradas de tamanho %d:\n", t);
 		int n = MINN;
+		goto bug;
         for(; n <= MAXN; n++){//valor de n variando de <10 a <MAXN
         	printf("Digitos do maior numero %d\n", n);
             gravar_entrada_aleatoria(t,n);
@@ -68,6 +69,7 @@ int main(){
         printf("Entrada com numeros de 20 digitos...", n);
 		gravar_entrada_pior_caso(t);
         printf("0-%d...", t-1);
+		bug:
 		gravar_entrada_crescente(t);
         printf("%d-0...", t-1);
 		gravar_entrada_decrescente(t);

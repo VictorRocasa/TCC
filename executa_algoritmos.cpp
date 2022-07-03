@@ -40,9 +40,10 @@ int main(){//teste.txt
 	}
   	system("c:\\windows\\system32\\shutdown /s");*/
   	//normalizarResultados(1);
-  	//provaDeOrdenacao((char *)".\\entradas_aleatorias\\entrada_aleatoria_100.txt");
-  	//provaDeOrdenacao((char *)".\\entradas_crescentes\\entrada_crescente_1.txt");
-  	normalizarResultados(0);
+  	provaDeOrdenacao((char *)".\\entradas_aleatorias\\entrada_aleatoria_100.txt");
+  	provaDeOrdenacao((char *)".\\entradas_crescentes\\entrada_crescente_1.txt");
+  	provaDeOrdenacao((char *)".\\entradas_aleatorias\\entrada_aleatoria_338.txt");
+  	//normalizarResultados(0);
     return 0;
 }
 
@@ -104,7 +105,7 @@ void provaDeOrdenacao(char * arq){
 		exit(1);
 	}
 	printf("Radixsort...\n");
-	radix_lista(e3,8);
+	radixLista(e3,8);
 	
 	std::list<unsigned long long> entradaCPP;
 	lerEntradaCPP(entradaCPP, arq);
@@ -294,7 +295,7 @@ void gera_relatorios(unsigned long long tamanhoRequerido, char * tipoRequerido, 
 					exit(1);
 				}
 				printf("Radixsort para lista com d = %d...", d);
-		    	sucesso = radix_lista(entrada,d);//executa o radix de lista para a entrada
+		    	sucesso = radixLista(entrada,d);//executa o radix de lista para a entrada
 				if(!sucesso){//sai do loop quando o radix falhar por falta de memoria
 					printf("Falta de memoria\n");
 					break;
@@ -735,7 +736,7 @@ void normalizarResultados(int aleatorias){
 				fprintf(p, "Entrada %s de tamanho %llu\n\n", tipo, tamanho);
 				fprintf(p, "Digitos do maior numero = %d, tamanho da amostra = %d\n", qtd_digitos, media[3]);
 				if(qtd_digitos > 20)
-					qtd_digitos = conta_digitos(qtd_digitos-1);
+					qtd_digitos = contaDigitos(qtd_digitos-1);
 				for(int j = 0; j < 8; j++)
 					fprintf(p, "Radixsort(d = %d): %lf, usando %lfMB\n", j+1, tempo[j]/media[j], memoria[j]/media[j]);
 				fprintf(p, "\n\nTabela latex:\n");
